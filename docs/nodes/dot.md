@@ -1,53 +1,8 @@
 # dot
 
 
-dot returns the dot product of two vectors, x and y. i.e.,
+dot returns the dot product of two vectors, x and y. i.e., ( x[0]*y[0] + x[1]*y[1] + ... )
 
-<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll">
-
-<mml:mi>x</mml:mi>
-
-<mml:mo stretchy="false">[</mml:mo>
-
-<mml:mn>0</mml:mn>
-
-<mml:mo stretchy="false">]</mml:mo>
-
-<mml:mo lspace="2px" rspace="2px">â‹…</mml:mo>
-
-<mml:mi>y</mml:mi>
-
-<mml:mo stretchy="false">[</mml:mo>
-
-<mml:mn>0</mml:mn>
-
-<mml:mo stretchy="false">]</mml:mo>
-
-<mml:mo>+</mml:mo>
-
-<mml:mi>x</mml:mi>
-
-<mml:mo stretchy="false">[</mml:mo>
-
-<mml:mn>1</mml:mn>
-
-<mml:mo stretchy="false">]</mml:mo>
-
-<mml:mo lspace="2px" rspace="2px">â‹…</mml:mo>
-
-<mml:mi>y</mml:mi>
-
-<mml:mo stretchy="false">[</mml:mo>
-
-<mml:mn>1</mml:mn>
-
-<mml:mo stretchy="false">]</mml:mo>
-
-<mml:mo>+</mml:mo>
-
-<mml:mo lspace="0px" form="infix">...</mml:mo>
-
-</mml:math>
 
 ## dot(float,float)
 
