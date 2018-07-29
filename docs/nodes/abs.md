@@ -1,5 +1,7 @@
 # abs
 
+Returns the absolute value of x.
+
 ## abs(float)
 
 ### Parameter
