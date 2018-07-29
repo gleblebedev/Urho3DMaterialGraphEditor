@@ -414,6 +414,14 @@ namespace Urho3DMaterialEditor.ViewModels
                 case PinTypes.Vec2:
                 case PinTypes.Vec3:
                 case PinTypes.Vec4:
+                case PinTypes.Bool:
+                case PinTypes.Bvec2:
+                case PinTypes.Bvec3:
+                case PinTypes.Bvec4:
+                case PinTypes.Int:
+                case PinTypes.Ivec2:
+                case PinTypes.Ivec3:
+                case PinTypes.Ivec4:
                     _currentPreviewPin = pin;
                     _preview.OnNext(new PreviewData
                     {

@@ -5,13 +5,13 @@ using System.Windows.Media;
 
 namespace Urho3DMaterialEditor.Views
 {
-    public class IntTextBox : TextBox
+    public class StringTextBox : TextBox
     {
         private static readonly Brush _bg = new SolidColorBrush(Colors.Black);
         private static readonly Brush _fg = new SolidColorBrush(Colors.White);
         private string _path;
 
-        public IntTextBox()
+        public StringTextBox()
         {
             Background = _bg;
             Foreground = _fg;
@@ -41,10 +41,10 @@ namespace Urho3DMaterialEditor.Views
                 ValidatesOnNotifyDataErrors = true,
                 ValidatesOnDataErrors = true,
                 NotifyOnValidationError = true,
-                ValidationRules =
-                {
-                    new NumericValidationRule {ValidatesOnTargetUpdated = true, ValidationType = typeof(int)}
-                }
+                //ValidationRules =
+                //{
+                //    new NumericValidationRule {ValidatesOnTargetUpdated = true, ValidationType = typeof(int)}
+                //}
             });
         }
     }

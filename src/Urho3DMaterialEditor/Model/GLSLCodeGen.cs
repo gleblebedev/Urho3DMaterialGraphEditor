@@ -372,6 +372,8 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                     return args[0];
                 case NodeTypes.LessThanFloatFloat:
                     return GenBinaryOperator("<", args);
+                case NodeTypes.NotBool:
+                    return "!("+args[0]+")";
                 case NodeTypes.GreaterThanFloatFloat:
                     return GenBinaryOperator(">", args);
                 case NodeTypes.LessThanEqualFloatFloat:

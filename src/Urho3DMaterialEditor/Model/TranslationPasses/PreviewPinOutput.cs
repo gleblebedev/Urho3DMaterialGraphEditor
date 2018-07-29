@@ -98,6 +98,22 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
                     return CreateVec2Convertor(pin);
                 case PinTypes.Vec3:
                     return CreateVec3Convertor(pin);
+                case PinTypes.Bool:
+                    return CreateBoolConvertor(pin);
+                case PinTypes.Bvec2:
+                    return CreateBVec2Convertor(pin);
+                case PinTypes.Bvec3:
+                    return CreateBVec3Convertor(pin);
+                case PinTypes.Bvec4:
+                    return CreateBVec4Convertor(pin);
+                case PinTypes.Int:
+                    return CreateIntConvertor(pin);
+                case PinTypes.Ivec2:
+                    return CreateIVec2Convertor(pin);
+                case PinTypes.Ivec3:
+                    return CreateIVec3Convertor(pin);
+                case PinTypes.Ivec4:
+                    return CreateIVec4Convertor(pin);
             }
 
             var node = new NodeHelper
@@ -129,6 +145,55 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
             var node = CreateNode(NodeTypes.MakeVec4FromVec2AndVec2);
             _script.Link(pin, node.InputPins[0]);
             return node.OutputPins[0];
+        }
+        private PinHelper CreateBoolConvertor(PinHelper pin)
+        {
+            var converter = CreateNode(PinTypes.Float+"("+PinTypes.Bool+")");
+            _script.LinkData(pin, converter);
+            return CreateFloatConvertor(converter.OutputPins[0]);
+        }
+        private PinHelper CreateBVec2Convertor(PinHelper pin)
+        {
+            var converter = CreateNode(PinTypes.Vec2 + "(" + PinTypes.Bvec2 + ")");
+            _script.LinkData(pin, converter);
+            return CreateVec2Convertor(converter.OutputPins[0]);
+        }
+        private PinHelper CreateBVec3Convertor(PinHelper pin)
+        {
+            var converter = CreateNode(PinTypes.Vec3 + "(" + PinTypes.Bvec3 + ")");
+            _script.LinkData(pin, converter);
+            return CreateVec3Convertor(converter.OutputPins[0]);
+        }
+        private PinHelper CreateBVec4Convertor(PinHelper pin)
+        {
+            var converter = CreateNode(PinTypes.Vec4 + "(" + PinTypes.Bvec4 + ")");
+            _script.LinkData(pin, converter);
+            return converter.OutputPins[0];
+        }
+
+        private PinHelper CreateIntConvertor(PinHelper pin)
+        {
+            var converter = CreateNode(PinTypes.Float + "(" + PinTypes.Int + ")");
+            _script.LinkData(pin, converter);
+            return CreateFloatConvertor(converter.OutputPins[0]);
+        }
+        private PinHelper CreateIVec2Convertor(PinHelper pin)
+        {
+            var converter = CreateNode(PinTypes.Vec2 + "(" + PinTypes.Ivec2 + ")");
+            _script.LinkData(pin, converter);
+            return CreateVec2Convertor(converter.OutputPins[0]);
+        }
+        private PinHelper CreateIVec3Convertor(PinHelper pin)
+        {
+            var converter = CreateNode(PinTypes.Vec3 + "(" + PinTypes.Ivec3 + ")");
+            _script.LinkData(pin, converter);
+            return CreateVec3Convertor(converter.OutputPins[0]);
+        }
+        private PinHelper CreateIVec4Convertor(PinHelper pin)
+        {
+            var converter = CreateNode(PinTypes.Vec4 + "(" + PinTypes.Ivec4 + ")");
+            _script.LinkData(pin, converter);
+            return converter.OutputPins[0];
         }
 
         private PinHelper CreateFloatConvertor(PinHelper pin)

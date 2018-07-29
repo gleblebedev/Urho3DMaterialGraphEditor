@@ -7,3 +7,7 @@ src/Urho3DMaterialEditor/.vs/
 src/Urho3DMaterialEditor.Unit.Tests/obj/
 src/Urho3DMaterialEditor/obj/
 src/Urho3DMaterialEditor/bin/
+src/.vs/Urho3DMaterialEditor/v15/
+src/Urho3DMaterialEditor/Data/Shaders/
+src/Urho3DMaterialEditor/Data/Materials/
+src/Urho3DMaterialEditor/Data/Techniques/

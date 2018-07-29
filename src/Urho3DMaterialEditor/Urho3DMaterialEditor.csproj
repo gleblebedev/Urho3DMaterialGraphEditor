@@ -263,6 +263,7 @@
     <Compile Include="Views\StringNodeView.xaml.cs">
       <DependentUpon>StringNodeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\StringTextBox.cs" />
     <Compile Include="Views\Vector2NodeView.xaml.cs">
       <DependentUpon>Vector2NodeView.xaml</DependentUpon>
     </Compile>

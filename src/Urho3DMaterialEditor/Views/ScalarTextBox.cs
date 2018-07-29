@@ -16,6 +16,7 @@ namespace Urho3DMaterialEditor.Views
             Background = _bg;
             Foreground = _fg;
             VerticalAlignment = VerticalAlignment.Center;
+            CaretBrush = _fg;
         }
 
         public string Path
