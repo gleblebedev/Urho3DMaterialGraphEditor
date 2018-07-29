@@ -1,5 +1,12 @@
 # log2
 
+
+log2 returns the base 2 logarithm of x,
+
+i.e. the value y which satisfies x = 2^y. The result is
+
+undefined if x \leq 0.
+
 ## log2(float)
 
 ### Parameter

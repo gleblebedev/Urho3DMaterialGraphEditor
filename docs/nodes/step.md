@@ -1,5 +1,12 @@
 # step
 
+
+step generates a step function by comparing x to edge.
+
+For element <span class="emphasis"><em>i</span> of the return value, 0.0 is returned if x[<span class="emphasis"><em>i</span>]
+
+< edge[<span class="emphasis"><em>i</span>], and 1.0 is returned otherwise.
+
 ## step(float,float)
 
 ### Parameters

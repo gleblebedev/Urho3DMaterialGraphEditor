@@ -1,5 +1,12 @@
 # max
 
+
+max returns the maximum of the two parameters. It
+
+returns y if y is greater than
+
+x, otherwise it returns x.
+
 ## max(float,float)
 
 ### Parameters

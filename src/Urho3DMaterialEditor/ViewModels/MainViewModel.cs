@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
@@ -255,6 +256,76 @@ namespace Urho3DMaterialEditor.ViewModels
                     {
                         writer.WriteLine(@"# "+factories.Key);
                         writer.WriteLine(@"");
+
+                        try
+                        {
+                            var wc = new WebClient();
+                            var txt =wc.DownloadString("https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/" +
+                                              factories.Key +
+                                              ".xhtml");
+                            var startMarker = "<h2>Description</h2>";
+                            var startpos = txt.IndexOf(startMarker);
+                            if (startpos > 0)
+                            {
+                                txt = txt.Substring(startpos + startMarker.Length);
+                                var endPos = txt.IndexOf("</div>");
+                                if (endPos > 0)
+                                {
+                                    txt = txt.Substring(0, endPos);
+                                    var original = txt;
+                                    txt = txt.Replace("<p>", "");
+                                    txt = txt.Replace("</p>", "");
+                                    txt = txt.Replace("<code class=\"function\">", "");
+                                    txt = txt.Replace("<code>", "");
+                                    txt = txt.Replace("</code>", "");
+                                    txt = txt.Replace("<em class=\"parameter\">", "");
+                                    txt = txt.Replace("</em>", "");
+                                    txt = txt.Replace("\\left", "");
+                                    txt = txt.Replace("\\right", "");
+                                    txt = txt.Replace("\\pi", "π");
+                                    txt = txt.Replace("$", "");
+
+                                    txt = txt.Replace("        <pre class=\"programlisting\">", "```"+Environment.NewLine);
+                                    txt = txt.Replace("</pre>", Environment.NewLine+"```" + Environment.NewLine);
+                                    txt = txt.Replace("&lt;", "<");
+                                    txt = txt.Replace("&gt;", ">");
+                                    txt = txt.Replace("&amp;", "&");
+                                    var lines = txt.Split(new char[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
+                                    StringBuilder sb = new StringBuilder();
+                                    var inCode = false;
+                                    foreach (var line in lines)
+                                    {
+                                        var l = line;
+                                        if (!inCode)
+                                            l= l.Trim();
+                                        if (string.IsNullOrWhiteSpace(l))
+                                        {
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            if (!inCode)
+                                            {
+                                                sb.AppendLine();
+                                            }
+
+                                            if (l.StartsWith("```"))
+                                                inCode = !inCode;
+                                            sb.AppendLine(l);
+                                        }
+                                    }
+
+                                    txt = sb.ToString();
+                                    writer.WriteLine(txt);
+                                    Console.WriteLine(txt);
+                                }
+                            }
+                        }
+                        catch (WebException ex)
+                        {
+
+                        }
+
                         var isSingle = (nodeGroups.Count() == 1);
                         foreach (var node in factories)
                         {

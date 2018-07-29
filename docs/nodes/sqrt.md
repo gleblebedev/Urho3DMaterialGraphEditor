@@ -1,5 +1,10 @@
 # sqrt
 
+
+sqrt returns the square root of x, i.e.
+
+the value \sqrt { x }. The result is undefined if x < 0.
+
 ## sqrt(float)
 
 ### Parameter

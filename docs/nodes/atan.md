@@ -1,5 +1,28 @@
 # atan
 
+
+atan returns either the angle whose
+
+trigonometric arctangent is y \over x or
+
+y_over_x, depending on which overload is
+
+invoked. In the first overload, the signs of y and x are
+
+used to determine the quadrant that the angle lies in. The value
+
+returned by atan in this case is in the
+
+range [-π,π]. The result is undefined if x = 0.
+
+For the second overload, atan returns the
+
+angle whose tangent is y_over_x. The
+
+value returned in this case is in the range
+
+[-{π \over 2 },{π \over 2}].
+
 ## atan(float)
 
 ### Parameter

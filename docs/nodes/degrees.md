@@ -1,5 +1,12 @@
 # degrees
 
+
+degrees converts a quantity specified in
+
+radians into degrees. The return value is
+
+{ 180 \times radians } \over π.
+
 ## degrees(float)
 
 ### Parameter

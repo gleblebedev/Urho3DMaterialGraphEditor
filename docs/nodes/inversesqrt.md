@@ -1,5 +1,12 @@
 # inversesqrt
 
+
+inversesqrt returns the inverse of the
+
+square root of x; i.e. the value 1 \over { \sqrt x }. The
+
+result is undefined if x \leq 0.
+
 ## inversesqrt(float)
 
 ### Parameter

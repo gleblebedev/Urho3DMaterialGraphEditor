@@ -1,5 +1,10 @@
 # distance
 
+
+distance returns the distance between the two points p0 and p1. i.e.,
+
+<code class="code">length(p0 - p1);
+
 ## distance(float,float)
 
 ### Parameters

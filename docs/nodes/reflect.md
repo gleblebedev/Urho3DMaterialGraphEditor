@@ -1,5 +1,12 @@
 # reflect
 
+
+For a given incident vector I and surface normal N reflect returns
+
+the reflection direction calculated as <code class="code">I - 2.0 * dot(N, I) * N.
+
+N should be normalized in order to achieve the desired result.
+
 ## reflect(float,float)
 
 ### Parameters

@@ -1,5 +1,10 @@
 # exp
 
+
+exp returns the natural exponentiation of x. i.e.,
+
+<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:msup><mml:mi>e</mml:mi><mml:mi>x</mml:mi></mml:msup></mml:math>.
+
 ## exp(float)
 
 ### Parameter

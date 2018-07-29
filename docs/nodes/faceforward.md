@@ -1,5 +1,12 @@
 # faceforward
 
+
+faceforward orients a vector to point away from a surface as defined by its normal.
+
+If <a class="citerefentry" href="dot.xhtml"><span class="citerefentry"><span class="refentrytitle">dot</span></span></a><code class="code">(Nref, I) < 0
+
+faceforward returns N, otherwise it returns <code class="code">-N.
+
 ## faceforward(float,float,float)
 
 ### Parameters

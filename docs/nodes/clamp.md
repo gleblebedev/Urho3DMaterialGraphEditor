@@ -1,5 +1,16 @@
 # clamp
 
+
+clamp returns the value of x constrained to the
+
+range minVal to maxVal. The returned value is
+
+computed as
+
+<a class="citerefentry" href="min.xhtml"><span class="citerefentry"><span class="refentrytitle">min</span></span></a>(<a class="citerefentry" href="max.xhtml"><span class="citerefentry"><span class="refentrytitle">max</span></span></a>(x,
+
+minVal), maxVal).
+
 ## clamp(float,float,float)
 
 ### Parameters

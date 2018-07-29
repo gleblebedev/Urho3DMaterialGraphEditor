@@ -1,5 +1,10 @@
 # not
 
+
+not logically inverts the boolean vector x. It returns
+
+a new boolean vector for which each element <span class="emphasis"><em>i</span> is computed as <code class="code">!x[i].
+
 ## not(bool)
 
 ### Parameter

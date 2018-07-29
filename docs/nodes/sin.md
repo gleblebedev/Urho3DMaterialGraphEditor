@@ -1,5 +1,8 @@
 # sin
 
+
+sin returns the trigonometric sine of angle.
+
 ## sin(float)
 
 ### Parameter

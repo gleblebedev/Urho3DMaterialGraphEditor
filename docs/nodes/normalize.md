@@ -1,5 +1,8 @@
 # normalize
 
+
+normalize returns a vector with the same direction as its parameter, v, but with length 1.
+
 ## normalize(float)
 
 ### Parameter

@@ -1,5 +1,8 @@
 # tan
 
+
+tan returns the trigonometric tangent of angle.
+
 ## tan(float)
 
 ### Parameter

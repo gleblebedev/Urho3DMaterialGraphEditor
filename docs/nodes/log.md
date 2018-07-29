@@ -1,5 +1,12 @@
 # log
 
+
+log returns the natural logarithm of x,
+
+i.e. the value y which satisfies x = e^y. The result is
+
+undefined if x \leq 0.
+
 ## log(float)
 
 ### Parameter

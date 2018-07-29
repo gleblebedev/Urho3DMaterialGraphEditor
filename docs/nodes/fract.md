@@ -1,5 +1,10 @@
 # fract
 
+
+fract returns the fractional part of x. This
+
+is calculated as x - <a class="citerefentry" href="floor.xhtml"><span class="citerefentry"><span class="refentrytitle">floor</span></span></a>(x).
+
 ## fract(float)
 
 ### Parameter

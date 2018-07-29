@@ -1,6 +1,7 @@
 # abs
 
-Returns the absolute value of x.
+
+abs returns the absolute value of x.
 
 ## abs(float)
 

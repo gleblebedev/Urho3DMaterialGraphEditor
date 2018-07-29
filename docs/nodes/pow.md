@@ -1,5 +1,12 @@
 # pow
 
+
+pow returns the value of x raised to the
+
+y power, i.e. x^y. The result is undefined if x < 0 or
+
+if x = 0 and y \leq 0.
+
 ## pow(float,float)
 
 ### Parameters

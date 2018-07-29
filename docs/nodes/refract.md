@@ -1,5 +1,24 @@
 # refract
 
+
+For a given incident vector I, surface normal N and ratio of
+
+indices of refraction, eta, refract returns the refraction vector,
+
+R.
+
+R is calculated as:
+
+```
+    k = 1.0 - eta * eta * (1.0 - dot(N, I) * dot(N, I));
+    if (k < 0.0)
+        R = genType(0.0);       // or genDType(0.0)
+    else
+        R = eta * I - (eta * dot(N, I) + sqrt(k)) * N;
+```
+
+The input parameters I and N should be normalized in order to achieve the desired result.
+
 ## refract(float,float,float)
 
 ### Parameters

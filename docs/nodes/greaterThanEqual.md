@@ -1,5 +1,10 @@
 # greaterThanEqual
 
+
+greaterThanEqual returns a boolean vector in which each element <span class="emphasis"><em>i</span> is computed
+
+as x[<span class="emphasis"><em>i</span>] â‰¥ y[<span class="emphasis"><em>i</span>].
+
 ## greaterThanEqual(float,float)
 
 ### Parameters

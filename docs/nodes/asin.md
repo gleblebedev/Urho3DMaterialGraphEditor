@@ -1,5 +1,14 @@
 # asin
 
+
+atan returns the angle whose trigonometric
+
+sine is x. The range of values returned by
+
+asin is [-{π \over 2}, {π \over 2}].
+
+The result is undefined if | x | > 1.
+
 ## asin(float)
 
 ### Parameter

@@ -1,6 +1,13 @@
 # acos
 
-Returns the angle whose trigonometric cosine is x. The range of values returned by acos is [0,π]. The result is undefined if |x|>1.
+
+atan returns the angle whose trigonometric
+
+cosine is x. The range of values returned by
+
+acos is [0,π]. The result is undefined
+
+if | x | > 1.
 
 ## acos(float)
 

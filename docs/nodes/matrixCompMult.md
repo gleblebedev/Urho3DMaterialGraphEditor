@@ -1,5 +1,14 @@
 # matrixCompMult
 
+
+matrixCompMult performs a component-wise multiplication of two
+
+matrices, yielding a result matrix where each component, <code class="code">result[i][j] is
+
+computed as the scalar product of <code class="code">x[i][j] and
+
+<code class="code">y[i][j].
+
 ## matrixCompMult(mat2,mat2)
 
 ### Parameters

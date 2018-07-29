@@ -1,5 +1,12 @@
 # mod
 
+
+mod returns the value of x modulo
+
+y. This is computed as x - y *
+
+<a class="citerefentry" href="floor.xhtml"><span class="citerefentry"><span class="refentrytitle">floor</span></span></a>(x/y).
+
 ## mod(float,float)
 
 ### Parameters

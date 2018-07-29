@@ -1,5 +1,10 @@
 # exp2
 
+
+exp2 returns 2 raised to the power of x. i.e.,
+
+<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:msup><mml:mn>2</mml:mn><mml:mi>x</mml:mi></mml:msup></mml:math>.
+
 ## exp2(float)
 
 ### Parameter

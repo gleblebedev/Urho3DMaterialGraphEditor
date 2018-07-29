@@ -1,5 +1,8 @@
 # cos
 
+
+cos returns the trigonometric cosine of angle.
+
 ## cos(float)
 
 ### Parameter

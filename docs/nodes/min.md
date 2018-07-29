@@ -1,5 +1,12 @@
 # min
 
+
+min returns the minimum of the two parameters. It
+
+returns y if y is less than
+
+x, otherwise it returns x.
+
 ## min(float,float)
 
 ### Parameters
