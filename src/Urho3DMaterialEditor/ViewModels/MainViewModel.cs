@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Toe.Scripting;
 using Toe.Scripting.Helpers;
 using Toe.Scripting.WPF;
@@ -225,15 +226,21 @@ namespace Urho3DMaterialEditor.ViewModels
             var folder = @"C:\Temp\Docs";
             Directory.CreateDirectory(folder);
 
-            var nodeGroups = ScriptViewModel.Registry.ToLookup(_ => GetNodeKey(_.Type)).OrderBy(_=>_.Key);
+            var nodeGroups = ScriptViewModel.Registry.Select(_=>_.Build()).ToLookup(_ => GetNodeKey(_.Type)).OrderBy(_=>_.Key);
 
             using (var writer = OpenWriter(Path.Combine(folder, "AllNodes.md")))
             {
                 writer.WriteLine(@"# All nodes");
                 writer.WriteLine(@"");
-                foreach (var factories in nodeGroups)
+                foreach (var catGroup in ScriptViewModel.Registry.Select(_ => _.Build()).ToLookup(_=>_.Category))
                 {
-                    writer.WriteLine(@"["+ factories.Key + "](docs/nodes/"+ GetFileName(factories.Key)+".md)");
+                    writer.WriteLine(@"## "+catGroup.Key.ToString());
+                    writer.WriteLine(@"");
+                    foreach (var factories in catGroup.ToLookup(_ => GetNodeKey(_.Type)).OrderBy(_ => _.Key))
+                    {
+                        writer.WriteLine(@"[" + factories.Key + "](nodes/" + GetFileName(factories.Key) + ".md)");
+                        writer.WriteLine(@"");
+                    }
                 }
             }
 
@@ -248,10 +255,62 @@ namespace Urho3DMaterialEditor.ViewModels
                     {
                         writer.WriteLine(@"# "+factories.Key);
                         writer.WriteLine(@"");
-                        foreach (var factory in factories)
+                        var isSingle = (nodeGroups.Count() == 1);
+                        foreach (var node in factories)
                         {
-                            var node = factory.Build();
-                            writer.WriteLine(@"## " + node.Name);
+                            if (!isSingle)
+                            {
+                                writer.WriteLine(@"## " + node.Name);
+                                writer.WriteLine(@"");
+                            }
+
+                            if (node.InputPins.Count > 0)
+                            {
+                                if (node.InputPins.Count == 1)
+                                    writer.WriteLine(@"### Parameter");
+                                else
+                                    writer.WriteLine(@"### Parameters");
+                                writer.WriteLine(@"");
+                                foreach (var pin in node.InputPins)
+                                {
+                                    if (!string.IsNullOrWhiteSpace(pin.Id))
+                                        writer.WriteLine(pin.Id);
+                                    writer.WriteLine(@"  Type: "+pin.Type);
+                                }
+                            }
+                            if (node.OutputPins.Count > 0)
+                            {
+                                writer.WriteLine(@"");
+                                if (node.OutputPins.Count == 1)
+                                    writer.WriteLine(@"### Return Value");
+                                else
+                                    writer.WriteLine(@"### Return Values");
+                                writer.WriteLine(@"");
+                                foreach (var pin in node.OutputPins)
+                                {
+                                    if (!string.IsNullOrWhiteSpace(pin.Id))
+                                        writer.WriteLine(pin.Id);
+                                    writer.WriteLine(@"  Type: " + pin.Type);
+                                }
+                            }
+
+                            writer.WriteLine(@"");
+                            writer.WriteLine(@"<details><summary>JSON</summary>");
+                            writer.WriteLine(@"");
+                            writer.WriteLine(@"```");
+                            var json = JsonConvert.SerializeObject(node, Formatting.Indented);
+                            var obj = (JObject)JsonConvert.DeserializeObject(json);
+                            obj.Remove("EnterPins");
+                            obj.Remove("ExitPins");
+                            obj.Remove("Id");
+                            obj.Remove("GroupId");
+                            if (node.Value == null)
+                            obj.Remove("Value");
+                            json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+                            writer.WriteLine(json);
+                            writer.WriteLine(@"```");
+                            writer.WriteLine(@"");
+                            writer.WriteLine(@"</details>");
                             writer.WriteLine(@"");
                         }
                     }

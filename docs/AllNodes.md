@@ -1,12 +1,90 @@
 # All nodes
 
+## Parameter
+
+[attribute](nodes/attribute.md)
+
+[define](nodes/define.md)
+
+[parameter](nodes/parameter.md)
+
+[sampler2D](nodes/sampler2D.md)
+
+[SamplerCube](nodes/SamplerCube.md)
+
+[undefine](nodes/undefine.md)
+
+[uniform](nodes/uniform.md)
+
+## Value
+
+[bool](nodes/bool.md)
+
+[bvec2](nodes/bvec2.md)
+
+[bvec3](nodes/bvec3.md)
+
+[bvec4](nodes/bvec4.md)
+
+[color](nodes/color.md)
+
+[float](nodes/float.md)
+
+[int](nodes/int.md)
+
+[ivec2](nodes/ivec2.md)
+
+[ivec3](nodes/ivec3.md)
+
+[ivec4](nodes/ivec4.md)
+
+[mat2](nodes/mat2.md)
+
+[mat3](nodes/mat3.md)
+
+[mat4](nodes/mat4.md)
+
+[vec2](nodes/vec2.md)
+
+[vec3](nodes/vec3.md)
+
+[vec4](nodes/vec4.md)
+
+## Result
+
+[ambientColor](nodes/ambientColor.md)
+
+[beckmannDistribution](nodes/beckmannDistribution.md)
+
+[connect](nodes/connect.md)
+
+[deferredOutput](nodes/deferredOutput.md)
+
+[DiffusePreset](nodes/DiffusePreset.md)
+
+[discard](nodes/discard.md)
+
+[finalColor](nodes/finalColor.md)
+
+[finalData](nodes/finalData.md)
+
+[lightColor](nodes/lightColor.md)
+
+[opacity](nodes/opacity.md)
+
+[positionOutput](nodes/positionOutput.md)
+
+[refractionColor](nodes/refractionColor.md)
+
+[RefractionPreset](nodes/RefractionPreset.md)
+
+## Function
+
 [abs](nodes/abs.md)
 
 [acos](nodes/acos.md)
 
 [all](nodes/all.md)
-
-[ambientColor](nodes/ambientColor.md)
 
 [andAlso](nodes/andAlso.md)
 
@@ -17,10 +95,6 @@
 [asin](nodes/asin.md)
 
 [atan](nodes/atan.md)
-
-[attribute](nodes/attribute.md)
-
-[beckmannDistribution](nodes/beckmannDistribution.md)
 
 [blinnPhongDistribution](nodes/blinnPhongDistribution.md)
 
@@ -52,10 +126,6 @@
 
 [clamp](nodes/clamp.md)
 
-[color](nodes/color.md)
-
-[connect](nodes/connect.md)
-
 [cos](nodes/cos.md)
 
 [cross](nodes/cross.md)
@@ -66,15 +136,7 @@
 
 [decodePackedNormal](nodes/decodePackedNormal.md)
 
-[deferredOutput](nodes/deferredOutput.md)
-
-[define](nodes/define.md)
-
 [degrees](nodes/degrees.md)
-
-[DiffusePreset](nodes/DiffusePreset.md)
-
-[discard](nodes/discard.md)
 
 [distance](nodes/distance.md)
 
@@ -89,10 +151,6 @@
 [exp2](nodes/exp2.md)
 
 [faceforward](nodes/faceforward.md)
-
-[finalColor](nodes/finalColor.md)
-
-[finalData](nodes/finalData.md)
 
 [float](nodes/float.md)
 
@@ -198,8 +256,6 @@
 
 [lessThanEqual](nodes/lessThanEqual.md)
 
-[lightColor](nodes/lightColor.md)
-
 [lightData](nodes/lightData.md)
 
 [lightMatrices](nodes/lightMatrices.md)
@@ -220,13 +276,9 @@
 
 [makeVec4fromVec3Float](nodes/makeVec4fromVec3Float.md)
 
-[mat2](nodes/mat2.md)
-
 [mat3](nodes/mat3.md)
 
 [mat3*vec3](nodes/mat32Avec3.md)
-
-[mat4](nodes/mat4.md)
 
 [mat4*float](nodes/mat42Afloat.md)
 
@@ -256,11 +308,7 @@
 
 [objectData](nodes/objectData.md)
 
-[opacity](nodes/opacity.md)
-
 [orElse](nodes/orElse.md)
-
-[parameter](nodes/parameter.md)
 
 [perPixelFloat](nodes/perPixelFloat.md)
 
@@ -269,8 +317,6 @@
 [perPixelVec3](nodes/perPixelVec3.md)
 
 [perPixelVec4](nodes/perPixelVec4.md)
-
-[positionOutput](nodes/positionOutput.md)
 
 [pow](nodes/pow.md)
 
@@ -281,14 +327,6 @@
 [reflect](nodes/reflect.md)
 
 [refract](nodes/refract.md)
-
-[refractionColor](nodes/refractionColor.md)
-
-[RefractionPreset](nodes/RefractionPreset.md)
-
-[sampler2D](nodes/sampler2D.md)
-
-[SamplerCube](nodes/SamplerCube.md)
 
 [sampleShadow](nodes/sampleShadow.md)
 
@@ -313,10 +351,6 @@
 [texture2D](nodes/texture2D.md)
 
 [textureCube](nodes/textureCube.md)
-
-[undefine](nodes/undefine.md)
-
-[uniform](nodes/uniform.md)
 
 [vec2](nodes/vec2.md)
 

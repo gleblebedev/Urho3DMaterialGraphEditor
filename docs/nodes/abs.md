@@ -12,12 +12,11 @@ x
   Type: float
 
 <details><summary>JSON</summary>
+
 ```
 {
   "Type": "abs(float)",
   "Name": "abs(float)",
-  "Value": null,
-  "GroupId": 0,
   "Category": 1,
   "InputPins": [
     {
@@ -31,12 +30,10 @@ x
       "Id": "",
       "Type": "float"
     }
-  ],
-  "EnterPins": [],
-  "ExitPins": [],
-  "Id": 0
+  ]
 }
 ```
+
 </details>
 
 ## abs(vec2)
@@ -51,12 +48,11 @@ x
   Type: vec2
 
 <details><summary>JSON</summary>
+
 ```
 {
   "Type": "abs(vec2)",
   "Name": "abs(vec2)",
-  "Value": null,
-  "GroupId": 0,
   "Category": 1,
   "InputPins": [
     {
@@ -70,12 +66,10 @@ x
       "Id": "",
       "Type": "vec2"
     }
-  ],
-  "EnterPins": [],
-  "ExitPins": [],
-  "Id": 0
+  ]
 }
 ```
+
 </details>
 
 ## abs(vec3)
@@ -90,12 +84,11 @@ x
   Type: vec3
 
 <details><summary>JSON</summary>
+
 ```
 {
   "Type": "abs(vec3)",
   "Name": "abs(vec3)",
-  "Value": null,
-  "GroupId": 0,
   "Category": 1,
   "InputPins": [
     {
@@ -109,12 +102,10 @@ x
       "Id": "",
       "Type": "vec3"
     }
-  ],
-  "EnterPins": [],
-  "ExitPins": [],
-  "Id": 0
+  ]
 }
 ```
+
 </details>
 
 ## abs(vec4)
@@ -129,12 +120,11 @@ x
   Type: vec4
 
 <details><summary>JSON</summary>
+
 ```
 {
   "Type": "abs(vec4)",
   "Name": "abs(vec4)",
-  "Value": null,
-  "GroupId": 0,
   "Category": 1,
   "InputPins": [
     {
@@ -148,11 +138,9 @@ x
       "Id": "",
       "Type": "vec4"
     }
-  ],
-  "EnterPins": [],
-  "ExitPins": [],
-  "Id": 0
+  ]
 }
 ```
+
 </details>
 
