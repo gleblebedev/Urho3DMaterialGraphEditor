@@ -1,9 +1,6 @@
 # length
 
-
-length returns the length of the vector,
-
-i.e. \sqrt { { x[0] }^2 + { x[1] }^2 + \dots }.
+length returns the length of the vector, i.e. sqrt(x[0]^2 + x[1]^2 + ... ).
 
 ## length(float)
 
