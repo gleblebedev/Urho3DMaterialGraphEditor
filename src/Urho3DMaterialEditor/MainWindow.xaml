@@ -93,7 +93,6 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="For Developers" x:Name="_forDev">
-                <MenuItem Header="Generate Documentation" Command="{Binding GenDocumentationCommand}" />
                 <MenuItem Header="Test All Nodes" Command="{Binding TestNodesCommand}" />
                 <MenuItem Header="Run Performance Test" Command="{Binding TestPerformanceCommand}" />
             </MenuItem>
