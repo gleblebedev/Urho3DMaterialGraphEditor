@@ -1,5 +1,20 @@
 # all
 
+Returns true if all elements of x are true and false otherwise. It is functionally equivalent to:
+
+```
+    bool all(bvec x)       // bvec can be bvec2, bvec3 or bvec4
+    {
+        bool result = true;
+        int i;
+        for (i = 0; i < x.length(); ++i)
+        {
+            result &= x[i];
+        }
+        return result;
+    }
+```
+
 ## all(bvec2)
 
 ### Parameter
