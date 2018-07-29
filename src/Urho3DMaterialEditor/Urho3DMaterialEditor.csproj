@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\ILRepack.2.0.15\build\ILRepack.props" Condition="Exists('..\packages\ILRepack.2.0.15\build\ILRepack.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0BD7123B-7A61-45F4-B213-7E4F34B18C1A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Urho3DMaterialEditor</RootNamespace>
+    <AssemblyName>Urho3DMaterialEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Sensors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI, Version=8.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.8.2.1\lib\net461\ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.WPF, Version=8.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.WPF.8.2.1\lib\net461\ReactiveUI.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Splat.4.0.0\lib\net461\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Core, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Core.3.1.1\lib\net46\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Linq.3.1.1\lib\net46\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.PlatformServices.3.1.1\lib\net46\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Windows.Threading.3.1.1\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Toe.Scripting, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Toe.Scripting.0.1.0\lib\netstandard2.0\Toe.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Toe.Scripting.WPF, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Toe.Scripting.WPF.0.1.0\lib\net461\Toe.Scripting.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrhoSharp.1.8.93\lib\net45\Urho.dll</HintPath>
+    </Reference>
+    <Reference Include="Urho.Extensions.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\UrhoSharp.Wpf.1.8.93\lib\net45\Urho.Extensions.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Compile Include="Model\AbstractNodeFactory.cs" />
+    <Compile Include="Model\AppConfiguration.cs" />
+    <Compile Include="Model\AttributeNodeFactory.cs" />
+    <Compile Include="Model\CameraDataNodeFactory.cs" />
+    <Compile Include="Model\ConfigurationRepository.cs" />
+    <Compile Include="Model\ConnectorNodeFactory.cs" />
+    <Compile Include="Model\ConstantNodeFactory.cs" />
+    <Compile Include="Model\DefineNodeFactory.cs" />
+    <Compile Include="Model\DefineTree\Always.cs" />
+    <Compile Include="Model\DefineTree\And.cs" />
+    <Compile Include="Model\DefineTree\BinaryTree.cs" />
+    <Compile Include="Model\DefineTree\Defined.cs" />
+    <Compile Include="Model\DefineTree\DefineTreeItem.cs" />
+    <Compile Include="Model\DefineTree\DefineTreeItemType.cs" />
+    <Compile Include="Model\DefineTree\Or.cs" />
+    <Compile Include="Model\DefineTree\Undefined.cs" />
+    <Compile Include="Model\DependencyContainer.cs" />
+    <Compile Include="Model\FunctionNodeFactory.cs" />
+    <Compile Include="Model\GLSLCodeGen.cs" />
+    <Compile Include="Model\HLSLCodeGen.cs" />
+    <Compile Include="Model\ICodeGen.cs" />
+    <Compile Include="Model\IfDefNodeFactory.cs" />
+    <Compile Include="Model\InlineFunctionNodeFactory.cs" />
+    <Compile Include="Model\LightDataNodeFactory.cs" />
+    <Compile Include="Model\ParameterNodeFactory.cs" />
+    <Compile Include="Model\PinIds.cs" />
+    <Compile Include="Model\RequiredFunction.cs" />
+    <Compile Include="Model\Templates\HLSLPassTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HLSLPassTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Templates\HLSLTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HLSLTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Templates\IT4Writer.cs" />
+    <Compile Include="Model\TranslationPasses\ElimitateDuplicates.cs" />
+    <Compile Include="Model\TranslationPasses\ElimitateKnownDefines.cs" />
+    <Compile Include="Model\TranslationPasses\IfDefReference.cs" />
+    <Compile Include="Model\TranslationPasses\IfDefSet.cs" />
+    <Compile Include="Model\TranslationPasses\InlineFunctions.cs" />
+    <Compile Include="Model\TranslationPasses\InsertDefaultValues.cs" />
+    <Compile Include="Model\TranslationPasses\PaintDefines.cs" />
+    <Compile Include="Model\TranslationPasses\PreviewPinOutput.cs" />
+    <Compile Include="Model\UniformsAndFunctions.cs" />
+    <Compile Include="Model\VertexDataNodeFactory.cs" />
+    <Compile Include="Model\MaterialCompilationException.cs" />
+    <Compile Include="Model\MaterialNodeRegistry.cs" />
+    <Compile Include="Model\NodeTypes.cs" />
+    <Compile Include="Model\OutputNodeFactory.cs" />
+    <Compile Include="Model\PinTypes.cs" />
+    <Compile Include="Model\PreviewApplication.cs" />
+    <Compile Include="Model\ObjectDataNodeFactory.cs" />
+    <Compile Include="Model\SamplerNodeFactory.cs" />
+    <Compile Include="Model\TranslatedMaterialGraph.cs" />
+    <Compile Include="Model\Templates\GLSLPassTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GLSLPassTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UniformNodeFactory.cs" />
+    <Compile Include="Model\ShaderGenerator.cs" />
+    <Compile Include="Model\ShaderGeneratorContext.cs" />
+    <Compile Include="Model\Templates\GLSLTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GLSLTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Templates\MaterialTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Templates\Partials.cs" />
+    <Compile Include="Model\Templates\TechniqueTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechniqueTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UrhoContext.cs" />
+    <Compile Include="Model\ZoneDataNodeFactory.cs" />
+    <Compile Include="ShaderExpressions\ExpressionConverter.cs" />
+    <Compile Include="ShaderExpressions\NodeTypeAttribute.cs" />
+    <Compile Include="ShaderExpressions\Sampler2D.cs" />
+    <Compile Include="ShaderExpressions\Sampler3D.cs" />
+    <Compile Include="ShaderExpressions\SamplerCube.cs" />
+    <Compile Include="ShaderExpressions\Shader.cs" />
+    <Compile Include="ViewModels\AppFoldersViewModel.cs" />
+    <Compile Include="ViewModels\ColorViewModel.cs" />
+    <Compile Include="ViewModels\Generator.cs" />
+    <Compile Include="ViewModels\GraphValidator.cs" />
+    <Compile Include="ViewModels\IfDefViewModel.cs" />
+    <Compile Include="ViewModels\IntViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\Mat2ViewModel.cs" />
+    <Compile Include="ViewModels\Mat3ViewModel.cs" />
+    <Compile Include="ViewModels\Mat4ViewModel.cs" />
+    <Compile Include="ViewModels\SamplerCubeViewModel.cs" />
+    <Compile Include="ViewModels\ScalarViewModel.cs" />
+    <Compile Include="ViewModels\SceneNodeViewModel.cs" />
+    <Compile Include="ViewModels\SpecularViewModel.cs" />
+    <Compile Include="ViewModels\StringViewModel.cs" />
+    <Compile Include="ViewModels\Vector2ViewModel.cs" />
+    <Compile Include="ViewModels\Vector3ViewModel.cs" />
+    <Compile Include="ViewModels\Vector4ViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelFactory.cs" />
+    <Compile Include="ViewModels\SamplerViewModel.cs" />
+    <Compile Include="Views\AppFoldersDialog.xaml.cs">
+      <DependentUpon>AppFoldersDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SpecularNodeView.xaml.cs">
+      <DependentUpon>SpecularNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ColorNodeView.xaml.cs">
+      <DependentUpon>ColorNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntTextBox.cs" />
+    <Compile Include="Views\Mat2NodeView.xaml.cs">
+      <DependentUpon>Mat2NodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mat3NodeView.xaml.cs">
+      <DependentUpon>Mat3NodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mat4NodeView.xaml.cs">
+      <DependentUpon>Mat4NodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SamplerNodeView.xaml.cs">
+      <DependentUpon>SamplerNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntNodeView.xaml.cs">
+      <DependentUpon>IntNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScalarNodeView.xaml.cs">
+      <DependentUpon>ScalarNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScalarTextBox.cs" />
+    <Compile Include="Views\StringNodeView.xaml.cs">
+      <DependentUpon>StringNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vector2NodeView.xaml.cs">
+      <DependentUpon>Vector2NodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vector3NodeView.xaml.cs">
+      <DependentUpon>Vector3NodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vector4NodeView.xaml.cs">
+      <DependentUpon>Vector4NodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NumericValidationRule.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\AppFoldersDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SpecularNodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ColorNodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mat2NodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mat3NodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mat4NodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SamplerNodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\IntNodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ScalarNodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StringNodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Vector2NodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Vector3NodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Vector4NodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="Data\Scenes\Instancing.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Scenes\SceneRGB.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Textures\StoneDiffuse.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Textures\StoneNormal.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Model\Templates\GLSLPassTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>GLSLPassTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Templates\GLSLTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>GLSLTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Templates\HLSLPassTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HLSLPassTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Templates\HLSLTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HLSLTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Templates\MaterialTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MaterialTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Templates\TechniqueTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TechniqueTemplate.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="CoreData.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Logic\inRange\inRange%28float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getModelMatrix.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getNormalMatrix.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getClipPos%28vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getDepth%28vec4%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getWorldPos%28vec4%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getWorldPos.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getInstanceMatrix.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getScreenPos%28vec4%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getTexCoord%28vec2%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getSkinMatrix%28vec4,ivec4%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getPerPixelDiffuse%28vec3,vec3,vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getPerPixelLightDir.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getPerPixelLightDist.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getWorldNormal.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getShadow.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\applyNormalOffset.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getShadowPos.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getAttenDirect.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getAttenPoint.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getAttenSpot.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getIntensity%28vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getIntensity%28vec4%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getShadow%28vec4%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getSpecular.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getDirShadow.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getDirShadowFade.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getPointShadow.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getSpotShadow.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\reduceLightBleeding%28float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\chebyshev%28vec2,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\beckmannDistribution%28float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\blinnPhongDistribution%28float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\GGXDistribution%28float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\lambertianDiffuse%28vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\decodeNormal%28vec4%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\decodePackedNormal%28vec4%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getWorldNormal%28vec3,vec4,vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getWorldTangent.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getSpecularAt.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getSpecularColorAt.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getAmbientColor.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Presets\DiffusePreset.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Presets\RefractionPreset.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getCameraRot.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getCameraInvRot.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getWorldNormal%28vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getReflectionColorAt.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\decodeDepth%28vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\encodeDepth%28float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Output\deferredOutput.json" />
+    <None Include="Data\MaterialGraphs\DiffuseSample.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\MaterialGraphs\RefractionSample.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Models\Box.mdl" />
+    <EmbeddedResource Include="Data\NewMaterial.json" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Scenes\Scene.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\UrhoSharp.1.8.93\build\net45\UrhoSharp.targets" Condition="Exists('..\packages\UrhoSharp.1.8.93\build\net45\UrhoSharp.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\UrhoSharp.1.8.93\build\net45\UrhoSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UrhoSharp.1.8.93\build\net45\UrhoSharp.targets'))" />
+    <Error Condition="!Exists('..\packages\ILRepack.2.0.15\build\ILRepack.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.2.0.15\build\ILRepack.props'))" />
+  </Target>
+</Project>

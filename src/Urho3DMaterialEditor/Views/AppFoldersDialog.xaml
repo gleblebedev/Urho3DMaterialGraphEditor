@@ -1,0 +1,51 @@
+﻿<Window x:Class="Urho3DMaterialEditor.Views.AppFoldersDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Urho3DMaterialEditor.Views"
+        xmlns:viewModels="clr-namespace:Urho3DMaterialEditor.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewModels:AppFoldersViewModel }"
+        Title="AppFoldersDialog" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <Button HorizontalAlignment="Right" MinWidth="100" Margin="4" Command="{Binding AddCommand}">
+                    <TextBlock>Add</TextBlock>
+                </Button>
+                <ItemsControl ItemsSource="{Binding DataFolders}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsEnabled}" Margin="4" MinWidth="32" />
+                                <Button Command="{Binding MoveUpCommand}" Margin="4" MinWidth="32">&#8593;</Button>
+                                <Button Command="{Binding MoveDownCommand}" Margin="4" MinWidth="32">&#8595;</Button>
+
+                                <TextBox IsEnabled="{Binding IsEnabled}" Text="{Binding Path=Path}" />
+                                <Button IsEnabled="{Binding IsEnabled}" Command="{Binding Browse}" MinWidth="64"
+                                        Margin="4">
+                                    <TextBlock>...</TextBlock>
+                                </Button>
+                                <Button Command="{Binding DeleteCommand}" MinWidth="32" Margin="4">Delete</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Click="HandleOk" MinWidth="100" Margin="4">OK</Button>
+            <Button Click="HandleCancel" MinWidth="100" Margin="4">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

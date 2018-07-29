@@ -1,0 +1,32 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<?xml version="1.0"?>
+<material>
+	<technique name="Techniques/<#=Context.Name #>.xml" quality="0" loddistance="0" />
+<#     foreach (var node in Context.Samplers)  
+       {  
+			if (!string.IsNullOrWhiteSpace(node.Value))
+			{
+				var name = GetTextureUnitName(node.Name);
+				if (!string.IsNullOrWhiteSpace(name))
+				{
+#>	<texture unit="<#=name #>" name="<#=node.Value ?? "" #>" />
+<#				}
+			}
+       }  
+       foreach (var node in Context.Parameters)  
+       {  
+#>	<parameter name="<#=node.Name #>" value="<#=node.Value ?? "" #>" />
+<#  
+       }  
+#>  
+	<cull value="none" />
+	<shadowcull value="none" />
+	<fill value="solid" />
+	<depthbias constant="0" slopescaled="0" />
+	<renderorder value="128" />
+	<occlusion enable="false" />
+</material>

@@ -1,0 +1,236 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "connect(mat4x3)",
+      "Name": "",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 2,
+            "PinId": ""
+          },
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 1
+    },
+    {
+      "Type": "ifdef(mat4x3)",
+      "Name": "ifdef(mat4x3)",
+      "Value": "GLSL",
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 4,
+            "PinId": ""
+          },
+          "Id": "defined",
+          "Type": "mat4x3"
+        },
+        {
+          "Connection": {
+            "NodeId": 3,
+            "PinId": ""
+          },
+          "Id": "not defined",
+          "Type": "mat4x3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 2
+    },
+    {
+      "Type": "attribute(mat4x3)",
+      "Name": "ModelInstance",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 3
+    },
+    {
+      "Type": "mat4x3(vec4,vec4,vec4)",
+      "Name": "mat4x3(vec4,vec4,vec4)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 5,
+            "PinId": ""
+          },
+          "Id": "[0]",
+          "Type": "vec4"
+        },
+        {
+          "Connection": {
+            "NodeId": 6,
+            "PinId": ""
+          },
+          "Id": "[1]",
+          "Type": "vec4"
+        },
+        {
+          "Connection": {
+            "NodeId": 7,
+            "PinId": ""
+          },
+          "Id": "[2]",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 4
+    },
+    {
+      "Type": "attribute(vec4)",
+      "Name": "TexCoord4",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 5
+    },
+    {
+      "Type": "attribute(vec4)",
+      "Name": "TexCoord5",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 6
+    },
+    {
+      "Type": "attribute(vec4)",
+      "Name": "TexCoord6",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 7
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 1,
+        "X": 283.7751,
+        "Y": 176.010849,
+        "Width": 172.0,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 2,
+        "X": -54.6249,
+        "Y": 233.610855,
+        "Width": 239.313339,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 3,
+        "X": -274.224884,
+        "Y": 346.410828,
+        "Width": 173.136673,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 4,
+        "X": -320.096,
+        "Y": 149.84,
+        "Width": 218.55,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 5,
+        "X": -554.0,
+        "Y": 80.24,
+        "Width": 150.296661,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 6,
+        "X": -569.312,
+        "Y": 188.768,
+        "Width": 150.296661,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 7,
+        "X": -531.2,
+        "Y": 313.04,
+        "Width": 150.296661,
+        "Height": 108.0
+      }
+    ]
+  }
+}

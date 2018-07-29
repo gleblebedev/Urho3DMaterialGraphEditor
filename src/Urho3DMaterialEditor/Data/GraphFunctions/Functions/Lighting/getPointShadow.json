@@ -1,0 +1,1543 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "connect(vec4)",
+      "Name": "projWorldPos",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 8
+    },
+    {
+      "Type": "connect(vec3)",
+      "Name": "worldNormal",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 14
+    },
+    {
+      "Type": "connect(float)",
+      "Name": "",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 65,
+            "PinId": ""
+          },
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 27
+    },
+    {
+      "Type": "getShadowPos",
+      "Name": "getShadowPos",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 8,
+            "PinId": ""
+          },
+          "Id": "projWorldPos",
+          "Type": "vec4"
+        },
+        {
+          "Connection": {
+            "NodeId": 23,
+            "PinId": ""
+          },
+          "Id": "lightMatrix",
+          "Type": "mat4"
+        },
+        {
+          "Connection": {
+            "NodeId": 26,
+            "PinId": "X"
+          },
+          "Id": "normalOffsetScale",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 14,
+            "PinId": ""
+          },
+          "Id": "worldNormal",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 20
+    },
+    {
+      "Type": "uniform(lightMatrices)",
+      "Name": "LightMatrices",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "lightMatrices"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 22
+    },
+    {
+      "Type": "lightMatrices[int]",
+      "Name": "lightMatrices[int]",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 22,
+            "PinId": ""
+          },
+          "Id": "value",
+          "Type": "lightMatrices"
+        },
+        {
+          "Connection": {
+            "NodeId": 24,
+            "PinId": ""
+          },
+          "Id": "index",
+          "Type": "int"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 23
+    },
+    {
+      "Type": "int",
+      "Name": "int",
+      "Value": "0",
+      "GroupId": 0,
+      "Category": 6,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "int"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 24
+    },
+    {
+      "Type": "uniform(vec4)",
+      "Name": "NormalOffsetScale",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 25
+    },
+    {
+      "Type": "breakVec4",
+      "Name": "break vec4",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 25,
+            "PinId": ""
+          },
+          "Id": "value",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "X",
+          "Type": "float"
+        },
+        {
+          "Id": "Y",
+          "Type": "float"
+        },
+        {
+          "Id": "Z",
+          "Type": "float"
+        },
+        {
+          "Id": "W",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 26
+    },
+    {
+      "Type": "breakVec4toVec3Float",
+      "Name": "break vec4 to vec3, float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 20,
+            "PinId": ""
+          },
+          "Id": "value",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "XYZ",
+          "Type": "vec3"
+        },
+        {
+          "Id": "W",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 34
+    },
+    {
+      "Type": "SamplerCube",
+      "Name": "faceSelectCubeMap",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "samplerCube"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 35
+    },
+    {
+      "Type": "SamplerCube",
+      "Name": "indirectionCubeMap",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "samplerCube"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 36
+    },
+    {
+      "Type": "textureCube(samplerCube,vec3)",
+      "Name": "textureCube(samplerCube,vec3)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 35,
+            "PinId": ""
+          },
+          "Id": "sampler",
+          "Type": "samplerCube"
+        },
+        {
+          "Connection": {
+            "NodeId": 34,
+            "PinId": "XYZ"
+          },
+          "Id": "coord",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 37
+    },
+    {
+      "Type": "breakVec4toVec3Float",
+      "Name": "break vec4 to vec3, float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 37,
+            "PinId": ""
+          },
+          "Id": "value",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "XYZ",
+          "Type": "vec3"
+        },
+        {
+          "Id": "W",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 38
+    },
+    {
+      "Type": "dot(vec3,vec3)",
+      "Name": "dot(vec3,vec3)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 38,
+            "PinId": "XYZ"
+          },
+          "Id": "x",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 34,
+            "PinId": "XYZ"
+          },
+          "Id": "y",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 39
+    },
+    {
+      "Type": "vec3+vec3",
+      "Name": "vec3+vec3",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 34,
+            "PinId": "XYZ"
+          },
+          "Id": "x",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 42,
+            "PinId": ""
+          },
+          "Id": "y",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 40
+    },
+    {
+      "Type": "vec3*vec3",
+      "Name": "vec3*vec3",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 38,
+            "PinId": "XYZ"
+          },
+          "Id": "x",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 34,
+            "PinId": "XYZ"
+          },
+          "Id": "y",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 41
+    },
+    {
+      "Type": "vec3*float",
+      "Name": "vec3*float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 41,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 43,
+            "PinId": ""
+          },
+          "Id": "y",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 42
+    },
+    {
+      "Type": "float",
+      "Name": "float",
+      "Value": "0.00390625",
+      "GroupId": 0,
+      "Category": 6,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 43
+    },
+    {
+      "Type": "textureCube(samplerCube,vec3)",
+      "Name": "textureCube(samplerCube,vec3)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 36,
+            "PinId": ""
+          },
+          "Id": "sampler",
+          "Type": "samplerCube"
+        },
+        {
+          "Connection": {
+            "NodeId": 40,
+            "PinId": ""
+          },
+          "Id": "coord",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 44
+    },
+    {
+      "Type": "breakVec4toVec2Vec2",
+      "Name": "break vec4 to vec2, vec2",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 44,
+            "PinId": ""
+          },
+          "Id": "value",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "XY",
+          "Type": "vec2"
+        },
+        {
+          "Id": "ZW",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 45
+    },
+    {
+      "Type": "uniform(vec4)",
+      "Name": "ShadowDepthFade",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 76
+    },
+    {
+      "Type": "breakVec4toVec2Vec2",
+      "Name": "break vec4 to vec2, vec2",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 74,
+            "PinId": ""
+          },
+          "Id": "value",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "XY",
+          "Type": "vec2"
+        },
+        {
+          "Id": "ZW",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 47
+    },
+    {
+      "Type": "vec2*vec2",
+      "Name": "vec2*vec2",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 45,
+            "PinId": "XY"
+          },
+          "Id": "x",
+          "Type": "vec2"
+        },
+        {
+          "Connection": {
+            "NodeId": 47,
+            "PinId": "XY"
+          },
+          "Id": "y",
+          "Type": "vec2"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 48
+    },
+    {
+      "Type": "breakVec2",
+      "Name": "break vec2",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 47,
+            "PinId": "ZW"
+          },
+          "Id": "value",
+          "Type": "vec2"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "X",
+          "Type": "float"
+        },
+        {
+          "Id": "Y",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 49
+    },
+    {
+      "Type": "vec2+vec2",
+      "Name": "vec2+vec2",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 48,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "vec2"
+        },
+        {
+          "Connection": {
+            "NodeId": 51,
+            "PinId": ""
+          },
+          "Id": "y",
+          "Type": "vec2"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 50
+    },
+    {
+      "Type": "makeVec2",
+      "Name": "vec2(float,float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 52,
+            "PinId": ""
+          },
+          "Id": "X",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 56,
+            "PinId": ""
+          },
+          "Id": "Y",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 51
+    },
+    {
+      "Type": "float+float",
+      "Name": "float+float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 49,
+            "PinId": "X"
+          },
+          "Id": "x",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 54,
+            "PinId": ""
+          },
+          "Id": "y",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 52
+    },
+    {
+      "Type": "breakVec2",
+      "Name": "break vec2",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 45,
+            "PinId": "ZW"
+          },
+          "Id": "value",
+          "Type": "vec2"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "X",
+          "Type": "float"
+        },
+        {
+          "Id": "Y",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 53
+    },
+    {
+      "Type": "float*float",
+      "Name": "float*float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 53,
+            "PinId": "X"
+          },
+          "Id": "x",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 55,
+            "PinId": ""
+          },
+          "Id": "y",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 54
+    },
+    {
+      "Type": "float",
+      "Name": "float",
+      "Value": "0.5",
+      "GroupId": 0,
+      "Category": 6,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 55
+    },
+    {
+      "Type": "float+float",
+      "Name": "float+float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 49,
+            "PinId": "Y"
+          },
+          "Id": "x",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 53,
+            "PinId": "Y"
+          },
+          "Id": "y",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 56
+    },
+    {
+      "Type": "makeVec4fromVec2Vec2",
+      "Name": "vec4(vec2,vec2)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 50,
+            "PinId": ""
+          },
+          "Id": "XY",
+          "Type": "vec2"
+        },
+        {
+          "Connection": {
+            "NodeId": 58,
+            "PinId": ""
+          },
+          "Id": "ZW",
+          "Type": "vec2"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 57
+    },
+    {
+      "Type": "makeVec2",
+      "Name": "vec2(float,float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 61,
+            "PinId": ""
+          },
+          "Id": "X",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 63,
+            "PinId": ""
+          },
+          "Id": "Y",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 58
+    },
+    {
+      "Type": "breakVec4",
+      "Name": "break vec4",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 76,
+            "PinId": ""
+          },
+          "Id": "value",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "X",
+          "Type": "float"
+        },
+        {
+          "Id": "Y",
+          "Type": "float"
+        },
+        {
+          "Id": "Z",
+          "Type": "float"
+        },
+        {
+          "Id": "W",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 60
+    },
+    {
+      "Type": "float+float",
+      "Name": "float+float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 60,
+            "PinId": "X"
+          },
+          "Id": "x",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 62,
+            "PinId": ""
+          },
+          "Id": "y",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 61
+    },
+    {
+      "Type": "float/float",
+      "Name": "float/float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 60,
+            "PinId": "Y"
+          },
+          "Id": "x",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 64,
+            "PinId": ""
+          },
+          "Id": "y",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 62
+    },
+    {
+      "Type": "float",
+      "Name": "float",
+      "Value": "1.0",
+      "GroupId": 0,
+      "Category": 6,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 63
+    },
+    {
+      "Type": "abs(float)",
+      "Name": "abs(float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 39,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 64
+    },
+    {
+      "Type": "getShadow(vec4)",
+      "Name": "getShadow(vec4)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 57,
+            "PinId": ""
+          },
+          "Id": "shadowPos",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 65
+    },
+    {
+      "Type": "perPixelVec4",
+      "Name": "per pixel vec4",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 75,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 74
+    },
+    {
+      "Type": "uniform(vec4)",
+      "Name": "ShadowCubeAdjust",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 75
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 8,
+        "X": -967.7674,
+        "Y": -66.54803,
+        "Width": 231.213333,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 14,
+        "X": -1036.2074,
+        "Y": 172.252029,
+        "Width": 228.95,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 27,
+        "X": 3761.19116,
+        "Y": 1874.59863,
+        "Width": 172.0,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 20,
+        "X": -330.695953,
+        "Y": 445.792023,
+        "Width": 174.546661,
+        "Height": 117.84
+      },
+      {
+        "NodeId": 22,
+        "X": -850.53595,
+        "Y": 448.672028,
+        "Width": 167.243332,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 23,
+        "X": -597.095947,
+        "Y": 517.792053,
+        "Width": 182.72,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 24,
+        "X": -839.016,
+        "Y": 618.592041,
+        "Width": 184.0,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 25,
+        "X": -830.376,
+        "Y": 779.872,
+        "Width": 196.07666,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 26,
+        "X": -532.295959,
+        "Y": 749.632,
+        "Width": 144.683334,
+        "Height": 117.84
+      },
+      {
+        "NodeId": 28,
+        "X": -1386.0,
+        "Y": -82.96,
+        "Width": 156.91333,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 29,
+        "X": -1172.0,
+        "Y": -35.96,
+        "Width": 173.613327,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 30,
+        "X": -1432.0,
+        "Y": 45.04,
+        "Width": 184.0,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 31,
+        "X": -1357.0,
+        "Y": 252.04,
+        "Width": 179.77,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 34,
+        "X": 15.1600685,
+        "Y": 626.216,
+        "Width": 221.78334,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 35,
+        "X": -103.839928,
+        "Y": 768.216,
+        "Width": 194.92334,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 36,
+        "X": 1052.16,
+        "Y": 1539.216,
+        "Width": 199.23,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 37,
+        "X": 194.160065,
+        "Y": 786.216,
+        "Width": 264.763336,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 38,
+        "X": 532.160034,
+        "Y": 908.216,
+        "Width": 221.78334,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 39,
+        "X": 794.160034,
+        "Y": 1054.216,
+        "Width": 166.636673,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 40,
+        "X": 1019.16003,
+        "Y": 1205.216,
+        "Width": 143.57,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 41,
+        "X": 809.160034,
+        "Y": 1226.216,
+        "Width": 140.546661,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 42,
+        "X": 992.160034,
+        "Y": 1391.216,
+        "Width": 141.416672,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 43,
+        "X": 760.160034,
+        "Y": 1457.216,
+        "Width": 184.0,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 44,
+        "X": 1351.16,
+        "Y": 1473.216,
+        "Width": 264.763336,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 45,
+        "X": 1724.16,
+        "Y": 1518.216,
+        "Width": 220.91333,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 47,
+        "X": 1971.16,
+        "Y": 1699.216,
+        "Width": 220.91333,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 48,
+        "X": 2305.16,
+        "Y": 1559.216,
+        "Width": 140.546661,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 49,
+        "X": 2241.16,
+        "Y": 1781.216,
+        "Width": 144.683334,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 50,
+        "X": 2869.16,
+        "Y": 1650.216,
+        "Width": 143.57,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 51,
+        "X": 2698.16,
+        "Y": 1800.216,
+        "Width": 174.483337,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 52,
+        "X": 2435.16,
+        "Y": 1784.216,
+        "Width": 145.31,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 53,
+        "X": 2041.15991,
+        "Y": 1890.216,
+        "Width": 144.683334,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 54,
+        "X": 2254.16,
+        "Y": 1957.216,
+        "Width": 142.286667,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 55,
+        "X": 1976.16,
+        "Y": 2030.216,
+        "Width": 184.0,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 56,
+        "X": 2563.16,
+        "Y": 1983.216,
+        "Width": 145.31,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 57,
+        "X": 3349.75977,
+        "Y": 1749.416,
+        "Width": 172.743332,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 58,
+        "X": 3278.75977,
+        "Y": 1892.416,
+        "Width": 174.483337,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 60,
+        "X": 2707.16,
+        "Y": 2139.216,
+        "Width": 144.683334,
+        "Height": 117.84
+      },
+      {
+        "NodeId": 61,
+        "X": 3107.16,
+        "Y": 2080.216,
+        "Width": 145.31,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 62,
+        "X": 2904.16,
+        "Y": 2217.216,
+        "Width": 142.146667,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 63,
+        "X": 2824.16,
+        "Y": 1960.216,
+        "Width": 184.0,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 64,
+        "X": 2363.976,
+        "Y": 2316.904,
+        "Width": 138.45,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 65,
+        "X": 3614.448,
+        "Y": 1796.208,
+        "Width": 181.74,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 74,
+        "X": 1644.40637,
+        "Y": 1836.13037,
+        "Width": 162.05,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 75,
+        "X": 1322.8064,
+        "Y": 1860.13037,
+        "Width": 199.91,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 76,
+        "X": 2386.006,
+        "Y": 2161.33032,
+        "Width": 195.68,
+        "Height": 108.0
+      }
+    ]
+  }
+}

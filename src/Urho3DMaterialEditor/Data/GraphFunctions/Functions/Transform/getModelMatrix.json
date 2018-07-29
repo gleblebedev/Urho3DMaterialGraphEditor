@@ -1,0 +1,269 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "connect(mat4x3)",
+      "Name": "",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 7,
+            "PinId": ""
+          },
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 4
+    },
+    {
+      "Type": "ifdef(mat4x3)",
+      "Name": "ifdef(mat4x3)",
+      "Value": "SKINNED",
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 12,
+            "PinId": ""
+          },
+          "Id": "defined",
+          "Type": "mat4x3"
+        },
+        {
+          "Connection": {
+            "NodeId": 8,
+            "PinId": ""
+          },
+          "Id": "not defined",
+          "Type": "mat4x3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 7
+    },
+    {
+      "Type": "ifdef(mat4x3)",
+      "Name": "ifdef(mat4x3)",
+      "Value": "INSTANCED",
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 10,
+            "PinId": ""
+          },
+          "Id": "defined",
+          "Type": "mat4x3"
+        },
+        {
+          "Connection": {
+            "NodeId": 11,
+            "PinId": ""
+          },
+          "Id": "not defined",
+          "Type": "mat4x3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 8
+    },
+    {
+      "Type": "getInstanceMatrix",
+      "Name": "getInstanceMatrix",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 10
+    },
+    {
+      "Type": "uniform(mat4x3)",
+      "Name": "Model",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 11
+    },
+    {
+      "Type": "getSkinMatrix(vec4,ivec4)",
+      "Name": "getSkinMatrix(vec4,ivec4)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 13,
+            "PinId": ""
+          },
+          "Id": "blendWeights",
+          "Type": "vec4"
+        },
+        {
+          "Connection": {
+            "NodeId": 14,
+            "PinId": ""
+          },
+          "Id": "blendIndices",
+          "Type": "ivec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 12
+    },
+    {
+      "Type": "attribute(vec4)",
+      "Name": "BlendWeights",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 13
+    },
+    {
+      "Type": "attribute(ivec4)",
+      "Name": "BlendIndices",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "ivec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 14
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 4,
+        "X": 1112.0,
+        "Y": 387.04,
+        "Width": 172.0,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 7,
+        "X": 752.0,
+        "Y": 434.04,
+        "Width": 239.313339,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 8,
+        "X": 426.0,
+        "Y": 526.04,
+        "Width": 239.313339,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 10,
+        "X": 146.3117,
+        "Y": 479.5328,
+        "Width": 187.046661,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 11,
+        "X": 148.0,
+        "Y": 626.04,
+        "Width": 126.153336,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 12,
+        "X": 449.0,
+        "Y": 257.04,
+        "Width": 230.78,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 13,
+        "X": 116.0,
+        "Y": 160.04,
+        "Width": 168.53,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 14,
+        "X": 113.0,
+        "Y": 297.04,
+        "Width": 161.723328,
+        "Height": 108.0
+      }
+    ]
+  }
+}

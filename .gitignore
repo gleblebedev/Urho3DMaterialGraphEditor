@@ -1,0 +1,9 @@
+src/packages/
+*.suo
+src/Urho3DMaterialEditor.Unit.Tests/bin/Debug/System.Dynamic.Runtime.dll
+src/Urho3DMaterialEditor.Unit.Tests/bin/
+src/Urho3DMaterialEditor/packages/
+src/Urho3DMaterialEditor/.vs/
+src/Urho3DMaterialEditor.Unit.Tests/obj/
+src/Urho3DMaterialEditor/obj/
+src/Urho3DMaterialEditor/bin/

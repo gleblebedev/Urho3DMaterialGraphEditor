@@ -1,0 +1,107 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "connect(mat3)",
+      "Name": "",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 3,
+            "PinId": ""
+          },
+          "Id": "",
+          "Type": "mat3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 4
+    },
+    {
+      "Type": "uniform(mat4x3)",
+      "Name": "View",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat4x3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 2
+    },
+    {
+      "Type": "mat3(mat4x3)",
+      "Name": "mat3(mat4x3)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 2,
+            "PinId": ""
+          },
+          "Id": "mat4x3",
+          "Type": "mat4x3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "mat3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 3
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 4,
+        "X": 1294.65112,
+        "Y": 260.845551,
+        "Width": 172.0,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 2,
+        "X": 841.0511,
+        "Y": 216.205551,
+        "Width": 117.476669,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 3,
+        "X": 1065.691,
+        "Y": 227.725555,
+        "Width": 164.436661,
+        "Height": 108.0
+      }
+    ]
+  }
+}

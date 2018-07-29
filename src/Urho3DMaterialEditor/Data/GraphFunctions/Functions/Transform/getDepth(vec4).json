@@ -1,0 +1,255 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "connect(vec4)",
+      "Name": "clipPos",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 1
+    },
+    {
+      "Type": "cameraData",
+      "Name": "Camera",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "CameraPos",
+          "Type": "vec3"
+        },
+        {
+          "Id": "NearClip",
+          "Type": "float"
+        },
+        {
+          "Id": "FarClip",
+          "Type": "float"
+        },
+        {
+          "Id": "DepthMode",
+          "Type": "vec4"
+        },
+        {
+          "Id": "FrustumSize",
+          "Type": "vec3"
+        },
+        {
+          "Id": "GBufferOffsets",
+          "Type": "vec4"
+        },
+        {
+          "Id": "View",
+          "Type": "mat4x3"
+        },
+        {
+          "Id": "ViewInv",
+          "Type": "mat4x3"
+        },
+        {
+          "Id": "ViewProj",
+          "Type": "mat4"
+        },
+        {
+          "Id": "ClipPlane",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 2
+    },
+    {
+      "Type": "breakVec4toVec2Vec2",
+      "Name": "break vec4 to vec2, vec2",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 2,
+            "PinId": "DepthMode"
+          },
+          "Id": "value",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "XY",
+          "Type": "vec2"
+        },
+        {
+          "Id": "ZW",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 3
+    },
+    {
+      "Type": "breakVec4toVec2Vec2",
+      "Name": "break vec4 to vec2, vec2",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 1,
+            "PinId": ""
+          },
+          "Id": "value",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "XY",
+          "Type": "vec2"
+        },
+        {
+          "Id": "ZW",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 4
+    },
+    {
+      "Type": "dot(vec2,vec2)",
+      "Name": "dot(vec2,vec2)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 4,
+            "PinId": "ZW"
+          },
+          "Id": "x",
+          "Type": "vec2"
+        },
+        {
+          "Connection": {
+            "NodeId": 3,
+            "PinId": "ZW"
+          },
+          "Id": "y",
+          "Type": "vec2"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 5
+    },
+    {
+      "Type": "connect(float)",
+      "Name": "",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 5,
+            "PinId": ""
+          },
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 6
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 1,
+        "X": 620.0,
+        "Y": 368.04,
+        "Width": 193.65,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 2,
+        "X": 626.0,
+        "Y": 442.04,
+        "Width": 154.956665,
+        "Height": 237.6
+      },
+      {
+        "NodeId": 3,
+        "X": 934.0,
+        "Y": 553.04,
+        "Width": 220.91333,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 4,
+        "X": 942.0,
+        "Y": 426.04,
+        "Width": 220.91333,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 5,
+        "X": 1235.0,
+        "Y": 480.039978,
+        "Width": 166.636673,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 6,
+        "X": 1440.0,
+        "Y": 572.04,
+        "Width": 172.0,
+        "Height": 37.96
+      }
+    ]
+  }
+}

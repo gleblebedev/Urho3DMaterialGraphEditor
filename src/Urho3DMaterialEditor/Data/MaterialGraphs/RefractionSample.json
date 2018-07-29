@@ -1,0 +1,243 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "parameter(color)",
+      "Name": "MatDiffColor",
+      "Value": "0.674 0.847 1.000 1.000",
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 2
+    },
+    {
+      "Type": "RefractionPreset",
+      "Name": "RefractionPreset",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 8,
+            "PinId": ""
+          },
+          "Id": "worldPos",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 13,
+            "PinId": ""
+          },
+          "Id": "perPixelNormal",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 11,
+            "PinId": ""
+          },
+          "Id": "strength",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 2,
+            "PinId": ""
+          },
+          "Id": "tintColor",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 6
+    },
+    {
+      "Type": "vertexData",
+      "Name": "Vertex",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "Pos",
+          "Type": "vec4"
+        },
+        {
+          "Id": "Normal",
+          "Type": "vec3"
+        },
+        {
+          "Id": "Color",
+          "Type": "vec4"
+        },
+        {
+          "Id": "TexCoord",
+          "Type": "vec2"
+        },
+        {
+          "Id": "TexCoord1",
+          "Type": "vec2"
+        },
+        {
+          "Id": "Tangent",
+          "Type": "vec4"
+        },
+        {
+          "Id": "BlendWeights",
+          "Type": "vec4"
+        },
+        {
+          "Id": "BlendIndices",
+          "Type": "ivec4"
+        },
+        {
+          "Id": "CubeTexCoord",
+          "Type": "vec3"
+        },
+        {
+          "Id": "CubeTexCoord1",
+          "Type": "vec4"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 7
+    },
+    {
+      "Type": "getWorldPos(vec4)",
+      "Name": "getWorldPos(vec4)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 7,
+            "PinId": "Pos"
+          },
+          "Id": "pos",
+          "Type": "vec4"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 8
+    },
+    {
+      "Type": "float",
+      "Name": "float",
+      "Value": "-0.15",
+      "GroupId": 0,
+      "Category": 6,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 11
+    },
+    {
+      "Type": "getWorldNormal(vec3)",
+      "Name": "getWorldNormal(vec3)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 7,
+            "PinId": "Normal"
+          },
+          "Id": "vertexNormal",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 13
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 2,
+        "X": 234.65,
+        "Y": 259.0,
+        "Width": 207.78,
+        "Height": 137.96
+      },
+      {
+        "NodeId": 6,
+        "X": 569.43,
+        "Y": 0.0,
+        "Width": 177.33667,
+        "Height": 117.84
+      },
+      {
+        "NodeId": 7,
+        "X": 0.0,
+        "Y": 0.0,
+        "Width": 161.65,
+        "Height": 237.6
+      },
+      {
+        "NodeId": 8,
+        "X": 249.65,
+        "Y": -120.039986,
+        "Width": 191.316666,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 11,
+        "X": 250.65,
+        "Y": 146.960022,
+        "Width": 184.0,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 13,
+        "X": 236.119965,
+        "Y": 7.67998648,
+        "Width": 214.17334,
+        "Height": 108.0
+      }
+    ]
+  }
+}

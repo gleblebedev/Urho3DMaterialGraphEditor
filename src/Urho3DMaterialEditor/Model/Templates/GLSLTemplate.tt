@@ -1,0 +1,77 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+#ifndef GL3
+#define sampleShadow(map,pos) shadow2DProj(map,pos).r
+#else
+#define sampleShadow(map,pos) textureProj(map,pos)
+#endif
+
+#ifdef GL3
+#define texture2D texture
+#define texture2DProj textureProj
+#define texture3D texture
+#define textureCube texture
+#define texture2DLod textureLod
+#define texture2DLodOffset textureLodOffset
+#endif
+
+<#
+	int passIndex = 0;
+	foreach (var pass in Context.Passes)  
+	{  
+		WriteLine("// ==================================== "+pass.Key+" ====================================");
+		if (passIndex != 0)
+		{
+			WriteLine("#else");
+		}
+		Write("#if");
+		WriteLine(" defined("+pass.Key+ ")");
+
+		WriteLine(BuildPass(pass.Graph));
+		++passIndex;
+	}
+	if (passIndex != 0)
+	{
+		Write("#else");
+	}
+#>
+
+#ifdef COMPILEVS
+
+attribute vec4 iPos;
+uniform mat4 cModel;
+uniform mat4 cViewProj;
+uniform vec4 cClipPlane;
+
+void VS()
+{
+	mat4 var1 = cModel;
+	vec4 ret =  (vec4((iPos * var1).xyz, 1.0) * cViewProj);
+
+    // While getting the clip coordinate, also automatically set gl_ClipVertex for user clip planes
+    #if !defined(GL_ES) && !defined(GL3)
+       gl_ClipVertex = ret;
+    #elif defined(GL3)
+       gl_ClipDistance[0] = dot(cClipPlane, ret);
+    #endif
+    gl_Position = ret;
+}
+
+#else
+// ------------------- Pixel Shader ---------------
+
+void PS()
+{
+    gl_FragColor = vec4(1.0, 0.0, 0.0, 0.5);
+}
+#endif
+<#
+	for (int i=0; i<passIndex;++i)
+	{
+		WriteLine("#endif");
+	}
+#>

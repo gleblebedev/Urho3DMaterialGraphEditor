@@ -1,0 +1,45 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<technique vs="<#=Context.Name #>" ps="<#=Context.Name #>">
+<#
+	foreach (var pass in Context.Passes)
+	{
+		switch (pass.Key)
+		{
+			case ShaderGeneratorContext.RefractionPass:
+				WriteLine("    <pass name=\"refract\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\" />");
+				break;
+			case ShaderGeneratorContext.BasePass:
+				WriteLine("    <pass name=\"base\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\"  />");
+				break;
+			case ShaderGeneratorContext.LightBasePass:
+				WriteLine("    <pass name=\"litbase\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\"  />");
+				break;
+			case ShaderGeneratorContext.LightPass:
+				WriteLine("    <pass name=\"light\" depthtest=\"equal\" depthwrite=\"false\" blend=\"add\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\"  />");
+				break;
+			case ShaderGeneratorContext.AlphaPass:
+				WriteLine("    <pass name=\"alpha\" depthwrite=\"false\" blend=\"alpha\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\" />");
+				break;
+			case ShaderGeneratorContext.AlphaLightPass:
+				WriteLine("    <pass name=\"litalpha\" depthwrite=\"false\" blend=\"addalpha\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\" />");
+				break;
+			case ShaderGeneratorContext.ShadowPass:
+				WriteLine("    <pass name=\"shadow\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\" />");
+				break;
+			case ShaderGeneratorContext.DepthPass:
+				WriteLine("    <pass name=\"depth\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\" />");
+				break;
+			case ShaderGeneratorContext.PrePass:
+				WriteLine("    <pass name=\"prepass\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\" />");
+				break;
+			case ShaderGeneratorContext.DeferredPass:
+				WriteLine("    <pass name=\"deferred\" psdefines=\""+pass.Key+"\" vsdefines=\""+pass.Key+"\" />");
+				break;
+		}
+	}
+#>
+</technique>

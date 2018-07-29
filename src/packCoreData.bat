@@ -1,0 +1,1 @@
+PackageTool.exe .\Urho3DMaterialEditor.CoreData\ Urho3DMaterialEditor\CoreData.pak

@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Urho3DMaterialEditor.Views.ColorNodeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Urho3DMaterialEditor.Views"
+             xmlns:views="clr-namespace:Toe.Scripting.WPF.Views;assembly=Toe.Scripting.WPF"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <views:NodeBorder>
+        <views:NodeBorder.NodeContent>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Value}" Foreground="White" />
+                <Grid MinWidth="100">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="R" Grid.Row="0" Grid.Column="0" Foreground="Red" FontWeight="Bold" />
+                    <Slider Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Minimum="0" Maximum="1"
+                            Value="{Binding R}" />
+                    <TextBlock Text="G" Grid.Row="1" Grid.Column="0" Foreground="Green" FontWeight="Bold" />
+                    <Slider Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Minimum="0" Maximum="1"
+                            Value="{Binding G}" />
+                    <TextBlock Text="B" Grid.Row="2" Grid.Column="0" Foreground="Blue" FontWeight="Bold" />
+                    <Slider Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Minimum="0" Maximum="1"
+                            Value="{Binding B}" />
+                    <TextBlock Text="A" Grid.Row="3" Grid.Column="0" Foreground="White" FontWeight="Bold" />
+                    <Slider Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Minimum="0" Maximum="1"
+                            Value="{Binding A}" />
+                </Grid>
+            </StackPanel>
+        </views:NodeBorder.NodeContent>
+    </views:NodeBorder>
+</UserControl>
