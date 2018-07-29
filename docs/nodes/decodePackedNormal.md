@@ -1,0 +1,4 @@
+# decodePackedNormal
+
+## decodePackedNormal(vec4)
+

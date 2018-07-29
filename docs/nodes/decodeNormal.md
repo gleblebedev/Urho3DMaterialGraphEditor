@@ -1,0 +1,4 @@
+# decodeNormal
+
+## decodeNormal(vec4)
+

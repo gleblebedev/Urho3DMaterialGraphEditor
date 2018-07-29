@@ -1,0 +1,4 @@
+# blinnPhongDistribution
+
+## blinnPhongDistribution(float,float)
+

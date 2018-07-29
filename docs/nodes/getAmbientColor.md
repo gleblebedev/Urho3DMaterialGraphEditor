@@ -1,0 +1,4 @@
+# getAmbientColor
+
+## getAmbientColor
+

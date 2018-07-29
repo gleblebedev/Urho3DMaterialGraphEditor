@@ -1,0 +1,4 @@
+# lambertianDiffuse
+
+## lambertianDiffuse(vec3)
+

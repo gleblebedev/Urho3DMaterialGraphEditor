@@ -8,7 +8,7 @@ https://glprojects.itch.io/urho3d-material-editor
 
 ## Documentation
 
-[Nodes](Documentation/Nodes.md)
+[Nodes](docs/AllNodes.md)
 
 ## Troubleshooting
 

@@ -7,6 +7,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using Newtonsoft.Json;
@@ -223,10 +224,71 @@ namespace Urho3DMaterialEditor.ViewModels
         {
             var folder = @"C:\Temp\Docs";
             Directory.CreateDirectory(folder);
-            foreach (var factory in ScriptViewModel.Registry)
+
+            var nodeGroups = ScriptViewModel.Registry.ToLookup(_ => GetNodeKey(_.Type)).OrderBy(_=>_.Key);
+
+            using (var writer = OpenWriter(Path.Combine(folder, "AllNodes.md")))
             {
-                var name = factory.Name;
+                writer.WriteLine(@"# All nodes");
+                writer.WriteLine(@"");
+                foreach (var factories in nodeGroups)
+                {
+                    writer.WriteLine(@"["+ factories.Key + "](docs/nodes/"+ GetFileName(factories.Key)+".md)");
+                }
             }
+
+            folder = Path.Combine(folder, "nodes");
+            Directory.CreateDirectory(folder);
+
+            foreach (var factories in nodeGroups)
+            {
+                try
+                {
+                    using (var writer = OpenWriter(Path.Combine(folder, GetFileName(factories.Key) + ".md")))
+                    {
+                        writer.WriteLine(@"# "+factories.Key);
+                        writer.WriteLine(@"");
+                        foreach (var factory in factories)
+                        {
+                            var node = factory.Build();
+                            writer.WriteLine(@"## " + node.Name);
+                            writer.WriteLine(@"");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+
+        private System.IO.StreamWriter OpenWriter(string file)
+        {
+            return new StreamWriter(File.Open(file, FileMode.Create, FileAccess.Write, FileShare.Read), new UTF8Encoding(false));
+        }
+
+        private string GetFileName(string type)
+        {
+            foreach (var c in Path.GetInvalidFileNameChars())
+            {
+                type = type.Replace(c.ToString(), ((int) c).ToString("X2"));
+            }
+
+            return type;
+        }
+
+        private string GetNodeKey(string type)
+        {
+            var end = type.IndexOf('(');
+            if (end <= 0)
+            {
+                end = type.IndexOf('[');
+                if (end <= 0)
+                    return type;
+            }
+
+            return type.Substring(0, end).Trim();
         }
 
         private void TestAllNodeTypes()
@@ -299,7 +361,14 @@ namespace Urho3DMaterialEditor.ViewModels
             var file = _context.PickSaveFile("MaterialGraphs", "json");
             if (file != null)
             {
-                FileName = file.Absolute;
+                var path = file.Absolute;
+                //if (File.Exists(path))
+                //{
+                //    if (MessageBox.Show(Path.GetFileName(path) + " already exists.\nDo you want to replace it?",
+                //        "Confirm Save As",MessageBoxButton.YesNo) != MessageBoxResult.Yes)
+                //        return;
+                //}
+                FileName = path;
                 _context.WriteAllText(FileName,
                     JsonConvert.SerializeObject(ScriptViewModel.Script, Formatting.Indented,
                         new JsonSerializerSettings {TypeNameHandling = TypeNameHandling.None}));

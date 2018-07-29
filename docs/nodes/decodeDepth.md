@@ -1,0 +1,4 @@
+# decodeDepth
+
+## decodeDepth(vec3)
+

@@ -1,0 +1,4 @@
+# getDepth
+
+## getDepth(vec4)
+

@@ -1,0 +1,4 @@
+# encodeDepth
+
+## encodeDepth(float)
+
