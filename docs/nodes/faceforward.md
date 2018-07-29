@@ -11,8 +11,10 @@ If ([dot](dot.md)(Nref, I) < 0) faceforward returns N, otherwise it returns -N.
 
 N
   Type: float
+  
 I
   Type: float
+  
 Nref
   Type: float
 
@@ -61,8 +63,10 @@ Nref
 
 N
   Type: vec2
+  
 I
   Type: vec2
+  
 Nref
   Type: vec2
 
@@ -111,8 +115,10 @@ Nref
 
 N
   Type: vec3
+  
 I
   Type: vec3
+  
 Nref
   Type: vec3
 
@@ -161,8 +167,10 @@ Nref
 
 N
   Type: vec4
+  
 I
   Type: vec4
+  
 Nref
   Type: vec4
 
