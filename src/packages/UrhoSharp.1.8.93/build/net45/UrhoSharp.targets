@@ -1,0 +1,32 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<ItemGroup>
+				<Content Include="$(MSBuildThisFileDirectory)\..\..\native\Mac\libmono-urho.dylib">
+					<Link>libmono-urho.dylib</Link>
+					<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+				</Content>
+				<!--Content Include="$(MSBuildThisFileDirectory)\..\..\native\Linux\libmono-urho.so">
+					<Link>libmono-urho.so</Link>
+					<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+				</Content-->
+				<None Include="$(MSBuildThisFileDirectory)\..\..\native\Win64_OpenGL\mono-urho.dll">
+					<Link>Win64_OpenGL\mono-urho.dll</Link>
+					<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+				</None>
+				<None Include="$(MSBuildThisFileDirectory)\..\..\native\Win32_OpenGL\mono-urho.dll">
+					<Link>Win32_OpenGL\mono-urho.dll</Link>
+					<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+				</None>
+				<None Include="$(MSBuildThisFileDirectory)\..\..\native\Win64_DirectX\mono-urho.dll">
+					<Link>Win64_DirectX\mono-urho.dll</Link>
+					<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+				</None>
+				<None Include="$(MSBuildThisFileDirectory)\..\..\native\Win32_DirectX\mono-urho.dll">
+					<Link>Win32_DirectX\mono-urho.dll</Link>
+					<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+				</None>
+				<None Include="$(MSBuildThisFileDirectory)\..\..\native\CoreData.pak">
+					<Link>CoreData.pak</Link>
+					<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+				</None>
+		</ItemGroup>
+</Project>
