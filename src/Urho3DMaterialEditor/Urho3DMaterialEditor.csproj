@@ -445,10 +445,15 @@
     <None Include="Data\MaterialGraphs\DiffuseSample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Data\MaterialGraphs\FresnelSample.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Data\MaterialGraphs\RefractionSample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <EmbeddedResource Include="Data\MaterialGraphs\TransparentSample.json" />
+    <None Include="Data\MaterialGraphs\TransparentSample.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Data\Models\Box.mdl" />
     <EmbeddedResource Include="Data\NewMaterial.json" />
     <None Include="packages.config" />
