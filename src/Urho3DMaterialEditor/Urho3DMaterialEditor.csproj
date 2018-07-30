@@ -437,12 +437,18 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\decodeDepth%28vec3%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\encodeDepth%28float%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Output\deferredOutput.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\fresnel%28vec3,vec3,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\schlickFresnel%28vec3,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\schlickFresnelCustom%28vec3,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\schlickGaussianFresnel%28vec3,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Presets\DiffuseFresnelPreset.json" />
     <None Include="Data\MaterialGraphs\DiffuseSample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Data\MaterialGraphs\RefractionSample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="Data\MaterialGraphs\TransparentSample.json" />
     <None Include="Data\Models\Box.mdl" />
     <EmbeddedResource Include="Data\NewMaterial.json" />
     <None Include="packages.config" />
@@ -473,9 +479,9 @@
     <Error Condition="!Exists('..\packages\ILRepack.2.0.15\build\ILRepack.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.2.0.15\build\ILRepack.props'))" />
   </Target>
   <Target Name="AfterBuild">
-    <Message Text="Copy CoreData.pak" />  
-    <Copy SourceFiles="CoreData.pak" DestinationFolder="$(TargetDir)"/>
-<!--
+    <Message Text="Copy CoreData.pak" />
+    <Copy SourceFiles="CoreData.pak" DestinationFolder="$(TargetDir)" />
+    <!--
         DestinationFiles="$(PublicDocumentsFolder)%(Path)\%(RecursiveDir)%(Filename)%(DeploymentItems.Extension)"
             Condition="!Exists('$(PublicDocumentsFolder)%(Path)\%(RecursiveDir)%(Filename)%(DeploymentItems.Extension)') OR $([System.DateTime]::Parse('%(ModifiedTime)').Ticks) &gt; $([System.IO.File]::GetLastWriteTime('$(PublicDocumentsFolder)%(Path)\%(RecursiveDir)%(Filename)%(DeploymentItems.Extension)').Ticks)" />
 -->
