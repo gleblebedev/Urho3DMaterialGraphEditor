@@ -98,9 +98,9 @@ namespace Urho3DMaterialEditor.Model.Templates
             
             #line default
             #line hidden
-            this.Write("  \r\n\t<cull value=\"none\" />\r\n\t<shadowcull value=\"none\" />\r\n\t<fill value=\"solid\" />" +
-                    "\r\n\t<depthbias constant=\"0\" slopescaled=\"0\" />\r\n\t<renderorder value=\"128\" />\r\n\t<o" +
-                    "cclusion enable=\"false\" />\r\n</material>\r\n");
+            this.Write("  \r\n\t<cull value=\"ccw\" />\n\t<shadowcull value=\"ccw\" />\n\t<fill value=\"solid\" />\r\n\t<" +
+                    "depthbias constant=\"0\" slopescaled=\"0\" />\r\n\t<renderorder value=\"128\" />\r\n\t<occlu" +
+                    "sion enable=\"false\" />\r\n</material>\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

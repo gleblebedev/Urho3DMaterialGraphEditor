@@ -23,8 +23,8 @@
 <#  
        }  
 #>  
-	<cull value="none" />
-	<shadowcull value="none" />
+	<cull value="ccw" />
+	<shadowcull value="ccw" />
 	<fill value="solid" />
 	<depthbias constant="0" slopescaled="0" />
 	<renderorder value="128" />
