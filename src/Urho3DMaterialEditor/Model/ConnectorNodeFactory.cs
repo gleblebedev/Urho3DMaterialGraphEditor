@@ -52,12 +52,14 @@ namespace Urho3DMaterialEditor.Model
 
         public UrhoContext UrhoContext { get; set; }
 
+        public const string Subfolder = "Graph";
+
         public void Save()
         {
-            var materialFileName = Path.Combine(UrhoContext.DataFolder, "Materials", Name + ".xml");
-            var techniqueFileName = Path.Combine(UrhoContext.DataFolder, "Techniques", Name + ".xml");
-            var glslFileName = Path.Combine(UrhoContext.DataFolder, "Shaders", "GLSL", Name + ".glsl");
-            var hlslFileName = Path.Combine(UrhoContext.DataFolder, "Shaders", "HLSL", Name + ".hlsl");
+            var materialFileName = Path.Combine(UrhoContext.DataFolder, "Materials", Subfolder, Name + ".xml");
+            var techniqueFileName = Path.Combine(UrhoContext.DataFolder, "Techniques", Subfolder, Name + ".xml");
+            var glslFileName = Path.Combine(UrhoContext.DataFolder, "Shaders", "GLSL", Subfolder, Name + ".glsl");
+            var hlslFileName = Path.Combine(UrhoContext.DataFolder, "Shaders", "HLSL", Subfolder, Name + ".hlsl");
 
             UrhoContext.WriteAllText(glslFileName, GLSLShader);
             UrhoContext.WriteAllText(hlslFileName, HLSLShader);

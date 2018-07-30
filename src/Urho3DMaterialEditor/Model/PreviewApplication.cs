@@ -51,9 +51,9 @@ namespace Urho3DMaterialEditor.Model
                 try
                 {
                     content.Save();
-                    ResourceCache.ReloadResourceWithDependencies("Shaders/GLSL/_temp.glsl");
-                    ResourceCache.ReloadResourceWithDependencies("Techniques/_temp.xml");
-                    ResourceCache.ReloadResourceWithDependencies("Materials/_temp.xml");
+                    ResourceCache.ReloadResourceWithDependencies("Shaders/GLSL/"+ PreivewContent.Subfolder +"/_temp.glsl");
+                    ResourceCache.ReloadResourceWithDependencies("Techniques/" + PreivewContent.Subfolder + "/_temp.xml");
+                    ResourceCache.ReloadResourceWithDependencies("Materials/" + PreivewContent.Subfolder + "/_temp.xml");
                     if (PreviewNode == null)
                     {
                         CreateSceneImpl();
@@ -146,7 +146,7 @@ namespace Urho3DMaterialEditor.Model
 
             if (_model != null)
             {
-                modelComponent.SetMaterial(ResourceCache.GetMaterial("Materials/_temp.xml", false));
+                modelComponent.SetMaterial(ResourceCache.GetMaterial("Materials/" + PreivewContent.Subfolder + "/_temp.xml", false));
                 bb = _model.BoundingBox;
             }
 

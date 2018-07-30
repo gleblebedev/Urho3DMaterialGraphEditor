@@ -3,7 +3,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<technique vs="<#=Context.Name #>" ps="<#=Context.Name #>">
+<technique vs="<#=PreivewContent.Subfolder+"/"+Context.Name #>" ps="<#=PreivewContent.Subfolder+"/"+Context.Name #>">
 <#
 	foreach (var pass in Context.Passes)
 	{
