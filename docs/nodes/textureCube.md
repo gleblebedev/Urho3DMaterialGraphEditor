@@ -6,6 +6,7 @@
 
 sampler
   Type: samplerCube
+  
 coord
   Type: vec3
 
@@ -49,8 +50,10 @@ coord
 
 sampler
   Type: samplerCube
+  
 coord
   Type: vec3
+  
 bias
   Type: float
 
