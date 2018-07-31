@@ -50,19 +50,7 @@ namespace Urho3DMaterialEditor.ViewModels
 
         private void UpdateImageSource()
         {
-            if (!string.IsNullOrWhiteSpace(Value))
-            {
-                string fullPath;
-                if (_context.TryGetAbsolteFileName(Value, out fullPath))
-                    if (!File.Exists(fullPath))
-                        ImageSource = null;
-                    else
-                        ImageSource = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
-            }
-            else
-            {
-                ImageSource = null;
-            }
+            ImageSource = SamplerViewModel.GetImageSource(_context, Value);
         }
     }
 }

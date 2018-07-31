@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 using Toe.Scripting;
 using Toe.Scripting.WPF;
 using Toe.Scripting.WPF.ViewModels;
@@ -48,32 +50,72 @@ namespace Urho3DMaterialEditor.ViewModels
             }
         }
 
+        public static ImageSource GetImageSource(UrhoContext context, string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(fileName))
+                return null;
+
+            string fullPath = null;
+            if (!context.TryGetAbsolteFileName(fileName, out fullPath))
+            {
+                return null;
+            }
+
+            if (string.IsNullOrWhiteSpace(fullPath) || !File.Exists(fullPath))
+            {
+                return null;
+            }
+
+            if (Path.GetExtension(fullPath).ToLower() == ".xml")
+            {
+                var doc = XDocument.Load(fullPath);
+                if (doc != null)
+                {
+                    var cubemap = doc.Element(XName.Get("cubemap"));
+                    if (cubemap != null)
+                    {
+                        foreach (var face in cubemap.Elements(XName.Get("face")))
+                        {
+                            var name = face.Attribute(XName.Get("name"))?.Value;
+                            if (!string.IsNullOrWhiteSpace(name))
+                            {
+                                var facePath = Path.Combine(Path.GetDirectoryName(fullPath), name);
+                                var res = GetImageSource(facePath);
+                                if (res != null)
+                                    return res;
+                            }
+                        }
+                    }
+                }
+
+                return null;
+            }
+
+            return GetImageSource(fullPath);
+        }
+
+        private static ImageSource GetImageSource(string fullPath)
+        {
+            if (fullPath.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase) ||
+                fullPath.EndsWith(".tga", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return null;
+            }
+
+            try
+            {
+                return new BitmapImage(new Uri(fullPath, UriKind.Absolute));
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex);
+            }
+            return null;
+        }
+
         private void UpdateImageSource()
         {
-            if (!string.IsNullOrWhiteSpace(Value))
-                if (Path.GetExtension(Value).ToLower() == ".xml")
-                {
-                    ImageSource = null;
-                }
-                else
-                {
-                    if (Value.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase) ||
-                        Value.EndsWith(".tga", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        ImageSource = null;
-                    }
-                    else
-                    {
-                        string fullPath;
-                        if (_context.TryGetAbsolteFileName(Value, out fullPath))
-                            if (!File.Exists(fullPath))
-                                ImageSource = null;
-                            else
-                                ImageSource = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
-                    }
-                }
-            else
-                ImageSource = null;
+            ImageSource = GetImageSource(_context, Value);
         }
     }
 }
