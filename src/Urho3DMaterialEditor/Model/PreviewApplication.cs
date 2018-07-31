@@ -165,6 +165,7 @@ namespace Urho3DMaterialEditor.Model
 
             Light.ShadowCascade = new CascadeParameters(size * 2.0f, size * 4.0f, size * 8.0f, size * 16.0f,
                 Light.ShadowCascade.FadeStart, Light.ShadowCascade.BiasAutoAdjust);
+            Light.Range = size * 3.0f;
 
             modelComponent.CastShadows = true;
 
@@ -189,6 +190,7 @@ namespace Urho3DMaterialEditor.Model
             //CameraNode = _scene.GetChild("MainCamera", true);
             //PreviewNode = _scene.GetChild("Preview", true);
             //NotifyNodes();
+            UpdateCameraPos();
         }
 
         public event EventHandler<NodeListUpdatedArgs> NodeListUpdated;
@@ -389,6 +391,13 @@ namespace Urho3DMaterialEditor.Model
             CameraNode.Rotation = new Quaternion(Pitch, Yaw, 0);
             var forward = CameraNode.WorldDirection;
             CameraNode.Position = CameraTarget - forward * CameraDistance;
+            var camera = CameraNode.GetComponent<Camera>();
+            if (camera != null)
+            {
+                camera.NearClip = CameraDistance * 0.25f;
+                camera.FarClip = CameraDistance * 8.0f;
+            }
+
         }
 
         public class NodeListUpdatedArgs : EventArgs
