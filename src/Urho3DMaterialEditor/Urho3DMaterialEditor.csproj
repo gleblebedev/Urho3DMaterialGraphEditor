@@ -442,6 +442,11 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\schlickFresnelCustom%28vec3,float%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\schlickGaussianFresnel%28vec3,float%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Presets\DiffuseFresnelPreset.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getTexCoordWithOffset.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Fog\getFog%28vec3,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Fog\getFogFactor%28float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Fog\getHeightFogFactor%28float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Fog\getLitFog%28vec3,float%29.json" />
     <None Include="Data\MaterialGraphs\DiffuseSample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
