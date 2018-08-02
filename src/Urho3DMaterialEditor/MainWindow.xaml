@@ -156,11 +156,21 @@
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <wpf:UrhoSurface x:Name="_urhoSurfaceCtrl" />
-                <ComboBox Grid.Row="1" ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Distance = "  VerticalAlignment="Center"/>
+                    <TextBox BorderThickness="0" IsReadOnly="True"  VerticalAlignment="Center">
+                    <TextBox.Text>
+                        <Binding Path="CameraDistance" StringFormat="0.000" />
+                    </TextBox.Text>
+                </TextBox>
+                    <Button Content="Create LOD" IsEnabled="False" Command="{Binding CreateLodCommand}" VerticalAlignment="Center"/>
+                </StackPanel>
+                <wpf:UrhoSurface  Grid.Row="1" x:Name="_urhoSurfaceCtrl" />
+                <ComboBox Grid.Row="2" ItemsSource="{Binding Nodes}" SelectedItem="{Binding SelectedNode}" />
             </Grid>
         </Grid>
         <Grid Grid.Row="3">

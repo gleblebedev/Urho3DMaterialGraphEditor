@@ -16,6 +16,7 @@ namespace Urho3DMaterialEditor.Model
         private bool isRotate = true;
 
         private readonly float mouseSensitivity = .1f;
+        private float _cameraDistance = 10;
 
         public PreviewApplication(ApplicationOptions options) : base(options)
         {
@@ -32,7 +33,18 @@ namespace Urho3DMaterialEditor.Model
         protected float Yaw { get; set; }
         protected float Pitch { get; set; }
 
-        private float CameraDistance { get; set; } = 10;
+        public float CameraDistance
+        {
+            get => _cameraDistance;
+            set
+            {
+                if (_cameraDistance != value)
+                {
+                    _cameraDistance = value;
+                    NotifyCameraDistance();
+                }
+            }
+        }
 
         public MonoDebugHud MonoDebugHud { get; private set; }
 
@@ -194,12 +206,16 @@ namespace Urho3DMaterialEditor.Model
         }
 
         public event EventHandler<NodeListUpdatedArgs> NodeListUpdated;
+        public event EventHandler<EventArgs> CameraDistanceUpdated;
 
         private void NotifyNodes()
         {
             NodeListUpdated?.Invoke(this, new NodeListUpdatedArgs(_scene));
         }
-
+        private void NotifyCameraDistance()
+        {
+            CameraDistanceUpdated?.Invoke(this, EventArgs.Empty);
+        }
         public void LoadScene(string scene)
         {
             _scene = new Scene();

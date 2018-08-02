@@ -11,6 +11,7 @@ using System.Reactive.Subjects;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Toe.Scripting;
@@ -45,6 +46,7 @@ namespace Urho3DMaterialEditor.ViewModels
         private IObserver<MaterialCompilationException> _handleError;
         private SceneNodeViewModel _node;
         private IList<SceneNodeViewModel> _nodes;
+        private float _cameraDistance;
 
         private readonly Subject<PreviewData> _preview;
         private string _status = "";
@@ -92,7 +94,11 @@ namespace Urho3DMaterialEditor.ViewModels
             ScriptViewModel.SelectionChanged += OnScriptViewModelOnSelectionChanged;
             New();
         }
-
+        public float CameraDistance
+        {
+            get => _cameraDistance;
+            set => RaiseAndSetIfChanged(ref _cameraDistance, value);
+        }
         public ScriptingCommand TestNodesCommand { get; set; }
         public ScriptingCommand TestPerformanceCommand { get; set; }
 
@@ -154,11 +160,30 @@ namespace Urho3DMaterialEditor.ViewModels
             {
                 if (_application != value)
                 {
+                    if (_application != null)
+                    {
+                        _application.NodeListUpdated -= OnApplicationOnNodeListUpdated;
+                        _application.CameraDistanceUpdated -= OnApplicationOnCameraDistanceUpdated;
+                    }
                     _application = value;
-                    _application.NodeListUpdated += (s, a) => UpdateNodes(a.Nodes);
-                    _preview.OnNext(new PreviewData {Script = ScriptViewModel.Script?.Clone()});
+                    if (_application != null)
+                    {
+                        _application.NodeListUpdated += OnApplicationOnNodeListUpdated;
+                        _application.CameraDistanceUpdated += OnApplicationOnCameraDistanceUpdated;
+                        _preview.OnNext(new PreviewData {Script = ScriptViewModel.Script?.Clone()});
+                    }
                 }
             }
+        }
+
+        private void OnApplicationOnCameraDistanceUpdated(object s, EventArgs a)
+        {
+            Dispatcher.CurrentDispatcher.Invoke(() => UpdateCameraDistance());
+        }
+
+        private void OnApplicationOnNodeListUpdated(object s, PreviewApplication.NodeListUpdatedArgs a)
+        {
+            Dispatcher.CurrentDispatcher.Invoke(()=>UpdateNodes(a.Nodes));
         }
 
         public IList<SceneNodeViewModel> Nodes
@@ -479,6 +504,11 @@ namespace Urho3DMaterialEditor.ViewModels
         private void UpdateNodes(List<PreviewApplication.NodeListUpdatedArgs.NodeInfo> nodes)
         {
             Nodes = nodes.Select(_ => new SceneNodeViewModel(_)).ToList();
+        }
+
+        private void UpdateCameraDistance()
+        {
+            CameraDistance = Application?.CameraDistance ?? 0.0f;
         }
 
         internal class PreviewData
