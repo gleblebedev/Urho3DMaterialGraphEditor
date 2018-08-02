@@ -34,8 +34,8 @@ namespace Urho3DMaterialEditor.Model
             Add(new SamplerNodeFactory(SamplerNodeFactory.ZoneCubeMap, NodeTypes.SamplerCube));
 
 
-            Add(new ParameterNodeFactory(PinTypes.Vec4, NodeCategory.Parameter, "UOffset"));
-            Add(new ParameterNodeFactory(PinTypes.Vec4, NodeCategory.Parameter, "VOffset"));
+            Add(new ParameterNodeFactory(PinTypes.Vec4, NodeCategory.Parameter, "UOffset", "1.0 0.0 0.0 1.0"));
+            Add(new ParameterNodeFactory(PinTypes.Vec4, NodeCategory.Parameter, "VOffset", "0.0 1.0 0.0 1.0"));
 
             Add(new ConstantNodeFactory(PinTypes.Special.Color, NodeCategory.Value, PinTypes.Special.Color));
             Add(new ConstantNodeFactory(PinTypes.Float, NodeCategory.Value, "float"));

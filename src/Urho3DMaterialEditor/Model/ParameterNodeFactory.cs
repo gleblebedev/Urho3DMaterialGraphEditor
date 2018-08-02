@@ -9,11 +9,10 @@ namespace Urho3DMaterialEditor.Model
         private readonly NodeCategory _category;
         private readonly string _pinType;
         private readonly string _value;
-
-        public ParameterNodeFactory(string pinType, NodeCategory category, string name) : base(
+        public ParameterNodeFactory(string pinType, NodeCategory category, string name, string defaultValue = null) : base(
             NodeTypes.MakeType(NodeTypes.ParameterPrefix, pinType), name, category.ToString())
         {
-            _value = GetDefaultValue(pinType);
+            _value = defaultValue ?? GetDefaultValue(pinType);
             _pinType = pinType == PinTypes.Special.Color ? PinTypes.Vec4 : pinType;
             _category = category;
         }

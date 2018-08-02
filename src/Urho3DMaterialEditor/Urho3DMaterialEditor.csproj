@@ -395,7 +395,6 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getWorldPos.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getInstanceMatrix.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getScreenPos%28vec4%29.json" />
-    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getTexCoord%28vec2%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getSkinMatrix%28vec4,ivec4%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getPerPixelDiffuse%28vec3,vec3,vec3%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getPerPixelLightDir.json" />
@@ -454,6 +453,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Data\MaterialGraphs\RefractionSample.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\MaterialGraphs\ScrollingTextureSample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Data\MaterialGraphs\TransparentSample.json">
