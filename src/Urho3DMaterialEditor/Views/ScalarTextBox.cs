@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Urho3DMaterialEditor.Views
@@ -45,7 +46,17 @@ namespace Urho3DMaterialEditor.Views
                 {
                     new NumericValidationRule {ValidatesOnTargetUpdated = true, ValidationType = typeof(float)}
                 }
+                 
             });
+        }
+        protected override void OnMouseWheel(MouseWheelEventArgs e) {
+            var txt = this as TextBox; if (txt == null || !txt.IsFocused) return;
+            float fl1 = 0;
+            var st = float.TryParse(txt.Text.Replace('.', ','), out fl1);
+            if (st) txt.Text = (fl1 + (e.Delta < 0 ? -.1f : .1f)).ToString().Replace(',', '.');
+
+            //this.Text += (e.Delta < 0 ? -.1f : .1f);
+            e.Handled=true;
         }
     }
 }
