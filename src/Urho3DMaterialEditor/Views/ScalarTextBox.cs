@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Globalization;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -6,7 +8,7 @@ using System.Windows.Media;
 
 namespace Urho3DMaterialEditor.Views
 {
-    public class ScalarTextBox : Slider
+    public class ScalarTextBox : TextBox
     {
         private static readonly Brush _bg = new SolidColorBrush(Colors.Black);
         private static readonly Brush _fg = new SolidColorBrush(Colors.White);
@@ -16,13 +18,35 @@ namespace Urho3DMaterialEditor.Views
         {
             Background = _bg;
             Foreground = _fg;
+            CaretBrush = _fg;
+            BorderBrush = _fg;
             VerticalAlignment = VerticalAlignment.Center;
-            Style style = Application.Current.FindResource("SpinButton") as Style;
-            Style = style;
-            Maximum = float.MaxValue;
-            Minimum = float.MinValue;
+            this.TextChanged += UpdateStep;
         }
 
+        private void UpdateStep(object sender, EventArgs e)
+        {
+            var abs = Math.Abs((double)this.Value);
+            if (abs <= 0.20)
+            {
+                this.SmallChange = 0.01M;
+            }
+            else if (abs <= 2.0)
+            {
+                this.SmallChange = 0.1M;
+            }
+            else if (abs <= 20)
+            {
+                this.SmallChange = 1;
+            }
+            else
+            {
+                this.SmallChange = 10;
+            }
+            this.LargeChange = SmallChange*10;
+        }
+        public decimal SmallChange { get; private set; }
+        public decimal LargeChange { get; private set; }
         public string Path
         {
             get => _path;
@@ -38,7 +62,7 @@ namespace Urho3DMaterialEditor.Views
 
         private void CreateBinding()
         {
-            BindingOperations.SetBinding(this, ValueProperty, new Binding
+            BindingOperations.SetBinding(this, TextProperty, new Binding
             {
                 Path = new PropertyPath(_path),
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
@@ -52,13 +76,32 @@ namespace Urho3DMaterialEditor.Views
                  
             });
         }
-        protected override void OnMouseWheel(MouseWheelEventArgs e) {
-            var txt = this as TextBox; if (txt == null || !txt.IsFocused) return;
-            float fl1 = 0;
-            var st = float.TryParse(txt.Text.Replace('.', ','), out fl1);
-            if (st) txt.Text = (fl1 + (e.Delta < 0 ? -.1f : .1f)).ToString().Replace(',', '.');
 
-            //this.Text += (e.Delta < 0 ? -.1f : .1f);
+        public decimal? Value
+        {
+            get
+            {
+                decimal value;
+                if (decimal.TryParse(Text, NumberStyles.Any, CultureInfo.InvariantCulture, out value))
+                    return value;
+                return null;
+            }
+            set
+            {
+                if (!value.HasValue)
+                {
+                    Text = string.Empty;
+                }
+                else
+                {
+                    Text = value.Value.ToString(CultureInfo.InvariantCulture);
+                }
+            }
+        }
+
+        protected override void OnMouseWheel(MouseWheelEventArgs e)
+        {
+            this.Value += (e.Delta < 0 ? -SmallChange : SmallChange);
             e.Handled=true;
         }
     }
