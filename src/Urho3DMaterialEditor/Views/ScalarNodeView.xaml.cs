@@ -11,5 +11,6 @@ namespace Urho3DMaterialEditor.Views
         {
             InitializeComponent();
         }
+
     }
 }
