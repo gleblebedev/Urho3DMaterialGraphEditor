@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace Urho3DMaterialEditor.Views
 {
-    public class ScalarTextBox : TextBox
+    public class ScalarTextBox : Slider
     {
         private static readonly Brush _bg = new SolidColorBrush(Colors.Black);
         private static readonly Brush _fg = new SolidColorBrush(Colors.White);
@@ -17,7 +17,10 @@ namespace Urho3DMaterialEditor.Views
             Background = _bg;
             Foreground = _fg;
             VerticalAlignment = VerticalAlignment.Center;
-            CaretBrush = _fg;
+            Style style = Application.Current.FindResource("SpinButton") as Style;
+            Style = style;
+            Maximum = float.MaxValue;
+            Minimum = float.MinValue;
         }
 
         public string Path
@@ -35,7 +38,7 @@ namespace Urho3DMaterialEditor.Views
 
         private void CreateBinding()
         {
-            BindingOperations.SetBinding(this, TextProperty, new Binding
+            BindingOperations.SetBinding(this, ValueProperty, new Binding
             {
                 Path = new PropertyPath(_path),
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
