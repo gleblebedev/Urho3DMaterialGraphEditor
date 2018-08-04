@@ -51,9 +51,14 @@ namespace Urho3DMaterialEditor.Views
         }
         protected override void OnMouseWheel(MouseWheelEventArgs e) {
             var txt = this as TextBox; if (txt == null || !txt.IsFocused) return;
-            float fl1 = 0;
-            var st = float.TryParse(txt.Text.Replace('.', ','), out fl1);
-            if (st) txt.Text = (fl1 + (e.Delta < 0 ? -.1f : .1f)).ToString().Replace(',', '.');
+            double fl1 = 0;
+            string t = txt.Text.Trim();
+            var st = double.TryParse(t.Replace('.', ','), out fl1);
+            double add = 1;
+            var len = t.IndexOf('.');
+            if (len > -1) double.TryParse( "0,".PadRight(t.Length -len, '0')+"1",out add) ;
+
+            if (st) txt.Text = (fl1 + (e.Delta < 0 ? -1*add : add)).ToString().Replace(',', '.');
 
             //this.Text += (e.Delta < 0 ? -.1f : .1f);
             e.Handled=true;
