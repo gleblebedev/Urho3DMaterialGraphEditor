@@ -11,7 +11,7 @@
     <views:NodeBorder CanRename="{Binding CanRename}">
         <views:NodeBorder.NodeContent>
             <StackPanel Orientation="Vertical" MinWidth="100">
-                <local:ScalarTextBox Path="X" />
+                <local:ScalarTextBox Path="X" MouseWheel="ScalarTextBox_MouseWheel" />
             </StackPanel>
         </views:NodeBorder.NodeContent>
     </views:NodeBorder>
