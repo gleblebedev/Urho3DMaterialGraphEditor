@@ -68,12 +68,6 @@ namespace Urho3DMaterialEditor.Model
                 .ExternallyOwned()
                 .InstancePerDependency();
 
-            builder.RegisterType<ColorViewModel>()
-                .Named<NodeViewModel>(NodeTypes.MakeType(NodeTypes.ParameterPrefix, PinTypes.Special.Color))
-                .Named<NodeViewModel>(PinTypes.Special.Color)
-                .ExternallyOwned()
-                .InstancePerDependency();
-
             builder.RegisterType<StringViewModel>()
                 .Named<NodeViewModel>(NodeTypes.Define)
                 .Named<NodeViewModel>(NodeTypes.Undefine)

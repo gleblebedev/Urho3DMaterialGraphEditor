@@ -26,6 +26,11 @@ namespace Urho3DMaterialEditor.Views
 
         private void UpdateStep(object sender, EventArgs e)
         {
+            if (!this.Value.HasValue)
+            {
+                return;
+            }
+
             var abs = Math.Abs((double)this.Value);
             if (abs <= 0.20)
             {
