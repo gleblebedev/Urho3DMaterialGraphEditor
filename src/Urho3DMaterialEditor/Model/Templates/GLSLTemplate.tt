@@ -26,9 +26,12 @@
 		WriteLine("// ==================================== "+pass.Key+" ====================================");
 		if (passIndex != 0)
 		{
-			WriteLine("#else");
+			Write("#elif");
 		}
-		Write("#if");
+		else
+		{
+			Write("#if");
+		}
 		WriteLine(" defined("+pass.Key+ ")");
 
 		WriteLine(BuildPass(pass.Graph));
@@ -36,7 +39,7 @@
 	}
 	if (passIndex != 0)
 	{
-		Write("#else");
+		Write("#elif");
 	}
 #>
 
@@ -70,7 +73,7 @@ void PS()
 }
 #endif
 <#
-	for (int i=0; i<passIndex;++i)
+	if (passIndex > 0)
 	{
 		WriteLine("#endif");
 	}

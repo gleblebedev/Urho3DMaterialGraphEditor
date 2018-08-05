@@ -290,6 +290,7 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                 case NodeTypes.BreakVec4ToVec3AndFloat:
                 case NodeTypes.BreakVec3ToVec2AndFloat:
                 case NodeTypes.BreakVec4ToVec2AndVec2:
+                case NodeTypes.BreakVec4ToVec2AndFloats:
                 case NodeTypes.BreakVec2:
                 case NodeTypes.BreakVec3:
                 case NodeTypes.BreakVec4:

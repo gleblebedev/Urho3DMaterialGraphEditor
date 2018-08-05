@@ -562,8 +562,8 @@ namespace Urho3DMaterialEditor.Model
         {
             var g = new TranslatedMaterialGraph(graph);
             new PreviewPinOutput(graph).Apply(previewPin);
-            g.CreateFinalPosition();
             new InlineFunctions(g.Script).Apply();
+            g.CreateFinalPosition();
             g.SplitOutputs();
             g.JoinUniforms();
             g.JoinParameters();
@@ -783,6 +783,8 @@ namespace Urho3DMaterialEditor.Model
                 var clipPos = CreateNode(NodeTypes.GetClipPosVec3);
                 Script.LinkData(worldPos, clipPos);
                 Script.LinkData(clipPos, OutputPosition);
+
+                new InlineFunctions(Script).Apply();
             }
         }
 

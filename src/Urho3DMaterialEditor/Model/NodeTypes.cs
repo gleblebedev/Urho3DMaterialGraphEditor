@@ -379,6 +379,7 @@ namespace Urho3DMaterialEditor.Model
         public const string BreakVec4ToVec3AndFloat = "breakVec4toVec3Float"; //
         public const string BreakVec3ToVec2AndFloat = "breakVec3toVec2Float"; //
         public const string BreakVec4ToVec2AndVec2 = "breakVec4toVec2Vec2"; //
+        public const string BreakVec4ToVec2AndFloats = "breakVec4toVec2FloatFloat"; //
         public const string MakeVec2 = "makeVec2"; //
         public const string MakeVec3 = "makeVec3"; //
         public const string MakeVec4 = "makeVec4"; //

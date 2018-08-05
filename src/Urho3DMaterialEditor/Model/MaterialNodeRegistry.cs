@@ -228,7 +228,7 @@ namespace Urho3DMaterialEditor.Model
                 new[]
                 {
                     new Pin("XY", PinTypes.Vec2),
-                    new Pin("W", PinTypes.Float)
+                    new Pin("Z", PinTypes.Float)
                 }));
             Add(FunctionNodeFactory.Function(NodeTypes.BreakVec4ToVec3AndFloat, "break vec4 to vec3, float",
                 "make/break",
@@ -245,7 +245,15 @@ namespace Urho3DMaterialEditor.Model
                     new Pin("XY", PinTypes.Vec2),
                     new Pin("ZW", PinTypes.Vec2)
                 }));
-
+            Add(FunctionNodeFactory.Function(NodeTypes.BreakVec4ToVec2AndFloats, "break vec4 to vec2, float, float", "make/break",
+                new[] { new Pin(PinIds.Value, PinTypes.Vec4) },
+                new[]
+                {
+                    new Pin("XY", PinTypes.Vec2),
+                    new Pin("Z", PinTypes.Float),
+                    new Pin("W", PinTypes.Float),
+                }));
+    
             Add(FunctionNodeFactory.Function(NodeTypes.MakeVec2, "vec2(float,float)", "make/break",
                 new[]
                 {
