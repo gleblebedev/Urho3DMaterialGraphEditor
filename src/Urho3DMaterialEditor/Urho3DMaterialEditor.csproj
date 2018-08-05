@@ -355,6 +355,9 @@
     <Content Include="Data\Textures\StoneNormal.dds">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Data\Textures\WaterNoise.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Model\Templates\GLSLPassTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>GLSLPassTemplate.cs</LastGenOutput>

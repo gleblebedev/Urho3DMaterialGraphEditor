@@ -28,7 +28,7 @@
     {
       "Type": "parameter(float)",
       "Name": "NoiseStrength",
-      "Value": "0.2",
+      "Value": "0.11",
       "GroupId": 0,
       "Category": 5,
       "InputPins": [],
@@ -45,7 +45,7 @@
     {
       "Type": "parameter(float)",
       "Name": "FresnelPower",
-      "Value": "1.5",
+      "Value": "1.9",
       "GroupId": 0,
       "Category": 5,
       "InputPins": [],
@@ -336,32 +336,6 @@
       "EnterPins": [],
       "ExitPins": [],
       "Id": 14
-    },
-    {
-      "Type": "decodeNormal(vec4)",
-      "Name": "decodeNormal(vec4)",
-      "Value": null,
-      "GroupId": 0,
-      "Category": 1,
-      "InputPins": [
-        {
-          "Connection": {
-            "NodeId": 10,
-            "PinId": ""
-          },
-          "Id": "normalMapColor",
-          "Type": "vec4"
-        }
-      ],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "vec3"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 15
     },
     {
       "Type": "getScreenPos(vec4)",
@@ -1147,13 +1121,6 @@
         "Height": 108.0
       },
       {
-        "NodeId": 15,
-        "X": 1128.0,
-        "Y": -142.96,
-        "Width": 201.833328,
-        "Height": 108.0
-      },
-      {
         "NodeId": 16,
         "X": 912.0,
         "Y": -472.96,
@@ -1189,10 +1156,10 @@
         "Height": 117.84
       },
       {
-        "NodeId": 24,
-        "X": 1420.0,
-        "Y": -430.96,
-        "Width": 220.91333,
+        "NodeId": 26,
+        "X": 1697.0,
+        "Y": -502.96,
+        "Width": 120.01667,
         "Height": 108.0
       },
       {
@@ -1203,10 +1170,10 @@
         "Height": 108.0
       },
       {
-        "NodeId": 26,
-        "X": 1697.0,
-        "Y": -502.96,
-        "Width": 120.01667,
+        "NodeId": 24,
+        "X": 1420.0,
+        "Y": -430.96,
+        "Width": 220.91333,
         "Height": 108.0
       },
       {
@@ -1294,17 +1261,17 @@
         "Height": 108.0
       },
       {
-        "NodeId": 41,
-        "X": 2252.97583,
-        "Y": 522.2768,
-        "Width": 202.833328,
-        "Height": 108.0
-      },
-      {
         "NodeId": 42,
         "X": 2563.488,
         "Y": 191.316864,
         "Width": 197.896667,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 41,
+        "X": 2252.97583,
+        "Y": 522.2768,
+        "Width": 202.833328,
         "Height": 108.0
       }
     ]
