@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Urho3DMaterialEditor.Views"
              xmlns:views="clr-namespace:Toe.Scripting.WPF.Views;assembly=Toe.Scripting.WPF"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <views:NodeBorder>
@@ -23,17 +24,13 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock Text="R" Grid.Row="0" Grid.Column="0" Foreground="Red" FontWeight="Bold" />
-                    <Slider Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Minimum="0" Maximum="1"
-                            Value="{Binding R}" />
+                    <local:SliderControl Path="R" Grid.Column="1" Grid.Row="0"/>
                     <TextBlock Text="G" Grid.Row="1" Grid.Column="0" Foreground="Green" FontWeight="Bold" />
-                    <Slider Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Minimum="0" Maximum="1"
-                            Value="{Binding G}" />
+                    <local:SliderControl Path="G" Grid.Column="1" Grid.Row="1"/>
                     <TextBlock Text="B" Grid.Row="2" Grid.Column="0" Foreground="Blue" FontWeight="Bold" />
-                    <Slider Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Minimum="0" Maximum="1"
-                            Value="{Binding B}" />
+                    <local:SliderControl Path="B" Grid.Column="1" Grid.Row="2"/>
                     <TextBlock Text="A" Grid.Row="3" Grid.Column="0" Foreground="White" FontWeight="Bold" />
-                    <Slider Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Minimum="0" Maximum="1"
-                            Value="{Binding A}" />
+                    <local:SliderControl Path="A" Grid.Column="1" Grid.Row="3"/>
                 </Grid>
             </StackPanel>
         </views:NodeBorder.NodeContent>

@@ -106,6 +106,7 @@ namespace Urho3DMaterialEditor.Views
 
         protected override void OnMouseWheel(MouseWheelEventArgs e)
         {
+            if (!this.IsFocused) return;
             this.Value += (e.Delta < 0 ? -SmallChange : SmallChange);
             e.Handled=true;
         }
