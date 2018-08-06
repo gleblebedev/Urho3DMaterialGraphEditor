@@ -237,6 +237,7 @@
     <Compile Include="Views\AppFoldersDialog.xaml.cs">
       <DependentUpon>AppFoldersDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SliderControl.cs" />
     <Compile Include="Views\SpecularNodeView.xaml.cs">
       <DependentUpon>SpecularNodeView.xaml</DependentUpon>
     </Compile>
