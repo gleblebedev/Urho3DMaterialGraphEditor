@@ -69,6 +69,7 @@ namespace Urho3DMaterialEditor.Model
             Add(new UniformNodeFactory(PinTypes.Float, NodeCategory.Parameter, "DeltaTimePS"));
             Add(new UniformNodeFactory(PinTypes.Float, NodeCategory.Parameter, "ElapsedTimePS"));
             Add(new UniformNodeFactory(PinTypes.Float, NodeCategory.Parameter, "ElapsedTime"));
+            Add(new BuildInVariableNodeFactory(PinTypes.Vec4, NodeCategory.Parameter, NodeTypes.FragCoord));
 
 #if DEBUG
             foreach (var parameter in NodeTypes._uniforms)

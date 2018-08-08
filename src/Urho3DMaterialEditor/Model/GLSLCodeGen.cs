@@ -231,18 +231,20 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                 case NodeTypes.Special.FinalColor:
                     _writer.WriteLine(null, "gl_FragColor = " + args[0] + ";");
                     return null;
-                case NodeTypes.Special.FinalData0:
+                case NodeTypes.Special.FragData0:
                     _writer.WriteLine(null, "gl_FragData[0] = " + args[0] + ";");
                     return null;
-                case NodeTypes.Special.FinalData1:
+                case NodeTypes.Special.FragData1:
                     _writer.WriteLine(null, "gl_FragData[1] = " + args[0] + ";");
                     return null;
-                case NodeTypes.Special.FinalData2:
+                case NodeTypes.Special.FragData2:
                     _writer.WriteLine(null, "gl_FragData[2] = " + args[0] + ";");
                     return null;
-                case NodeTypes.Special.FinalData3:
+                case NodeTypes.Special.FragData3:
                     _writer.WriteLine(null, "gl_FragData[3] = " + args[0] + ";");
                     return null;
+                case NodeTypes.FragCoord:
+                    return "gl_FragCoord";
                 case NodeTypes.LightColor:
                 case NodeTypes.Opacity:
                 case NodeTypes.AmbientColor:

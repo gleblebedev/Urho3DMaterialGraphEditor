@@ -27,10 +27,10 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
                     case NodeTypes.Discard:
                     case NodeTypes.Opacity:
                     case NodeTypes.Special.FinalColor:
-                    case NodeTypes.Special.FinalData0:
-                    case NodeTypes.Special.FinalData1:
-                    case NodeTypes.Special.FinalData2:
-                    case NodeTypes.Special.FinalData3:
+                    case NodeTypes.Special.FragData0:
+                    case NodeTypes.Special.FragData1:
+                    case NodeTypes.Special.FragData2:
+                    case NodeTypes.Special.FragData3:
                     case NodeTypes.AmbientColor:
                     case NodeTypes.LightColor:
                     case NodeTypes.DeferredOutput:
@@ -58,24 +58,24 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
                             }
                             {
                                 {
-                                    var finalColor0 = CreateSinkNode(NodeTypes.Special.FinalData0, PinTypes.Vec4);
+                                    var finalColor0 = CreateSinkNode(NodeTypes.Special.FragData0, PinTypes.Vec4);
                                     finalColor0.Value = ShaderGeneratorContext.PrePass;
                                     _script.Nodes.Add(finalColor0);
-                                    var finalColor1 = CreateSinkNode(NodeTypes.Special.FinalData1, PinTypes.Vec4);
+                                    var finalColor1 = CreateSinkNode(NodeTypes.Special.FragData1, PinTypes.Vec4);
                                     finalColor1.Value = ShaderGeneratorContext.PrePass;
                                     _script.Nodes.Add(finalColor1);
                                 }
                                 {
-                                    var finalColor0 = CreateSinkNode(NodeTypes.Special.FinalData0, PinTypes.Vec4);
+                                    var finalColor0 = CreateSinkNode(NodeTypes.Special.FragData0, PinTypes.Vec4);
                                     finalColor0.Value = ShaderGeneratorContext.DeferredPass;
                                     _script.Nodes.Add(finalColor0);
-                                    var finalColor1 = CreateSinkNode(NodeTypes.Special.FinalData1, PinTypes.Vec4);
+                                    var finalColor1 = CreateSinkNode(NodeTypes.Special.FragData1, PinTypes.Vec4);
                                     finalColor1.Value = ShaderGeneratorContext.DeferredPass;
                                     _script.Nodes.Add(finalColor1);
-                                    var finalColor2 = CreateSinkNode(NodeTypes.Special.FinalData2, PinTypes.Vec4);
+                                    var finalColor2 = CreateSinkNode(NodeTypes.Special.FragData2, PinTypes.Vec4);
                                     finalColor2.Value = ShaderGeneratorContext.DeferredPass;
                                     _script.Nodes.Add(finalColor2);
-                                    var finalColor3 = CreateSinkNode(NodeTypes.Special.FinalData3, PinTypes.Vec4);
+                                    var finalColor3 = CreateSinkNode(NodeTypes.Special.FragData3, PinTypes.Vec4);
                                     finalColor3.Value = ShaderGeneratorContext.DeferredPass;
                                     _script.Nodes.Add(finalColor3);
 

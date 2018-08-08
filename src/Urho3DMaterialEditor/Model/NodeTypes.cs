@@ -27,6 +27,7 @@ namespace Urho3DMaterialEditor.Model
         public const string LightData = "lightData";
         public const string CameraData = "cameraData";
         public const string ZoneData = "zoneData";
+        public const string FragCoord = "fragCoord";
 
         public const string SampleShadow = "sampleShadow(shadowMap,vec4)";
         public const string SampleVSMShadow = "sampleVSMShadow(shadowMap,vec2)";
@@ -521,10 +522,10 @@ namespace Urho3DMaterialEditor.Model
             switch (nodeType)
             {
                 case Special.FinalColor:
-                case Special.FinalData0:
-                case Special.FinalData1:
-                case Special.FinalData2:
-                case Special.FinalData3:
+                case Special.FragData0:
+                case Special.FragData1:
+                case Special.FragData2:
+                case Special.FragData3:
                 case Special.ShadowMapOutput:
                     return true;
             }
@@ -564,10 +565,10 @@ namespace Urho3DMaterialEditor.Model
             public const string Variable = "var";
             public const string ShadowMapOutput = "shadowMapOutput";
             public const string FinalColor = "finalColor";
-            public const string FinalData0 = "finalData[0]";
-            public const string FinalData1 = "finalData[1]";
-            public const string FinalData2 = "finalData[2]";
-            public const string FinalData3 = "finalData[3]";
+            public const string FragData0 = "finalData[0]";
+            public const string FragData1 = "finalData[1]";
+            public const string FragData2 = "finalData[2]";
+            public const string FragData3 = "finalData[3]";
 
             public const string Default = "default";
         }

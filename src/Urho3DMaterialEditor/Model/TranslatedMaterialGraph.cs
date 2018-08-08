@@ -290,10 +290,10 @@ namespace Urho3DMaterialEditor.Model
                 {
                     case NodeTypes.Special.ShadowMapOutput:
                     case NodeTypes.Special.FinalColor:
-                    case NodeTypes.Special.FinalData0:
-                    case NodeTypes.Special.FinalData1:
-                    case NodeTypes.Special.FinalData2:
-                    case NodeTypes.Special.FinalData3:
+                    case NodeTypes.Special.FragData0:
+                    case NodeTypes.Special.FragData1:
+                    case NodeTypes.Special.FragData2:
+                    case NodeTypes.Special.FragData3:
                         RenderTargets.Add(node);
                         break;
                     case NodeTypes.Discard:
@@ -489,11 +489,12 @@ namespace Urho3DMaterialEditor.Model
                 case NodeTypes.PerPixelVec3:
                 case NodeTypes.PerPixelVec4:
                 case NodeTypes.Special.FinalColor:
-                case NodeTypes.Special.FinalData0:
-                case NodeTypes.Special.FinalData1:
-                case NodeTypes.Special.FinalData2:
-                case NodeTypes.Special.FinalData3:
+                case NodeTypes.Special.FragData0:
+                case NodeTypes.Special.FragData1:
+                case NodeTypes.Special.FragData2:
+                case NodeTypes.Special.FragData3:
                 case NodeTypes.Special.ShadowMapOutput:
+                case NodeTypes.FragCoord:
                     return true;
             }
 
@@ -629,10 +630,10 @@ namespace Urho3DMaterialEditor.Model
                         refractionColor = node;
                         break;
                     case NodeTypes.Special.FinalColor:
-                    case NodeTypes.Special.FinalData0:
-                    case NodeTypes.Special.FinalData1:
-                    case NodeTypes.Special.FinalData2:
-                    case NodeTypes.Special.FinalData3:
+                    case NodeTypes.Special.FragData0:
+                    case NodeTypes.Special.FragData1:
+                    case NodeTypes.Special.FragData2:
+                    case NodeTypes.Special.FragData3:
                         var other = finalColors.FirstOrDefault(_ => _.Type == node.Type && _.Value == node.Value);
                         if (other != null)
                             throw new MaterialCompilationException("Duplicate output", node.Id, other.Id);
@@ -785,6 +786,21 @@ namespace Urho3DMaterialEditor.Model
                 Script.LinkData(clipPos, OutputPosition);
 
                 new InlineFunctions(Script).Apply();
+            }
+
+            HasNoPSDependencies(OutputPosition);
+        }
+
+        private void HasNoPSDependencies(NodeHelper node)
+        {
+            if (IsPixelShaderOnly(node))
+            {
+                throw new MaterialCompilationException(node.Name + " can't be used to calculate vertex position", node.Id);
+            }
+
+            foreach (var pin in node.InputPins.ConnectedPins)
+            {
+                HasNoPSDependencies(pin.Node);
             }
         }
 
