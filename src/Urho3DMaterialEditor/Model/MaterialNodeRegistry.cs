@@ -96,10 +96,10 @@ namespace Urho3DMaterialEditor.Model
             foreach (var attribute in NodeTypes._attributes)
                 Add(new AttributeNodeFactory(attribute.Key, attribute.Value + "Attribute", attribute.Value));
             Add(new OutputNodeFactory(NodeTypes.Special.FinalColor, "finalColor", PinTypes.Vec4));
-            Add(new OutputNodeFactory(NodeTypes.Special.FinalData0, "fragData[0]", PinTypes.Vec4));
-            Add(new OutputNodeFactory(NodeTypes.Special.FinalData1, "fragData[1]", PinTypes.Vec4));
-            Add(new OutputNodeFactory(NodeTypes.Special.FinalData2, "fragData[2]", PinTypes.Vec4));
-            Add(new OutputNodeFactory(NodeTypes.Special.FinalData3, "fragData[3]", PinTypes.Vec4));
+            Add(new OutputNodeFactory(NodeTypes.Special.FragData0, "fragData[0]", PinTypes.Vec4));
+            Add(new OutputNodeFactory(NodeTypes.Special.FragData1, "fragData[1]", PinTypes.Vec4));
+            Add(new OutputNodeFactory(NodeTypes.Special.FragData2, "fragData[2]", PinTypes.Vec4));
+            Add(new OutputNodeFactory(NodeTypes.Special.FragData3, "fragData[3]", PinTypes.Vec4));
 #endif
 
             Add(new DefineNodeFactory(NodeTypes.Define, NodeTypes.Define));
