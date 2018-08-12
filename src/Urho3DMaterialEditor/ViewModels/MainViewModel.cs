@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Toe.Scripting;
@@ -67,6 +68,7 @@ namespace Urho3DMaterialEditor.ViewModels
             MergeCommand = new ScriptingCommand(Merge);
             SaveCommand = new ScriptingCommand(Save);
             SaveAsCommand = new ScriptingCommand(SaveAs);
+            ExportCommand = new ScriptingCommand(Export);
             OpenSceneCommand = new ScriptingCommand<string>(OpenScene);
             OpenMDLCommand = new ScriptingCommand<string>(OpenMDL);
             OpenAnimatedMDLCommand = new ScriptingCommand<string>(OpenAnimatedMDL);
@@ -118,6 +120,7 @@ namespace Urho3DMaterialEditor.ViewModels
         public ICommand RearrangeCommand => _rearrangeCommand;
 
         public ScriptingCommand SaveAsCommand { get; set; }
+        public ScriptingCommand ExportCommand { get; set; }
 
         public ScriptingCommand SaveCommand { get; set; }
 
@@ -330,9 +333,32 @@ namespace Urho3DMaterialEditor.ViewModels
             }
         }
 
+        private void Export()
+        {
+            if (FileName == null)
+            {
+                SaveAs();
+            }
+
+            if (FileName == null)
+            {
+                return;
+            }
+            var dialog = new SaveFileDialog();
+            dialog.Filter = "Zip archive (*.zip) | *.zip";
+            var res = dialog.ShowDialog();
+            if (res == true)
+            {
+                var path = dialog.FileName;
+                using (var fileStream = _context.CreateFile(path))
+                {
+                    new SaveToZip(_context, _generator).SaveTo(fileStream, Path.GetFileNameWithoutExtension(FileName), ScriptViewModel.Script);
+                }
+            }
+        }
         private void SaveSelectedAs()
         {
-            var file = _context.PickSaveFile("MaterialGraphs", "json");
+            var file = _context.PickSaveFile( UrhoContext.MaterialGraphs, "json");
             if (file != null)
                 _context.WriteAllText(file.Absolute,
                     JsonConvert.SerializeObject(ScriptViewModel.ExtractSelected(), Formatting.Indented,

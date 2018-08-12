@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.IO;
+using System.IO.Compression;
 using Toe.Scripting;
 
 namespace Urho3DMaterialEditor.Model
@@ -34,37 +34,6 @@ namespace Urho3DMaterialEditor.Model
             node.OutputPins.Add(new Pin("", _pinType));
 
             return node;
-        }
-    }
-
-    public interface IPreview
-    {
-        void UpdatePreivew(PreivewContent content);
-    }
-
-    public class PreivewContent
-    {
-        public string Name { get; set; }
-        public string Material { get; set; }
-        public string Technique { get; set; }
-        public string GLSLShader { get; set; }
-        public string HLSLShader { get; set; }
-
-        public UrhoContext UrhoContext { get; set; }
-
-        public const string Subfolder = "Graph";
-
-        public void Save()
-        {
-            var materialFileName = Path.Combine(UrhoContext.DataFolder, "Materials", Subfolder, Name + ".xml");
-            var techniqueFileName = Path.Combine(UrhoContext.DataFolder, "Techniques", Subfolder, Name + ".xml");
-            var glslFileName = Path.Combine(UrhoContext.DataFolder, "Shaders", "GLSL", Subfolder, Name + ".glsl");
-            var hlslFileName = Path.Combine(UrhoContext.DataFolder, "Shaders", "HLSL", Subfolder, Name + ".hlsl");
-
-            UrhoContext.WriteAllText(glslFileName, GLSLShader);
-            UrhoContext.WriteAllText(hlslFileName, HLSLShader);
-            UrhoContext.WriteAllText(techniqueFileName, Technique);
-            UrhoContext.WriteAllText(materialFileName, Material);
         }
     }
 }

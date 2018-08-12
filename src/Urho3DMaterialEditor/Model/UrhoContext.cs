@@ -12,6 +12,8 @@ namespace Urho3DMaterialEditor.Model
 {
     public class UrhoContext
     {
+        public static readonly string MaterialGraphs = "MaterialGraphs";
+
         public List<string> _folders;
         public List<Uri> _folderUris;
 
@@ -34,6 +36,7 @@ namespace Urho3DMaterialEditor.Model
         public ApplicationOptions ApplicationOptions { get; set; }
 
         public string DataFolder { get; set; }
+
 
         private string EnsureDirEnding(string path)
         {
@@ -108,7 +111,8 @@ namespace Urho3DMaterialEditor.Model
 
         public FileName PickSaveFile(string folder, params string[] extensions)
         {
-            var startPath = Path.Combine(DataFolder, folder);
+
+            var startPath = (string.IsNullOrWhiteSpace(folder))?DataFolder:Path.Combine(DataFolder, folder);
             Directory.CreateDirectory(startPath);
 
             var dialog = new SaveFileDialog();
@@ -130,11 +134,16 @@ namespace Urho3DMaterialEditor.Model
             return null;
         }
 
-        public void WriteAllText(string absoluteFileName, string text)
+        public Stream CreateFile(string absoluteFileName)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(absoluteFileName));
-            using (var file = File.Open(Path.Combine(DataFolder, absoluteFileName), FileMode.Create, FileAccess.Write,
-                FileShare.Read))
+            return File.Open(Path.Combine(DataFolder, absoluteFileName), FileMode.Create, FileAccess.Write,
+                FileShare.Read);
+        }
+
+        public void WriteAllText(string absoluteFileName, string text)
+        {
+            using (var file = CreateFile(absoluteFileName))
             {
                 using (var writer = new StreamWriter(file, new UTF8Encoding(false)))
                 {
@@ -143,9 +152,9 @@ namespace Urho3DMaterialEditor.Model
             }
         }
 
-        public string ReadAllText(string absoluteFileName)
+        public string ReadAllText(string relFileName)
         {
-            using (var file = File.Open(Path.Combine(DataFolder, absoluteFileName), FileMode.Open, FileAccess.Read,
+            using (var file = File.Open(Path.Combine(DataFolder, relFileName), FileMode.Open, FileAccess.Read,
                 FileShare.ReadWrite))
             {
                 using (var reader = new StreamReader(file, new UTF8Encoding(false)))
@@ -154,7 +163,16 @@ namespace Urho3DMaterialEditor.Model
                 }
             }
         }
-
+        public byte[] ReadAllBytes(string relFileName)
+        {
+            using (var file = File.Open(Path.Combine(DataFolder, relFileName), FileMode.Open, FileAccess.Read,
+                FileShare.ReadWrite))
+            {
+                var ms = new MemoryStream();
+                file.CopyTo(ms);
+                return ms.ToArray();
+            }
+        }
         public class FileName
         {
             public string Absolute { get; set; }

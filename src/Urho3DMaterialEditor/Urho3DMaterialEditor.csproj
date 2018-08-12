@@ -148,10 +148,13 @@
     <Compile Include="Model\ICodeGen.cs" />
     <Compile Include="Model\IfDefNodeFactory.cs" />
     <Compile Include="Model\InlineFunctionNodeFactory.cs" />
+    <Compile Include="Model\IPreview.cs" />
     <Compile Include="Model\LightDataNodeFactory.cs" />
     <Compile Include="Model\ParameterNodeFactory.cs" />
     <Compile Include="Model\PinIds.cs" />
+    <Compile Include="Model\PreivewContent.cs" />
     <Compile Include="Model\RequiredFunction.cs" />
+    <Compile Include="Model\SaveToZip.cs" />
     <Compile Include="Model\Templates\HLSLPassTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
