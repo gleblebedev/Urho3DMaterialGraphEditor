@@ -335,15 +335,6 @@ namespace Urho3DMaterialEditor.ViewModels
 
         private void Export()
         {
-            if (FileName == null)
-            {
-                SaveAs();
-            }
-
-            if (FileName == null)
-            {
-                return;
-            }
             var dialog = new SaveFileDialog();
             dialog.Filter = "Zip archive (*.zip) | *.zip";
             var res = dialog.ShowDialog();
@@ -352,7 +343,17 @@ namespace Urho3DMaterialEditor.ViewModels
                 var path = dialog.FileName;
                 using (var fileStream = _context.CreateFile(path))
                 {
-                    new SaveToZip(_context, _generator).SaveTo(fileStream, Path.GetFileNameWithoutExtension(FileName), ScriptViewModel.Script);
+                    string name;
+                    if (FileName != null)
+                    {
+                        name = Path.GetFileNameWithoutExtension(FileName);
+                    }
+                    else
+                    {
+                        name = Path.GetFileNameWithoutExtension(dialog.FileName);
+                    }
+
+                    new SaveToZip(_context, _generator).SaveTo(fileStream, name, ScriptViewModel.Script);
                 }
             }
         }
