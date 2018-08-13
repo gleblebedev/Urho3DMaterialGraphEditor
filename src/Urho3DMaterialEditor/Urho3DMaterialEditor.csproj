@@ -473,7 +473,8 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\1-vec4.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\panner.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\random%28vec2%29.json" />
-    <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomialBell.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\cubicBell.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\quinticBell.json" />
     <None Include="Data\MaterialGraphs\CheckerboardTransparency.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
