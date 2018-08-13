@@ -245,6 +245,8 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                     return null;
                 case NodeTypes.FragCoord:
                     return "gl_FragCoord";
+                case NodeTypes.FrontFacing:
+                    return "gl_FrontFacing";
                 case NodeTypes.LightColor:
                 case NodeTypes.Opacity:
                 case NodeTypes.AmbientColor:

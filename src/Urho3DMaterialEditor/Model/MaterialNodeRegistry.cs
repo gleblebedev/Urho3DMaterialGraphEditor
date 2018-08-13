@@ -70,6 +70,7 @@ namespace Urho3DMaterialEditor.Model
             Add(new UniformNodeFactory(PinTypes.Float, NodeCategory.Parameter, "ElapsedTimePS"));
             Add(new UniformNodeFactory(PinTypes.Float, NodeCategory.Parameter, "ElapsedTime"));
             Add(new BuildInVariableNodeFactory(PinTypes.Vec4, NodeCategory.Parameter, NodeTypes.FragCoord));
+            Add(new BuildInVariableNodeFactory(PinTypes.Bool, NodeCategory.Parameter, NodeTypes.FrontFacing));
 
 #if DEBUG
             foreach (var parameter in NodeTypes._uniforms)
@@ -101,7 +102,9 @@ namespace Urho3DMaterialEditor.Model
             Add(new OutputNodeFactory(NodeTypes.Special.FragData2, "fragData[2]", PinTypes.Vec4));
             Add(new OutputNodeFactory(NodeTypes.Special.FragData3, "fragData[3]", PinTypes.Vec4));
 #endif
-
+            Add(new MarkerNodeFactory(NodeTypes.Cull, NodeTypes.Cull, Urho.CullMode.Ccw.ToString()));
+            Add(new MarkerNodeFactory(NodeTypes.ShadowCull, NodeTypes.ShadowCull, Urho.CullMode.Ccw.ToString()));
+            Add(new MarkerNodeFactory(NodeTypes.Fill, NodeTypes.Fill, Urho.FillMode.Solid.ToString()));
             Add(new DefineNodeFactory(NodeTypes.Define, NodeTypes.Define));
             Add(new DefineNodeFactory(NodeTypes.Undefine, NodeTypes.Undefine));
             foreach (var connector in NodeTypes._ifdefs)

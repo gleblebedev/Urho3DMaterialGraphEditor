@@ -28,6 +28,10 @@ namespace Urho3DMaterialEditor.Model
         public const string CameraData = "cameraData";
         public const string ZoneData = "zoneData";
         public const string FragCoord = "fragCoord";
+        public const string FrontFacing = "frontFacing";
+        public const string Cull = "cull";
+        public const string ShadowCull = "shadowCull";
+        public const string Fill = "fill";
 
         public const string SampleShadow = "sampleShadow(shadowMap,vec4)";
         public const string SampleVSMShadow = "sampleVSMShadow(shadowMap,vec2)";

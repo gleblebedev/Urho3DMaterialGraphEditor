@@ -66,57 +66,6 @@
       "Id": 13
     },
     {
-      "Type": "float-float",
-      "Name": "float-float",
-      "Value": null,
-      "GroupId": 0,
-      "Category": 1,
-      "InputPins": [
-        {
-          "Connection": {
-            "NodeId": 4,
-            "PinId": ""
-          },
-          "Id": "x",
-          "Type": "float"
-        },
-        {
-          "Connection": {
-            "NodeId": 1,
-            "PinId": ""
-          },
-          "Id": "y",
-          "Type": "float"
-        }
-      ],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "float"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 3
-    },
-    {
-      "Type": "float",
-      "Name": "float",
-      "Value": "1.0",
-      "GroupId": 0,
-      "Category": 6,
-      "InputPins": [],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "float"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 4
-    },
-    {
       "Type": "float*float",
       "Name": "float*float",
       "Value": null,
@@ -125,7 +74,7 @@
       "InputPins": [
         {
           "Connection": {
-            "NodeId": 3,
+            "NodeId": 27,
             "PinId": ""
           },
           "Id": "x",
@@ -133,7 +82,7 @@
         },
         {
           "Connection": {
-            "NodeId": 3,
+            "NodeId": 27,
             "PinId": ""
           },
           "Id": "y",
@@ -318,7 +267,7 @@
         },
         {
           "Connection": {
-            "NodeId": 3,
+            "NodeId": 27,
             "PinId": ""
           },
           "Id": "y",
@@ -645,7 +594,7 @@
         },
         {
           "Connection": {
-            "NodeId": 3,
+            "NodeId": 27,
             "PinId": ""
           },
           "Id": "y",
@@ -695,6 +644,32 @@
       "EnterPins": [],
       "ExitPins": [],
       "Id": 26
+    },
+    {
+      "Type": "1-float",
+      "Name": "1-float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 1,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 27
     }
   ],
   "Groups": [],
@@ -702,16 +677,16 @@
     "Nodes": [
       {
         "NodeId": 1,
-        "X": -819.025146,
-        "Y": -725.468933,
+        "X": -1026.62512,
+        "Y": -717.0689,
         "Width": 172.0,
         "Height": 37.96
       },
       {
-        "NodeId": 3,
-        "X": -675.108459,
-        "Y": -1007.65613,
-        "Width": 141.676666,
+        "NodeId": 13,
+        "X": 347.72464,
+        "Y": -373.989624,
+        "Width": 142.286667,
         "Height": 108.0
       },
       {
@@ -719,6 +694,13 @@
         "X": -919.66394,
         "Y": -1046.3783,
         "Width": 184.0,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 12,
+        "X": -360.208527,
+        "Y": -1083.35608,
+        "Width": 142.286667,
         "Height": 108.0
       },
       {
@@ -750,16 +732,16 @@
         "Height": 37.96
       },
       {
-        "NodeId": 12,
-        "X": -368.608521,
-        "Y": -1100.15613,
-        "Width": 142.286667,
-        "Height": 108.0
+        "NodeId": 19,
+        "X": -734.608459,
+        "Y": -156.823013,
+        "Width": 219.073334,
+        "Height": 37.96
       },
       {
-        "NodeId": 13,
-        "X": 347.72464,
-        "Y": -373.989624,
+        "NodeId": 23,
+        "X": 52.39138,
+        "Y": -937.8228,
         "Width": 142.286667,
         "Height": 108.0
       },
@@ -772,8 +754,8 @@
       },
       {
         "NodeId": 15,
-        "X": -168.608566,
-        "Y": -831.9895,
+        "X": -172.208572,
+        "Y": -829.5895,
         "Width": 142.286667,
         "Height": 108.0
       },
@@ -799,13 +781,6 @@
         "Height": 108.0
       },
       {
-        "NodeId": 19,
-        "X": -734.608459,
-        "Y": -156.823013,
-        "Width": 219.073334,
-        "Height": 37.96
-      },
-      {
         "NodeId": 20,
         "X": -453.608521,
         "Y": -83.82304,
@@ -827,13 +802,6 @@
         "Height": 108.0
       },
       {
-        "NodeId": 23,
-        "X": 52.39138,
-        "Y": -937.8228,
-        "Width": 142.286667,
-        "Height": 108.0
-      },
-      {
         "NodeId": 24,
         "X": 16.3913879,
         "Y": -4.8230505,
@@ -842,8 +810,8 @@
       },
       {
         "NodeId": 25,
-        "X": -193.608566,
-        "Y": -434.822968,
+        "X": -264.408569,
+        "Y": -419.222961,
         "Width": 142.286667,
         "Height": 108.0
       },
@@ -852,6 +820,13 @@
         "X": 20.391386,
         "Y": -393.822968,
         "Width": 142.286667,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 27,
+        "X": -649.0435,
+        "Y": -886.1228,
+        "Width": 122.166664,
         "Height": 108.0
       }
     ]

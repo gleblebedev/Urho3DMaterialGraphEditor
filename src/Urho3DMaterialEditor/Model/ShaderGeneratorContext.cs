@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Toe.Scripting;
 using Toe.Scripting.Helpers;
+using Urho;
 using NodeHelper = Toe.Scripting.Helpers.NodeHelper<Urho3DMaterialEditor.Model.TranslatedMaterialGraph.NodeInfo>;
 
 namespace Urho3DMaterialEditor.Model
 {
     public class ShaderGeneratorContext
     {
+        private readonly CullMode _cull = Urho.CullMode.Ccw;
+        private readonly CullMode _shadowCull = Urho.CullMode.Ccw;
+        private readonly FillMode _fill = Urho.FillMode.Solid;
         public const string BasePass = "BASEPASS";
         public const string AlphaPass = "ALPHAPASS";
         public const string LightPass = "LIGHTPASS";
@@ -24,6 +29,21 @@ namespace Urho3DMaterialEditor.Model
         {
             Name = name;
 
+            foreach (var nodeHelper in graph.Nodes)
+            {
+                switch (nodeHelper.Type)
+                {
+                    case NodeTypes.Cull:
+                        ParseEnumValue(nodeHelper.Value, ref _cull);
+                        break;
+                    case NodeTypes.ShadowCull:
+                        ParseEnumValue(nodeHelper.Value, ref _shadowCull);
+                        break;
+                    case NodeTypes.Fill:
+                        ParseEnumValue(nodeHelper.Value, ref _fill);
+                        break;
+                }
+            }
             Parameters = graph.Nodes.Where(_ => NodeTypes.IsParameter(_.Type)).ToList();
             Samplers = graph.Nodes.Where(_ => NodeTypes.IsSampler(_.Type)).ToList();
 
@@ -38,10 +58,23 @@ namespace Urho3DMaterialEditor.Model
             }
         }
 
+        private void ParseEnumValue<T>(string value, ref T cull)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return;
+            cull = (T)Enum.Parse(typeof(T), value);
+        }
+
         public IList<Pass> Passes { get; } = new List<Pass>();
         public IList<NodeHelper> Parameters { get; set; }
         public IList<NodeHelper> Samplers { get; set; }
         public string Name { get; }
+
+        public Urho.CullMode Cull => _cull;
+
+        public Urho.CullMode ShadowCull => _shadowCull;
+
+        public Urho.FillMode Fill => _fill;
 
         private NodeHelper<TranslatedMaterialGraph.NodeInfo> GetOrAdd(
             ScriptHelper<TranslatedMaterialGraph.NodeInfo> graph, string nodeType)

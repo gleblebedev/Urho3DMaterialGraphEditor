@@ -495,6 +495,7 @@ namespace Urho3DMaterialEditor.Model
                 case NodeTypes.Special.FragData3:
                 case NodeTypes.Special.ShadowMapOutput:
                 case NodeTypes.FragCoord:
+                case NodeTypes.FrontFacing:
                     return true;
             }
 

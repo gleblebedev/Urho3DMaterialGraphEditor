@@ -990,7 +990,7 @@
       "InputPins": [
         {
           "Connection": {
-            "NodeId": 45,
+            "NodeId": 51,
             "PinId": ""
           },
           "Id": "X",
@@ -1021,6 +1021,89 @@
       "EnterPins": [],
       "ExitPins": [],
       "Id": 47
+    },
+    {
+      "Type": "cull",
+      "Name": "cull",
+      "Value": "None",
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 48
+    },
+    {
+      "Type": "shadowCull",
+      "Name": "shadowCull",
+      "Value": "None",
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 49
+    },
+    {
+      "Type": "frontFacing",
+      "Name": "frontFacing",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "bool"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 50
+    },
+    {
+      "Type": "select(float)",
+      "Name": "select(float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 50,
+            "PinId": ""
+          },
+          "Id": "condition",
+          "Type": "bool"
+        },
+        {
+          "Connection": {
+            "NodeId": 46,
+            "PinId": ""
+          },
+          "Id": "true",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 45,
+            "PinId": ""
+          },
+          "Id": "false",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 51
     }
   ],
   "Groups": [
@@ -1288,6 +1371,34 @@
         "Y": 11.9599819,
         "Width": 233.816666,
         "Height": 117.84
+      },
+      {
+        "NodeId": 48,
+        "X": 716.008,
+        "Y": 320.496,
+        "Width": 184.0,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 49,
+        "X": 955.048035,
+        "Y": 316.176,
+        "Width": 184.0,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 50,
+        "X": 1675.0481,
+        "Y": -434.064026,
+        "Width": 148.796661,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 51,
+        "X": 1880.968,
+        "Y": -307.344025,
+        "Width": 151.38,
+        "Height": 108.0
       }
     ]
   }

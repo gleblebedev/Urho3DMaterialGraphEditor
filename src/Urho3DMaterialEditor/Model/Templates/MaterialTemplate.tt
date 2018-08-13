@@ -23,9 +23,9 @@
 <#  
        }  
 #>  
-	<cull value="ccw" />
-	<shadowcull value="ccw" />
-	<fill value="solid" />
+	<cull value="<#= Context.Cull.ToString().ToLower() #>" />
+	<shadowcull value="<#= Context.ShadowCull.ToString().ToLower() #>" />
+	<fill value="<#= Context.Fill.ToString().ToLower() #>" />
 	<depthbias constant="0" slopescaled="0" />
 	<renderorder value="128" />
 	<occlusion enable="false" />

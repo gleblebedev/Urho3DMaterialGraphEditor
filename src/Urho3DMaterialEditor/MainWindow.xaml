@@ -110,6 +110,9 @@
             </Grid.ColumnDefinitions>
             <views:ScriptView DataContext="{Binding ScriptViewModel}">
                 <views:ScriptView.Resources>
+                    <DataTemplate DataType="{x:Type viewModels:EnumViewModel}">
+                        <views1:EnumNodeView />
+                    </DataTemplate>
                     <DataTemplate DataType="{x:Type viewModels:Vector4ViewModel}">
                         <views1:Vector4NodeView />
                     </DataTemplate>

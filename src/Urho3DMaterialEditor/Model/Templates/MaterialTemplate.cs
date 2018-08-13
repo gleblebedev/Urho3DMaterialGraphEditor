@@ -98,9 +98,29 @@ namespace Urho3DMaterialEditor.Model.Templates
             
             #line default
             #line hidden
-            this.Write("  \r\n\t<cull value=\"ccw\" />\n\t<shadowcull value=\"ccw\" />\n\t<fill value=\"solid\" />\r\n\t<" +
-                    "depthbias constant=\"0\" slopescaled=\"0\" />\r\n\t<renderorder value=\"128\" />\r\n\t<occlu" +
-                    "sion enable=\"false\" />\r\n</material>\r\n");
+            this.Write("  \r\n\t<cull value=\"");
+            
+            #line 26 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\MaterialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Context.Cull.ToString().ToLower()));
+            
+            #line default
+            #line hidden
+            this.Write("\" />\r\n\t<shadowcull value=\"");
+            
+            #line 27 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\MaterialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Context.ShadowCull.ToString().ToLower()));
+            
+            #line default
+            #line hidden
+            this.Write("\" />\r\n\t<fill value=\"");
+            
+            #line 28 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\MaterialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Context.Fill.ToString().ToLower()));
+            
+            #line default
+            #line hidden
+            this.Write("\" />\r\n\t<depthbias constant=\"0\" slopescaled=\"0\" />\r\n\t<renderorder value=\"128\" />\r\n" +
+                    "\t<occlusion enable=\"false\" />\r\n</material>\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

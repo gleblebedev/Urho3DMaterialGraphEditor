@@ -68,6 +68,17 @@ namespace Urho3DMaterialEditor.Model
                 .ExternallyOwned()
                 .InstancePerDependency();
 
+            builder.RegisterType<EnumViewModel<Urho.CullMode>>()
+                .Named<NodeViewModel>(NodeTypes.Cull)
+                .Named<NodeViewModel>(NodeTypes.ShadowCull)
+                .ExternallyOwned()
+                .InstancePerDependency();
+
+            builder.RegisterType<EnumViewModel<Urho.FillMode>>()
+                .Named<NodeViewModel>(NodeTypes.Fill)
+                .ExternallyOwned()
+                .InstancePerDependency();
+
             builder.RegisterType<StringViewModel>()
                 .Named<NodeViewModel>(NodeTypes.Define)
                 .Named<NodeViewModel>(NodeTypes.Undefine)

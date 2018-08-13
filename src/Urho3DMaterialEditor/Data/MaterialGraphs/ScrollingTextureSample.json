@@ -9,88 +9,6 @@
   },
   "Nodes": [
     {
-      "Type": "uniform(float)",
-      "Name": "ElapsedTime",
-      "Value": null,
-      "GroupId": 0,
-      "Category": 5,
-      "InputPins": [],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "float"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 37
-    },
-    {
-      "Type": "vec2+vec2",
-      "Name": "vec2+vec2",
-      "Value": null,
-      "GroupId": 0,
-      "Category": 1,
-      "InputPins": [
-        {
-          "Connection": {
-            "NodeId": 38,
-            "PinId": ""
-          },
-          "Id": "x",
-          "Type": "vec2"
-        },
-        {
-          "Connection": {
-            "NodeId": 7,
-            "PinId": "TexCoord"
-          },
-          "Id": "y",
-          "Type": "vec2"
-        }
-      ],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "vec2"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 39
-    },
-    {
-      "Type": "makeVec2",
-      "Name": "vec2(float,float)",
-      "Value": null,
-      "GroupId": 0,
-      "Category": 1,
-      "InputPins": [
-        {
-          "Connection": {
-            "NodeId": 37,
-            "PinId": ""
-          },
-          "Id": "X",
-          "Type": "float"
-        },
-        {
-          "Connection": null,
-          "Id": "Y",
-          "Type": "float"
-        }
-      ],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "vec2"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 38
-    },
-    {
       "Type": "texture2D(sampler2D,vec2)",
       "Name": "texture2D(sampler2D,vec2)",
       "Value": null,
@@ -379,7 +297,7 @@
       "InputPins": [
         {
           "Connection": {
-            "NodeId": 39,
+            "NodeId": 41,
             "PinId": ""
           },
           "Id": "textCoord",
@@ -411,32 +329,62 @@
       "EnterPins": [],
       "ExitPins": [],
       "Id": 40
+    },
+    {
+      "Type": "panner",
+      "Name": "panner",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 7,
+            "PinId": "TexCoord"
+          },
+          "Id": "uv",
+          "Type": "vec2"
+        },
+        {
+          "Connection": {
+            "NodeId": 42,
+            "PinId": ""
+          },
+          "Id": "speed",
+          "Type": "vec2"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 41
+    },
+    {
+      "Type": "vec2",
+      "Name": "vec2",
+      "Value": "1.0 0.0",
+      "GroupId": 0,
+      "Category": 6,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec2"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 42
     }
   ],
   "Groups": [],
   "Layout": {
     "Nodes": [
-      {
-        "NodeId": 37,
-        "X": -242.160049,
-        "Y": 283.36,
-        "Width": 160.823334,
-        "Height": 108.0
-      },
-      {
-        "NodeId": 39,
-        "X": 359.759979,
-        "Y": 434.56,
-        "Width": 143.57,
-        "Height": 108.0
-      },
-      {
-        "NodeId": 38,
-        "X": 123.599968,
-        "Y": 436.0,
-        "Width": 174.483337,
-        "Height": 108.0
-      },
       {
         "NodeId": 36,
         "X": 879.64,
@@ -505,6 +453,20 @@
         "X": 621.0,
         "Y": 439.04,
         "Width": 218.093338,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 41,
+        "X": 280.0,
+        "Y": 432.04,
+        "Width": 123.57,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 42,
+        "X": -37.0,
+        "Y": 455.04,
+        "Width": 184.0,
         "Height": 108.0
       }
     ]
