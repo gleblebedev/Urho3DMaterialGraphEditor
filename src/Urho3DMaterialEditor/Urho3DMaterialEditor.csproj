@@ -456,6 +456,9 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getDiffuseAndShadow.json" />
     <EmbeddedResource Include="Data\MaterialGraphs\ClipByPlane.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\rotate%28vec2%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomial%28float,vec2%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomial%28float,vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomial%28float,vec4%29.json" />
     <None Include="Data\MaterialGraphs\CheckerboardTransparency.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -471,6 +474,9 @@
     <None Include="Data\MaterialGraphs\ScrollingTextureSample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Data\MaterialGraphs\Snow.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Data\MaterialGraphs\TransparentSample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -482,6 +488,9 @@
     </None>
     <None Include="Data\Models\Box.mdl" />
     <EmbeddedResource Include="Data\NewMaterial.json" />
+    <None Include="Data\Models\ParticleBox.mdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
