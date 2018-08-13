@@ -459,6 +459,11 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomial%28float,vec2%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomial%28float,vec3%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomial%28float,vec4%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\1-float.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\1-vec2.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\1-vec3.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\1-vec4.json" />
+    <None Include="Data\GraphFunctions\Functions\Transform\panner.json" />
     <None Include="Data\MaterialGraphs\CheckerboardTransparency.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
