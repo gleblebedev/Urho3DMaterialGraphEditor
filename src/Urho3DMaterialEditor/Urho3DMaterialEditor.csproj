@@ -476,6 +476,15 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\cubicBell.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\quinticBell.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getReflectionColorWithBiasAt.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getAtten%28vec3,vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\toCamera%28vec3%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\burleyDiffuse%28vec3,float,float,float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\customLambertianDiffuse%28vec3,float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\getBRDF.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\fresnel%28vec3,float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\neumannVisibility%28float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\visibility%28float,float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\smithGGXSchlickVisibility%28float,float,float%29.json" />
     <None Include="Data\MaterialGraphs\Butterflies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

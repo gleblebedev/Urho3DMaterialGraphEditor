@@ -271,6 +271,9 @@ namespace Urho3DMaterialEditor.Model
             var renderer = Renderer;
             var rp = new RenderPath();
             rp.Load(ResourceCache.GetXmlFile(renderPath ?? "RenderPaths/Forward.xml"));
+            rp.Append(ResourceCache.GetXmlFile("PostProcess/Bloom.xml"));
+            rp.Append(ResourceCache.GetXmlFile("PostProcess/FXAA2.xml"));
+            rp.SetShaderParameter("BloomMix", new Vector2(0.9f, 0.6f));
             renderer.SetViewport(0, new Viewport(Context, _scene, CameraNode.GetComponent<Camera>(), rp));
         }
 

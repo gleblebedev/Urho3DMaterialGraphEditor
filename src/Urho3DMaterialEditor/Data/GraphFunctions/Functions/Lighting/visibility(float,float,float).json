@@ -1,0 +1,230 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "connect(float)",
+      "Name": "NdotL",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 1
+    },
+    {
+      "Type": "connect(float)",
+      "Name": "NdotV",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 2
+    },
+    {
+      "Type": "connect(float)",
+      "Name": "roughness",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 3
+    },
+    {
+      "Type": "connect(float)",
+      "Name": "",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 5,
+            "PinId": ""
+          },
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 4
+    },
+    {
+      "Type": "neumannVisibility(float,float)",
+      "Name": "neumannVisibility(float,float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 1,
+            "PinId": ""
+          },
+          "Id": "NdotL",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 2,
+            "PinId": ""
+          },
+          "Id": "NdotV",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 5
+    },
+    {
+      "Type": "smithGGXSchlickVisibility(float,float,float)",
+      "Name": "smithGGXSchlickVisibility(float,float,float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 1,
+            "PinId": ""
+          },
+          "Id": "NdotL",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 2,
+            "PinId": ""
+          },
+          "Id": "NdotV",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 3,
+            "PinId": ""
+          },
+          "Id": "roughness",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 6
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 1,
+        "X": 2481.0,
+        "Y": 613.04,
+        "Width": 189.05,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 2,
+        "X": 2479.0,
+        "Y": 679.04,
+        "Width": 190.92,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 3,
+        "X": 2485.0,
+        "Y": 752.04,
+        "Width": 212.293335,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 4,
+        "X": 3115.0,
+        "Y": 742.54,
+        "Width": 172.0,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 5,
+        "X": 2813.37,
+        "Y": 649.8551,
+        "Width": 250.823334,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 6,
+        "X": 2858.331,
+        "Y": 854.3205,
+        "Width": 323.006653,
+        "Height": 108.0
+      }
+    ]
+  }
+}

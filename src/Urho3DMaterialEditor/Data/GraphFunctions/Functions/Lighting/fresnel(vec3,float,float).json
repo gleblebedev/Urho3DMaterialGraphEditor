@@ -1,0 +1,222 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "connect(vec3)",
+      "Name": "specularRGB",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 1
+    },
+    {
+      "Type": "connect(float)",
+      "Name": "VdotH",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 2
+    },
+    {
+      "Type": "connect(float)",
+      "Name": "LdotH",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 3
+    },
+    {
+      "Type": "schlickFresnel(vec3,float)",
+      "Name": "schlickFresnel(vec3,float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 1,
+            "PinId": ""
+          },
+          "Id": "specularRGB",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 2,
+            "PinId": ""
+          },
+          "Id": "VdotH",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 4
+    },
+    {
+      "Type": "schlickFresnelCustom(vec3,float)",
+      "Name": "schlickFresnelCustom(vec3,float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 1,
+            "PinId": ""
+          },
+          "Id": "specularRGB",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 3,
+            "PinId": ""
+          },
+          "Id": "LdotH",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 5
+    },
+    {
+      "Type": "connect(vec3)",
+      "Name": "",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 5,
+            "PinId": ""
+          },
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 6
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 1,
+        "X": 1626.60266,
+        "Y": 828.9293,
+        "Width": 224.816666,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 2,
+        "X": 1669.37073,
+        "Y": 922.577332,
+        "Width": 189.853333,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 3,
+        "X": 1668.17065,
+        "Y": 1004.17731,
+        "Width": 188.763336,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 4,
+        "X": 2126.57056,
+        "Y": 952.577332,
+        "Width": 225.53,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 5,
+        "X": 2132.57056,
+        "Y": 1095.37732,
+        "Width": 268.51,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 6,
+        "X": 2552.57056,
+        "Y": 1113.37732,
+        "Width": 172.0,
+        "Height": 37.96
+      }
+    ]
+  }
+}

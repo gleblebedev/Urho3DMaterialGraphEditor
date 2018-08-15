@@ -1,0 +1,307 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "getAttenDirect",
+      "Name": "getAttenDirect",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 7,
+            "PinId": ""
+          },
+          "Id": "worldNormal",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 1
+    },
+    {
+      "Type": "getAttenPoint",
+      "Name": "getAttenPoint",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 7,
+            "PinId": ""
+          },
+          "Id": "worldNormal",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 8,
+            "PinId": ""
+          },
+          "Id": "worldPos",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 2
+    },
+    {
+      "Type": "getAttenSpot",
+      "Name": "getAttenSpot",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 7,
+            "PinId": ""
+          },
+          "Id": "worldNormal",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 8,
+            "PinId": ""
+          },
+          "Id": "worldPos",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 3
+    },
+    {
+      "Type": "ifdef(float)",
+      "Name": "ifdef(float)",
+      "Value": "DIRLIGHT",
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 1,
+            "PinId": ""
+          },
+          "Id": "defined",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 6,
+            "PinId": ""
+          },
+          "Id": "not defined",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 4
+    },
+    {
+      "Type": "connect(float)",
+      "Name": "",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 4,
+            "PinId": ""
+          },
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 5
+    },
+    {
+      "Type": "ifdef(float)",
+      "Name": "ifdef(float)",
+      "Value": "SPOTLIGHT",
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 3,
+            "PinId": ""
+          },
+          "Id": "defined",
+          "Type": "float"
+        },
+        {
+          "Connection": {
+            "NodeId": 2,
+            "PinId": ""
+          },
+          "Id": "not defined",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 6
+    },
+    {
+      "Type": "connect(vec3)",
+      "Name": "perPixelNormal",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 7
+    },
+    {
+      "Type": "connect(vec3)",
+      "Name": "worldPos",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 8
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 1,
+        "X": 560.0,
+        "Y": 333.04,
+        "Width": 167.746674,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 2,
+        "X": 559.0,
+        "Y": 589.040039,
+        "Width": 163.526672,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 3,
+        "X": 560.0,
+        "Y": 462.039978,
+        "Width": 160.01,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 4,
+        "X": 1087.0,
+        "Y": 253.04,
+        "Width": 239.313339,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 5,
+        "X": 1451.0,
+        "Y": 298.04,
+        "Width": 172.0,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 6,
+        "X": 825.0,
+        "Y": 398.04,
+        "Width": 239.313339,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 7,
+        "X": 256.0,
+        "Y": 313.04,
+        "Width": 242.303329,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 8,
+        "X": 243.0,
+        "Y": 458.04,
+        "Width": 206.093338,
+        "Height": 37.96
+      }
+    ]
+  }
+}

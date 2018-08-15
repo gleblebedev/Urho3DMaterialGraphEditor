@@ -20,12 +20,20 @@ namespace Urho3DMaterialEditor.Model
             Type = Name = FilterName(segments[segments.Length - 2]);
             _script = script.Clone();
             _script.ClearGroups();
+
+
+            var nodesUsedInGraph = new HashSet<int>(_script.Nodes.SelectMany(_ => _.InputPins).Select(_ => _.Connection).Where(_ => _ != null).Select(_=>_.NodeId));
+
             foreach (var scriptNode in _script.Nodes)
+            {
                 if (NodeTypes.IsConnectorType(scriptNode.Type))
+                {
                     if (scriptNode.InputPins[0].Connection == null)
                         _inputPins.Add(new PinWithConnection(scriptNode.Name, scriptNode.InputPins[0].Type));
-                    else
+                    else if (!nodesUsedInGraph.Contains(scriptNode.Id))
                         _outputPins.Add(new Pin(scriptNode.Name, scriptNode.OutputPins[0].Type));
+                }
+            }
 
             InputTypes = _inputPins.Select(_ => _.Type).Distinct().ToList();
             OutputTypes = _outputPins.Select(_ => _.Type).Distinct().ToList();
@@ -72,13 +80,16 @@ namespace Urho3DMaterialEditor.Model
         public void Inline(ScriptHelper<TranslatedMaterialGraph.NodeInfo> script,
             NodeHelper<TranslatedMaterialGraph.NodeInfo> scriptNode)
         {
-            var nodes = script.Merge(_script);
+            var nodes = script.Merge(_script).ToList();
 
             foreach (var node in nodes)
             {
                 node.Id = scriptNode.Id;
                 if (NodeTypes.IsConnectorType(node.Type))
-                    if (node.InputPins[0].Links.Any())
+                {
+                    var hasInputConnections = node.InputPins[0].Links.Any();
+                    var hasOutputConnections = node.OutputPins[0].Links.Any();
+                    if (!hasOutputConnections && hasInputConnections)
                     {
                         var pin = scriptNode.OutputPins[node.Name];
                         if (pin == null)
@@ -90,7 +101,7 @@ namespace Urho3DMaterialEditor.Model
                                 " but found " + pin.Type);
                         script.CopyConnections(pin, node.OutputPins[0]);
                     }
-                    else
+                    else if (hasOutputConnections && !hasInputConnections)
                     {
                         var pin = scriptNode.InputPins[node.Name];
                         if (pin == null)
@@ -102,6 +113,7 @@ namespace Urho3DMaterialEditor.Model
                                 " but found " + pin.Type);
                         script.CopyConnections(pin, node.InputPins[0]);
                     }
+                }
             }
 
             script.Nodes.Remove(scriptNode);

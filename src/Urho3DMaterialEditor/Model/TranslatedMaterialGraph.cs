@@ -476,6 +476,11 @@ namespace Urho3DMaterialEditor.Model
 
         private bool IsPixelShaderOnly(NodeHelper scriptNode)
         {
+            if (NodeTypes.IsUniform(scriptNode.Type))
+            {
+                if (scriptNode.Name.EndsWith("PS"))
+                    return true;
+            }
             switch (scriptNode.Type)
             {
                 case NodeTypes.Sampler2D:

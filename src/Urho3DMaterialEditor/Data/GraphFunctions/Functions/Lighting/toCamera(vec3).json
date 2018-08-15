@@ -1,0 +1,178 @@
+{
+  "Version": {
+    "Major": 0,
+    "Minor": 0,
+    "Build": 0,
+    "Revision": 0,
+    "MajorRevision": 0,
+    "MinorRevision": 0
+  },
+  "Nodes": [
+    {
+      "Type": "connect(vec3)",
+      "Name": "worldPos",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": null,
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 1
+    },
+    {
+      "Type": "uniform(vec3)",
+      "Name": "CameraPosPS",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 5,
+      "InputPins": [],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 2
+    },
+    {
+      "Type": "vec3-vec3",
+      "Name": "vec3-vec3",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 1,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "vec3"
+        },
+        {
+          "Connection": {
+            "NodeId": 2,
+            "PinId": ""
+          },
+          "Id": "y",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 3
+    },
+    {
+      "Type": "normalize(vec3)",
+      "Name": "normalize(vec3)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 3,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 4
+    },
+    {
+      "Type": "connect(vec3)",
+      "Name": "",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 7,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 4,
+            "PinId": ""
+          },
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "vec3"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 6
+    }
+  ],
+  "Groups": [],
+  "Layout": {
+    "Nodes": [
+      {
+        "NodeId": 1,
+        "X": 328.0,
+        "Y": 269.04,
+        "Width": 206.093338,
+        "Height": 37.96
+      },
+      {
+        "NodeId": 2,
+        "X": 192.0,
+        "Y": 429.04,
+        "Width": 166.39,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 3,
+        "X": 612.0,
+        "Y": 320.04,
+        "Width": 139.936661,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 4,
+        "X": 831.0,
+        "Y": 316.04,
+        "Width": 174.32,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 6,
+        "X": 1092.0,
+        "Y": 357.04,
+        "Width": 172.0,
+        "Height": 37.96
+      }
+    ]
+  }
+}
