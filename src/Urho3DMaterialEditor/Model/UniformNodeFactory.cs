@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using Toe.Scripting;
 
 namespace Urho3DMaterialEditor.Model
@@ -8,8 +9,8 @@ namespace Urho3DMaterialEditor.Model
         private readonly NodeCategory _category;
         private readonly string _pinType;
 
-        public UniformNodeFactory(string pinType, NodeCategory category, string name) : base(
-            NodeTypes.MakeType(NodeTypes.UniformPrefix, pinType), name, category.ToString())
+        public UniformNodeFactory(string pinType, NodeCategory category, string name, NodeFactoryVisibility visibility = NodeFactoryVisibility.Visible) : base(
+            NodeTypes.MakeType(NodeTypes.UniformPrefix, pinType), name, category.ToString(), visibility)
         {
             _pinType = pinType == PinTypes.Special.Color ? PinTypes.Vec4 : pinType;
             _category = category;

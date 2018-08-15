@@ -73,9 +73,12 @@ namespace Urho3DMaterialEditor.Model
             Add(new BuildInVariableNodeFactory(PinTypes.Bool, NodeCategory.Parameter, NodeTypes.FrontFacing));
 
 #if DEBUG
-            foreach (var parameter in NodeTypes._uniforms)
-                Add(new UniformNodeFactory(parameter.Value, NodeCategory.Parameter, parameter.Value + "Uniform"));
+            var debugVisibility = NodeFactoryVisibility.Visible;
+#else
+            var debugVisibility = NodeFactoryVisibility.Hidden;
 #endif
+            foreach (var parameter in NodeTypes._uniforms)
+                Add(new UniformNodeFactory(parameter.Value, NodeCategory.Parameter, parameter.Value + "Uniform", debugVisibility));
 
 
             Add(new OutputNodeFactory(NodeTypes.AmbientColor, "ambientColor", PinTypes.Vec4));
@@ -93,15 +96,14 @@ namespace Urho3DMaterialEditor.Model
 
             foreach (var connector in NodeTypes._connectors)
                 Add(new ConnectorNodeFactory(connector.Key, "Connect " + connector.Value, connector.Value));
-#if DEBUG
             foreach (var attribute in NodeTypes._attributes)
-                Add(new AttributeNodeFactory(attribute.Key, attribute.Value + "Attribute", attribute.Value));
-            Add(new OutputNodeFactory(NodeTypes.Special.FinalColor, "finalColor", PinTypes.Vec4));
-            Add(new OutputNodeFactory(NodeTypes.Special.FragData0, "fragData[0]", PinTypes.Vec4));
-            Add(new OutputNodeFactory(NodeTypes.Special.FragData1, "fragData[1]", PinTypes.Vec4));
-            Add(new OutputNodeFactory(NodeTypes.Special.FragData2, "fragData[2]", PinTypes.Vec4));
-            Add(new OutputNodeFactory(NodeTypes.Special.FragData3, "fragData[3]", PinTypes.Vec4));
-#endif
+                Add(new AttributeNodeFactory(attribute.Key, attribute.Value + "Attribute", attribute.Value, debugVisibility));
+            Add(new OutputNodeFactory(NodeTypes.Special.FinalColor, "finalColor", PinTypes.Vec4, debugVisibility));
+            Add(new OutputNodeFactory(NodeTypes.Special.FragData0, "fragData[0]", PinTypes.Vec4, debugVisibility));
+            Add(new OutputNodeFactory(NodeTypes.Special.FragData1, "fragData[1]", PinTypes.Vec4, debugVisibility));
+            Add(new OutputNodeFactory(NodeTypes.Special.FragData2, "fragData[2]", PinTypes.Vec4, debugVisibility));
+            Add(new OutputNodeFactory(NodeTypes.Special.FragData3, "fragData[3]", PinTypes.Vec4, debugVisibility));
+
             Add(new MarkerNodeFactory(NodeTypes.Cull, NodeTypes.Cull, Urho.CullMode.Ccw.ToString()));
             Add(new MarkerNodeFactory(NodeTypes.ShadowCull, NodeTypes.ShadowCull, Urho.CullMode.Ccw.ToString()));
             Add(new MarkerNodeFactory(NodeTypes.Fill, NodeTypes.Fill, Urho.FillMode.Solid.ToString()));

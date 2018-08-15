@@ -1,26 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Toe.Scripting;
+using Urho;
 
 namespace Urho3DMaterialEditor.Model
 {
     public abstract class AbstractNodeFactory : INodeFactory
     {
-        public AbstractNodeFactory(string type, string name, string category) : this(type, name, new[] {category})
+        public AbstractNodeFactory(string type, string name, string category, NodeFactoryVisibility visibility = NodeFactoryVisibility.Visible) : this(type, name, new[] {category}, visibility)
         {
         }
 
-        public AbstractNodeFactory(string type, string name, string[] category)
+        public AbstractNodeFactory(string type, string name, string[] category, NodeFactoryVisibility visibility = NodeFactoryVisibility.Visible)
         {
             Type = type;
             Name = name;
             Category = category;
+            Visibility = visibility;
         }
 
         public string Type { get; }
 
         public string Name { get; }
 
+        public NodeFactoryVisibility Visibility { get; }
 
         public string[] Category { get; }
 

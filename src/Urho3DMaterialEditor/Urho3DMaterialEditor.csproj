@@ -105,11 +105,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Toe.Scripting, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Toe.Scripting.0.1.0\lib\netstandard2.0\Toe.Scripting.dll</HintPath>
+    <Reference Include="Toe.Scripting, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Toe.Scripting.0.1.1\lib\netstandard2.0\Toe.Scripting.dll</HintPath>
     </Reference>
-    <Reference Include="Toe.Scripting.WPF, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Toe.Scripting.WPF.0.1.0\lib\net461\Toe.Scripting.WPF.dll</HintPath>
+    <Reference Include="Toe.Scripting.WPF, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Toe.Scripting.WPF.0.1.1\lib\net461\Toe.Scripting.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Urho, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UrhoSharp.1.8.93\lib\net45\Urho.dll</HintPath>
@@ -475,6 +475,7 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\random%28vec2%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\cubicBell.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\quinticBell.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getReflectionColorWithBiasAt.json" />
     <None Include="Data\MaterialGraphs\Butterflies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

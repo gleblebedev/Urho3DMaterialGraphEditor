@@ -7,8 +7,8 @@ namespace Urho3DMaterialEditor.Model
     {
         private readonly string _pinType;
 
-        public OutputNodeFactory(string type, string name, string pinType) : base(type, name,
-            MaterialNodeRegistry.Categories.Output)
+        public OutputNodeFactory(string type, string name, string pinType, NodeFactoryVisibility visibility = NodeFactoryVisibility.Visible) : base(type, name,
+            MaterialNodeRegistry.Categories.Output, visibility)
         {
             _pinType = pinType;
         }

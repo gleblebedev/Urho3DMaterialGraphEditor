@@ -7,8 +7,8 @@ namespace Urho3DMaterialEditor.Model
     {
         private readonly string _pinType;
 
-        public AttributeNodeFactory(string type, string name, string pinType) : base(type, name,
-            new[] {NodeTypes.Categories.Data})
+        public AttributeNodeFactory(string type, string name, string pinType, NodeFactoryVisibility visibility = NodeFactoryVisibility.Visible) : base(type, name,
+            new[] {NodeTypes.Categories.Data}, visibility)
         {
             _pinType = pinType == PinTypes.Special.Color ? PinTypes.Vec4 : pinType;
         }

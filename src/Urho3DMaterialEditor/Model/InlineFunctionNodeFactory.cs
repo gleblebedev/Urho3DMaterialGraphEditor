@@ -11,6 +11,7 @@ namespace Urho3DMaterialEditor.Model
         private readonly Script _script;
         private readonly IList<PinWithConnection> _inputPins = new List<PinWithConnection>();
         private readonly IList<Pin> _outputPins = new List<Pin>();
+        private NodeFactoryVisibility _visibility = NodeFactoryVisibility.Visible;
 
         public InlineFunctionNodeFactory(string name, Script script)
         {
@@ -38,6 +39,8 @@ namespace Urho3DMaterialEditor.Model
         public string Name { get; }
 
         public string[] Category { get; }
+
+        public NodeFactoryVisibility Visibility => _visibility;
 
         public IEnumerable<string> InputTypes { get; }
 
