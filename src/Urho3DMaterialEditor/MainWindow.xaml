@@ -48,6 +48,7 @@
                 <MenuItem Header="Ungroup Selected" Command="{Binding ScriptViewModel.UngroupSelectedCommand}" />
             </MenuItem>
             <MenuItem Header="View">
+                <MenuItem Header="Centering graph" Command="{Binding CenterGraphCommand}" />
                 <MenuItem Header="View Final Graph" Command="{Binding RunScriptAnalizerCommand}" />
                 <MenuItem Header="Rearrange" Command="{Binding RearrangeCommand}" />
                 <Separator />

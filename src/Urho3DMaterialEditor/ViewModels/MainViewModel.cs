@@ -11,6 +11,7 @@ using System.Reactive.Subjects;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -32,7 +33,7 @@ namespace Urho3DMaterialEditor.ViewModels
         private readonly UrhoContext _context;
         private readonly ShaderGenerator _generator;
         private readonly ScriptingCommand _rearrangeCommand;
-
+        private readonly ScriptingCommand _centerGraphCommand;
         private readonly SerialDisposable _testSubscription = new SerialDisposable();
         private readonly GraphValidator _validator;
         private PreviewApplication _application;
@@ -78,6 +79,7 @@ namespace Urho3DMaterialEditor.ViewModels
             SetRenderPathCommand = new ScriptingCommand<string>(SetRenderPath);
             SetShadowQualityCommand = new ScriptingCommand<string>(SetShadowQuality);
             _rearrangeCommand = new ScriptingCommand(() => ScriptViewModel.Rearrange());
+            _centerGraphCommand = new ScriptingCommand(() => ToCenter());
             SaveSelectedAsCommand = new ScriptingCommand(SaveSelectedAs);
             RunScriptAnalizerCommand = new ScriptingCommand(RunScriptAnalizer);
             TestAllNodeTypesCommand = new ScriptingCommand(TestAllNodeTypes);
@@ -96,6 +98,29 @@ namespace Urho3DMaterialEditor.ViewModels
             ScriptViewModel.SelectionChanged += OnScriptViewModelOnSelectionChanged;
             New();
         }
+
+        private void ToCenter() {
+
+            double screenWidth = SystemParameters.PrimaryScreenWidth;
+            double screenHeght = SystemParameters.PrimaryScreenHeight;
+
+            var pn= ScriptViewModel.Nodes.Select(x => x.Position);
+ 
+            var minX = pn.Select(x => x.X).Min();
+            var maxX = pn.Select(x => x.X).Max();
+            var minY = pn.Select(x => x.Y).Min();
+            var maxY = pn.Select(x => x.Y).Max();
+
+            var aX = Math.Abs(minX - maxX);
+            var aY = Math.Abs(minY - maxY);
+
+            var zoo = Math.Min(screenWidth / aX, screenHeght / aY);
+
+            ScriptViewModel.ScaleMatrix = new Matrix(zoo, 0, 0, zoo, 0, 0);
+            ScriptViewModel.Position = new Point(aX/4,aY/4);
+
+        }
+
         public float CameraDistance
         {
             get => _cameraDistance;
@@ -118,7 +143,8 @@ namespace Urho3DMaterialEditor.ViewModels
         public ScriptingCommand<string> SetShadowQualityCommand { get; set; }
 
         public ICommand RearrangeCommand => _rearrangeCommand;
-
+        public ICommand CenterGraphCommand => _centerGraphCommand;
+        
         public ScriptingCommand SaveAsCommand { get; set; }
         public ScriptingCommand ExportCommand { get; set; }
 
