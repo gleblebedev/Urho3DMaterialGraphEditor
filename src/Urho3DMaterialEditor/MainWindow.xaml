@@ -102,6 +102,7 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button MinWidth="24" MinHeight="24" Margin="2" Command="{Binding ScriptViewModel.UndoCommand}">&#x21BA;</Button>
             <Button MinWidth="24" MinHeight="24" Margin="2" Command="{Binding ScriptViewModel.RedoCommand}">&#x21BB;</Button>
+            <ToggleButton MinWidth="24" MinHeight="24" Margin="2" Content="txt" IsChecked="False" Click="ToggleButton_Click"/>
         </StackPanel>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -109,55 +110,67 @@
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <views:ScriptView DataContext="{Binding ScriptViewModel}">
-                <views:ScriptView.Resources>
-                    <DataTemplate DataType="{x:Type viewModels:EnumViewModel}">
-                        <views1:EnumNodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:Vector4ViewModel}">
-                        <views1:Vector4NodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:Vector3ViewModel}">
-                        <views1:Vector3NodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:Vector2ViewModel}">
-                        <views1:Vector2NodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:Mat4ViewModel}">
-                        <views1:Mat4NodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:Mat3ViewModel}">
-                        <views1:Mat3NodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:Mat2ViewModel}">
-                        <views1:Mat2NodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:ScalarViewModel}">
-                        <views1:ScalarNodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:IntViewModel}">
-                        <views1:IntNodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:IfDefViewModel}">
-                        <views1:StringNodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:StringViewModel}">
-                        <views1:StringNodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:SamplerViewModel}">
-                        <views1:SamplerNodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:SamplerCubeViewModel}">
-                        <views1:SamplerNodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:SpecularViewModel}">
-                        <views1:SpecularNodeView />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewModels:ColorViewModel}">
-                        <views1:ColorNodeView />
-                    </DataTemplate>
-                </views:ScriptView.Resources>
-            </views:ScriptView>
+            <Grid Grid.Row="0" Name="rowMn" SizeChanged="rowMn_SizeChanged">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="0"  Name="rowSh"/>
+                </Grid.RowDefinitions>
+                <views:ScriptView DataContext="{Binding ScriptViewModel}" Grid.Row="0">
+                    <views:ScriptView.Resources>
+                        <DataTemplate DataType="{x:Type viewModels:EnumViewModel}">
+                            <views1:EnumNodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:Vector4ViewModel}">
+                            <views1:Vector4NodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:Vector3ViewModel}">
+                            <views1:Vector3NodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:Vector2ViewModel}">
+                            <views1:Vector2NodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:Mat4ViewModel}">
+                            <views1:Mat4NodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:Mat3ViewModel}">
+                            <views1:Mat3NodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:Mat2ViewModel}">
+                            <views1:Mat2NodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:ScalarViewModel}">
+                            <views1:ScalarNodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:IntViewModel}">
+                            <views1:IntNodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:IfDefViewModel}">
+                            <views1:StringNodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:StringViewModel}">
+                            <views1:StringNodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:SamplerViewModel}">
+                            <views1:SamplerNodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:SamplerCubeViewModel}">
+                            <views1:SamplerNodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:SpecularViewModel}">
+                            <views1:SpecularNodeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:ColorViewModel}">
+                            <views1:ColorNodeView />
+                        </DataTemplate>
+                    </views:ScriptView.Resources>
+                </views:ScriptView>
+                <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <Grid Grid.Row="2" >
+                    <TextBox x:Name="ShaderTxt" Background="Black" Foreground="Wheat" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True" />
+                </Grid>
+
+            </Grid>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>

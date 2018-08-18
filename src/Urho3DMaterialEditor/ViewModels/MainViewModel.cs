@@ -99,11 +99,7 @@ namespace Urho3DMaterialEditor.ViewModels
             New();
         }
 
-        private void ToCenter() {
-
-            double screenWidth = SystemParameters.PrimaryScreenWidth;
-            double screenHeght = SystemParameters.PrimaryScreenHeight;
-
+         private void ToCenter() {
             var pn= ScriptViewModel.Nodes.Select(x => x.Position);
  
             var minX = pn.Select(x => x.X).Min();
@@ -117,7 +113,11 @@ namespace Urho3DMaterialEditor.ViewModels
             var zoo = Math.Min(screenWidth / aX, screenHeght / aY);
 
             ScriptViewModel.ScaleMatrix = new Matrix(zoo, 0, 0, zoo, 0, 0);
-            ScriptViewModel.Position = new Point(aX/4,aY/4);
+
+            foreach (var item in ScriptViewModel.Nodes) {
+                item.Position-= new Vector(minX, minY);
+            }
+            ScriptViewModel.Position = new Point(screenWidth / aX/2, screenHeght / aY/2);
 
         }
 
@@ -229,6 +229,9 @@ namespace Urho3DMaterialEditor.ViewModels
                 if (RaiseAndSetIfChanged(ref _node, value)) _application.SelectNode(_node.Info);
             }
         }
+
+        public double screenWidth { get; set; }
+        public double screenHeght { get; set; }
 
         public void Dispose()
         {

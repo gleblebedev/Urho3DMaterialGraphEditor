@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using Urho3DMaterialEditor.Model;
 using Urho3DMaterialEditor.ViewModels;
 using Application = Urho.Application;
@@ -17,6 +19,25 @@ namespace Urho3DMaterialEditor
 
         private readonly MainViewModel _viewModel;
         private PreviewApplication _app;
+        private static string _txt;
+
+
+        public static string txtShadow {
+            get {
+                return _txt;
+            }
+            set {
+                _txt = value;
+                doLay();
+            }
+        }
+        public delegate void updTxt(EventArgs eventArgs);
+        public static event updTxt layGo;
+        public static void doLay() { layGo(new EventArgs()); }
+
+        private void txtUpd() {
+            ShaderTxt.Text = _txt;
+        }
 
         public MainWindow()
         {
@@ -30,6 +51,8 @@ namespace Urho3DMaterialEditor
             _viewModel = _container.Resolve<MainViewModel>();
             DataContext = _viewModel;
             Loaded += OnLoaded;
+
+            layGo += (v) => { txtUpd(); };
         }
 
         private async void OnLoaded(object s, EventArgs e)
@@ -56,6 +79,16 @@ namespace Urho3DMaterialEditor
         private void ShowError(Exception exception)
         {
             MessageBox.Show(exception.Message, "Urho Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e) {
+            bool? isT = (sender as ToggleButton).IsChecked;
+            if (isT==true) rowSh.Height = new GridLength(rowMn.ActualHeight/2); else rowSh.Height = new GridLength(0);
+        }
+
+        private void rowMn_SizeChanged(object sender, SizeChangedEventArgs e) {
+            _viewModel.screenWidth = rowMn.ActualWidth-50;
+            _viewModel.screenHeght = rowMn.ActualHeight-50;
         }
     }
 }
