@@ -57,7 +57,7 @@ namespace Urho3DMaterialEditor.Model
             UrhoContext.WriteAllText(hlslFileName, HLSLShader);
             UrhoContext.WriteAllText(techniqueFileName, Technique);
             UrhoContext.WriteAllText(materialFileName, Material);
-            MainWindow.txtShadow = GLSLShader;
+           // MainWindow.txtShadow = GLSLShader;
         }
     }
 }
