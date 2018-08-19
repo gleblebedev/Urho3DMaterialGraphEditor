@@ -19,25 +19,6 @@ namespace Urho3DMaterialEditor
 
         private readonly MainViewModel _viewModel;
         private PreviewApplication _app;
-        private static string _txt;
-
-
-        public static string txtShadow {
-            get {
-                return _txt;
-            }
-            set {
-                _txt = value;
-                doLay();
-            }
-        }
-        public delegate void updTxt(EventArgs eventArgs);
-        public static event updTxt layGo;
-        public static void doLay() { layGo(new EventArgs()); }
-
-        private void txtUpd() {
-            ShaderTxt.Text = _txt;
-        }
 
         public MainWindow()
         {
@@ -51,8 +32,6 @@ namespace Urho3DMaterialEditor
             _viewModel = _container.Resolve<MainViewModel>();
             DataContext = _viewModel;
             Loaded += OnLoaded;
-
-            layGo += (v) => { txtUpd(); };
         }
 
         private async void OnLoaded(object s, EventArgs e)

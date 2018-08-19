@@ -45,6 +45,7 @@ namespace Urho3DMaterialEditor.ViewModels
         private readonly CompositeDisposable _disposables = new CompositeDisposable();
         private readonly Subject<MaterialCompilationException> _errors;
         private string _fileName;
+        private string _glslshader;
         private IObserver<MaterialCompilationException> _handleError;
         private SceneNodeViewModel _node;
         private IList<SceneNodeViewModel> _nodes;
@@ -169,7 +170,14 @@ namespace Urho3DMaterialEditor.ViewModels
                 SaveCommand.CanExecute = _fileName != null;
             }
         }
-
+        public string GLSLSource
+        {
+            get => _glslshader;
+            set
+            {
+                RaiseAndSetIfChanged(ref _glslshader, value);
+            }
+        }
         public string Status
         {
             get => _status;
@@ -539,6 +547,7 @@ namespace Urho3DMaterialEditor.ViewModels
                 try
                 {
                     var res = _generator.Generate(script, name, previewPin);
+                    Dispatcher.CurrentDispatcher.Invoke(() => this.GLSLSource = res?.GLSLShader);
                     _errors.OnNext(null);
                     return res;
                 }
