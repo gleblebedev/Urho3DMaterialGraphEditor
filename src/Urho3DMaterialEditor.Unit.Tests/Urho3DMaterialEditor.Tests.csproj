@@ -50,7 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlslCodeGenTextFixtute.cs" />
+    <Compile Include="Model\TranslationPasses\BaseTestFixture.cs" />
+    <Compile Include="Model\TranslationPasses\InsertVaryingsTestFixture.cs" />
     <Compile Include="Model\TranslationPasses\PaintDefinesTestFixture.cs" />
+    <Compile Include="Model\TranslationPasses\PaintGraphTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

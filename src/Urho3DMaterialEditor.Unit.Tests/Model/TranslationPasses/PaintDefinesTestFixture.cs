@@ -6,11 +6,8 @@ using PinHelper = Toe.Scripting.Helpers.PinHelper<Urho3DMaterialEditor.Model.Tra
 namespace Urho3DMaterialEditor.Model.TranslationPasses
 {
     [TestFixture]
-    public class PaintDefinesTestFixture
+    public class PaintDefinesTestFixture: BaseTestFixture
     {
-        public static readonly string PinType = PinTypes.Float;
-        public static readonly string[] NoPins = new string[0];
-
         public NodeHelper CreateIfDef(ScriptHelper script, string key)
         {
             var node = CreateNode(script, NodeTypes.MakeType(NodeTypes.IfDefPrefix, PinType),
@@ -19,27 +16,7 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
             return node;
         }
 
-        public NodeHelper CreateNode(ScriptHelper script, string type, string input, string[] outputs)
-        {
-            return CreateNode(script, type, new[] {input}, outputs);
-        }
 
-        public NodeHelper CreateNode(ScriptHelper script, string type, string[] inputs, string output)
-        {
-            return CreateNode(script, type, inputs, new[] {output});
-        }
-
-        public NodeHelper CreateNode(ScriptHelper script, string type, string[] inputs, string[] outputs)
-        {
-            var node = new NodeHelper {Type = type, Name = type};
-            script.Add(node);
-            for (var index = 0; index < inputs.Length; index++)
-                node.InputPins.Add(new PinHelper(((char) ('A' + index)).ToString(), inputs[index]));
-            for (var index = 0; index < outputs.Length; index++)
-                node.OutputPins.Add(new PinHelper(((char) ('A' + index)).ToString(), outputs[index]));
-
-            return node;
-        }
 
         [Test]
         public void IfDef_OneBranchAlwaysDefined_BothBranchesGenerated()

@@ -226,6 +226,20 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
             {
                 (IfDefs ?? (IfDefs = new List<IfDefReference>())).Add(reference);
             }
+
+            public Container Clone()
+            {
+                return new Container()
+                {
+                    Expression = Expression,
+                    IfDefExpression = IfDefExpression,
+                    IfDefs = IfDefs,
+                    IfNotDefExpression = IfNotDefExpression,
+                    IsAlways = IsAlways,
+                    IsIfDef = IsIfDef,
+                    WaveIndex = WaveIndex
+                };
+            }
         }
 
         private class ExpressionContainer

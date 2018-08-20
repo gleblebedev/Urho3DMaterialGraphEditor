@@ -169,11 +169,14 @@
     <Compile Include="Model\Templates\IT4Writer.cs" />
     <Compile Include="Model\TranslationPasses\ElimitateDuplicates.cs" />
     <Compile Include="Model\TranslationPasses\ElimitateKnownDefines.cs" />
+    <Compile Include="Model\TranslationPasses\EstimateCalculationCost.cs" />
     <Compile Include="Model\TranslationPasses\IfDefReference.cs" />
     <Compile Include="Model\TranslationPasses\IfDefSet.cs" />
     <Compile Include="Model\TranslationPasses\InlineFunctions.cs" />
     <Compile Include="Model\TranslationPasses\InsertDefaultValues.cs" />
+    <Compile Include="Model\TranslationPasses\InsertVaryings.cs" />
     <Compile Include="Model\TranslationPasses\PaintDefines.cs" />
+    <Compile Include="Model\TranslationPasses\PaintGraph.cs" />
     <Compile Include="Model\TranslationPasses\PreviewPinOutput.cs" />
     <Compile Include="Model\UniformsAndFunctions.cs" />
     <Compile Include="Model\VertexDataNodeFactory.cs" />

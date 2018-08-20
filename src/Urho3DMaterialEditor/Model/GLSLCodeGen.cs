@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ReactiveUI;
 using Toe.Scripting.Helpers;
 using Urho3DMaterialEditor.Model.Templates;
 
@@ -174,7 +175,7 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                 var def = node.Extra.Define;
                 _writer.WriteLine(def.IsAlways ? null : def.Expression,
                     "// based on node " + connectedNode.Name + " " + node.Value + " (type:" + connectedNode.Type +
-                    ", id:" + connectedNode.Id + ")");
+                    ", id:" + connectedNode.Id + "), cost estimation: "+node.Extra.EstimatedCost);
                 _writer.WriteLine(def.IsAlways ? null : def.Expression,
                     actualType + " " + node.Name + " = " + arg + ";");
             }
@@ -270,8 +271,15 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                     var varyingType = GetVaryingType(node.InputPins[0].Type);
                     if (actualType != varyingType)
                         arg = varyingType + "(" + arg + ")";
+                    var connectedNode = node.InputPins[0].ConnectedPins.FirstOrDefault()?.Node;
+                    if (connectedNode != null)
+                    {
+                        _writer.WriteLine(null,
+                            "// based on node " + connectedNode.Name + " " + connectedNode.Value + " (type:" + connectedNode.Type +
+                            ", id:" + connectedNode.Id + "), cost estimation: " + connectedNode.Extra.EstimatedCost);
+                    }
 
-                    _writer.WriteLine(null, "v" + node.Value + " = " + arg + ";");
+                    _writer.WriteLine(node.Extra.Define.Expression , "v" + node.Value + " = " + arg + ";");
                 }
                     return null;
                 case NodeTypes.Discard:

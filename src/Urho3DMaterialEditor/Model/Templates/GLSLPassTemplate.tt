@@ -56,6 +56,7 @@ foreach (var uniform in Graph.VertexShaderVaryings)
 {
 	uniform.Extra.Define.WriteLineIfDef(this,"varying "+GLSLCodeGen.GetType(GLSLCodeGen.GetVaryingType(uniform.InputPins[0].Type))+" v"+uniform.Value+GLSLCodeGen.GetArraySize(uniform.InputPins[0].Type)+";");
 }
+this.WriteLine(null,"");
 #>
 
 attribute float iObjectIndex;
@@ -75,6 +76,7 @@ void VS()
 <#
 	foreach (var varying in Graph.VertexShaderVaryings)
 		VertexShaderGenerator.GenerateCode(varying);
+	this.WriteLine(null,"");
 	var ret = VertexShaderGenerator.GenerateCode(Graph.OutputPosition);
 	WriteLine("vec4 ret =  " + ret + ";");
 	this.WriteLine(null,"");
@@ -137,6 +139,7 @@ foreach (var uniform in Graph.PixelShaderVaryings)
 {
 	uniform.Extra.Define.WriteLineIfDef(this,"varying "+GLSLCodeGen.GetType(GLSLCodeGen.GetVaryingType(uniform.OutputPins[0].Type))+" v"+uniform.Value+GLSLCodeGen.GetArraySize(uniform.OutputPins[0].Type)+";");
 }
+this.WriteLine(null,"");
 #>
 
 <#

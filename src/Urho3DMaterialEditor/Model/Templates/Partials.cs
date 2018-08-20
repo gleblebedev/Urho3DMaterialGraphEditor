@@ -33,13 +33,11 @@ namespace Urho3DMaterialEditor.Model.Templates
             Graph = graph;
             VertexShaderGenerator = new GLSLCodeGen(this);
             VertexShaderUniformsAndFunctions = new UniformsAndFunctions(
-                graph.Script.Nodes.Where(_ =>
-                    _.Extra?.Attribution == TranslatedMaterialGraph.NodeAttribution.VertexShader),
+                graph.Script.Nodes.Where(_ => _.Extra != null && !_.Extra.RequiredInPixelShader),
                 graph.VertexShaderUniforms, VertexShaderGenerator);
             PixelShaderGenerator = new GLSLCodeGen(this);
             PixelShaderUniformsAndFunctions = new UniformsAndFunctions(
-                graph.Script.Nodes.Where(_ =>
-                    _.Extra?.Attribution == TranslatedMaterialGraph.NodeAttribution.PixelShader),
+                graph.Script.Nodes.Where(_ => _.Extra != null && _.Extra.RequiredInPixelShader),
                 graph.PixelShaderUniforms, PixelShaderGenerator);
         }
 

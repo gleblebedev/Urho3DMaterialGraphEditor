@@ -13,12 +13,6 @@ namespace Urho3DMaterialEditor.Model
 {
     public class TranslatedMaterialGraph
     {
-        public enum NodeAttribution
-        {
-            VertexShader,
-            PixelShader
-        }
-
         private HashSet<string> _defines = new HashSet<string>();
         private HashSet<string> _undefines = new HashSet<string>();
 
@@ -91,9 +85,12 @@ namespace Urho3DMaterialEditor.Model
             ElimitateDeadEnds();
             new ElimitateDuplicates(Script).Apply();
             EnsureInfo();
-            PaintGraph();
-            InsertVaryings();
+            new EstimateCalculationCost(Script).Apply();
+            new PaintGraph(Script).Apply();
             new PaintDefines(Script).Apply();
+            new InsertVaryings(Script).Apply();
+            EnsureInfo();
+            //InsertVaryings();
             InsertVariables();
             FillCollections();
         }
@@ -271,18 +268,28 @@ namespace Urho3DMaterialEditor.Model
 
                 if (NodeTypes.IsParameter(node.Type) || NodeTypes.IsUniform(node.Type))
                 {
-                    if (node.Extra.Attribution == NodeAttribution.PixelShader)
+                    //if (node.Extra.UsedInPixelShader && node.Extra.UsedInVertexShader)
+                    //{
+                    //    throw new MaterialCompilationException("This node should be split during transformation", node.Id);
+                    //}
+
+                    if (node.Extra.RequiredInPixelShader)
+                    {
                         PixelShaderUniforms.Add(new NodeHelper
                         {
                             Name = "c" + node.Name,
                             Type = node.OutputPins.First().Type
                         });
-                    else
+                    }
+                    else //if (node.Extra.UsedInPixelShader)
+                    {
                         VertexShaderUniforms.Add(new NodeHelper
                         {
                             Name = "c" + node.Name,
                             Type = node.OutputPins.First().Type
                         });
+                    }
+
                     continue;
                 }
 
@@ -318,19 +325,23 @@ namespace Urho3DMaterialEditor.Model
                     case NodeTypes.CameraData:
                     case NodeTypes.ZoneData:
                     case NodeTypes.ObjectData:
-                        if (node.Extra.Attribution == NodeAttribution.PixelShader)
-                            PixelShaderUniforms.Add(new NodeHelper
-                            {
-                                Name = "c" + node.OutputPins.First().Id,
-                                Type = node.OutputPins.First().Type
-                            });
-                        else
-                            VertexShaderUniforms.Add(new NodeHelper
-                            {
-                                Name = "c" + node.OutputPins.First().Id,
-                                Type = node.OutputPins.First().Type
-                            });
-                        break;
+                    {
+                        throw new MaterialCompilationException("This node should be split during transformation", node.Id);
+                    }
+                        //}
+                        //if (node.Extra.Attribution == NodeAttribution.PixelShader)
+                        //    PixelShaderUniforms.Add(new NodeHelper
+                        //    {
+                        //        Name = "c" + node.OutputPins.First().Id,
+                        //        Type = node.OutputPins.First().Type
+                        //    });
+                        //else
+                        //    VertexShaderUniforms.Add(new NodeHelper
+                        //    {
+                        //        Name = "c" + node.OutputPins.First().Id,
+                        //        Type = node.OutputPins.First().Type
+                        //    });
+                        //break;
                     case NodeTypes.Sampler2D:
                     case NodeTypes.Sampler3D:
                     case NodeTypes.SamplerCube:
@@ -358,153 +369,12 @@ namespace Urho3DMaterialEditor.Model
             return res;
         }
 
-        private void InsertVaryings()
-        {
-            var varyingIndex = 1;
-            var nodeListCopy = Script.Nodes.ToList();
-            for (var index = 0; index < nodeListCopy.Count; index++)
-            {
-                var scriptNode = nodeListCopy[index];
-                if (scriptNode.Extra.Attribution == NodeAttribution.VertexShader)
-                {
-                    NodeHelper setVarying = null;
-                    NodeHelper getVarying = null;
-
-                    var isConnectedToPixelShader =
-                        scriptNode.OutputPins.ConnectedPins.Any(_ =>
-                            _.Node.Extra.Attribution == NodeAttribution.PixelShader);
-                    if (!isConnectedToPixelShader)
-                        continue;
-
-                    var canBeInPixelShader = CanBeInPixelShader(scriptNode);
-                    var isConnectedToVertexShader =
-                        scriptNode.OutputPins.ConnectedPins.Any(_ =>
-                            _.Node.Extra.Attribution == NodeAttribution.VertexShader);
-
-                    if (canBeInPixelShader)
-                        if (!isConnectedToVertexShader)
-                        {
-                            scriptNode.Extra.Attribution = NodeAttribution.PixelShader;
-                            continue;
-                        }
-                        else
-                        {
-                            var c = scriptNode.CloneWithConnections();
-                            c.Extra = new NodeInfo {Attribution = NodeAttribution.PixelShader};
-                            nodeListCopy.Add(c);
-                            foreach (var link in scriptNode.OutputPins.Links.ToList())
-                                if (link.To.Node.Extra.Attribution == NodeAttribution.PixelShader)
-                                    Script.RemoveLink(link);
-                            foreach (var link in c.OutputPins.Links.ToList())
-                                if (link.To.Node.Extra.Attribution == NodeAttribution.VertexShader)
-                                    Script.RemoveLink(link);
-                        }
-
-                    foreach (var link in scriptNode.OutputPins.Links.ToArray())
-                    {
-                        var to = link.To;
-                        if (to.Node.Extra?.Attribution == NodeAttribution.PixelShader)
-                        {
-                            var from = link.From;
-                            Script.RemoveLink(link);
-                            if (setVarying == null)
-                            {
-                                var name = "Varying" + varyingIndex;
-                                ++varyingIndex;
-                                setVarying = new NodeHelper
-                                {
-                                    Type = NodeTypes.Special.SetVarying,
-                                    Name = "set " + name,
-                                    Value = name,
-                                    InputPins = {new PinHelper("", from.Type)}
-                                };
-                                getVarying = new NodeHelper
-                                {
-                                    Type = NodeTypes.Special.GetVarying,
-                                    Name = "get " + name,
-                                    Value = name,
-                                    OutputPins = {new PinHelper("", from.Type)}
-                                };
-                                Script.Add(setVarying);
-                                Script.Add(getVarying);
-                            }
-
-                            Script.Link(from, setVarying.InputPins[0]);
-                            Script.Link(getVarying.OutputPins[0], to);
-                        }
-                    }
-                }
-            }
-        }
-
-        private bool CanBeInPixelShader(NodeHelper scriptNode)
-        {
-            if (NodeTypes.IsConstant(scriptNode.Type) || NodeTypes.IsParameter(scriptNode.Type) ||
-                NodeTypes.IsUniform(scriptNode.Type))
-                return true;
-            if (scriptNode.Type == NodeTypes.ObjectData)
-                return true;
-            if (scriptNode.Type == NodeTypes.Special.Default)
-                return true;
-            return false;
-        }
 
         private void EnsureInfo()
         {
             foreach (var node in Script.Nodes)
                 if (node.Extra == null)
                     node.Extra = new NodeInfo();
-        }
-
-        private void PaintGraph()
-        {
-            foreach (var scriptNode in Script.Nodes.ToArray())
-                if (scriptNode.Extra.Attribution != NodeAttribution.PixelShader)
-                    if (IsPixelShaderOnly(scriptNode))
-                        AttributeSubgraphToPixelShader(scriptNode);
-        }
-
-
-        private void AttributeSubgraphToPixelShader(NodeHelper scriptNode)
-        {
-            if (scriptNode.Extra.Attribution != NodeAttribution.PixelShader)
-            {
-                scriptNode.Extra.Attribution = NodeAttribution.PixelShader;
-                foreach (var pin in scriptNode.OutputPins.ConnectedPins) AttributeSubgraphToPixelShader(pin.Node);
-            }
-        }
-
-        private bool IsPixelShaderOnly(NodeHelper scriptNode)
-        {
-            if (NodeTypes.IsUniform(scriptNode.Type))
-            {
-                if (scriptNode.Name.EndsWith("PS"))
-                    return true;
-            }
-            switch (scriptNode.Type)
-            {
-                case NodeTypes.Sampler2D:
-                case NodeTypes.SamplerCube:
-                case NodeTypes.AmbientColor:
-                case NodeTypes.LightColor:
-                case NodeTypes.DeferredOutput:
-                case NodeTypes.Discard:
-                case NodeTypes.PerPixelFloat:
-                case NodeTypes.PerPixelVec2:
-                case NodeTypes.PerPixelVec3:
-                case NodeTypes.PerPixelVec4:
-                case NodeTypes.Special.FinalColor:
-                case NodeTypes.Special.FragData0:
-                case NodeTypes.Special.FragData1:
-                case NodeTypes.Special.FragData2:
-                case NodeTypes.Special.FragData3:
-                case NodeTypes.Special.ShadowMapOutput:
-                case NodeTypes.FragCoord:
-                case NodeTypes.FrontFacing:
-                    return true;
-            }
-
-            return false;
         }
 
         private void SplitOutputs()
@@ -799,7 +669,7 @@ namespace Urho3DMaterialEditor.Model
 
         private void HasNoPSDependencies(NodeHelper node)
         {
-            if (IsPixelShaderOnly(node))
+            if (PaintGraph.IsPixelShaderOnly(node))
             {
                 throw new MaterialCompilationException(node.Name + " can't be used to calculate vertex position", node.Id);
             }
@@ -812,11 +682,33 @@ namespace Urho3DMaterialEditor.Model
 
         public class NodeInfo
         {
-            public NodeAttribution Attribution { get; set; } = NodeAttribution.VertexShader;
+            public bool UsedInPixelShader { get; set; }
+
+            public bool UsedInVertexShader { get; set; }
+
+            public bool RequiredInPixelShader { get; set; }
 
             public PaintDefines.Container Define { get; set; }
 
             public bool IsDefineOptimized { get; set; }
+
+            public double? EstimatedCost { get; set; }
+
+            public NodeHelper PixelShaderCopy { get; set; }
+
+            public NodeInfo Clone()
+            {
+                return new NodeInfo()
+                {
+                    UsedInPixelShader = UsedInPixelShader,
+                    UsedInVertexShader = UsedInVertexShader,
+                    RequiredInPixelShader = RequiredInPixelShader,
+                    Define = Define?.Clone(),
+                    IsDefineOptimized = IsDefineOptimized,
+                    EstimatedCost = EstimatedCost,
+                    PixelShaderCopy = PixelShaderCopy
+                };
+            }
         }
     }
 }
