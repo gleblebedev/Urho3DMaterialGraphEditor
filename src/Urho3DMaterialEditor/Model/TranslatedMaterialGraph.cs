@@ -84,13 +84,12 @@ namespace Urho3DMaterialEditor.Model
             new InsertDefaultValues(Script).OptimizeArithmetic();
             ElimitateDeadEnds();
             new ElimitateDuplicates(Script).Apply();
-            EnsureInfo();
+            new EnsureInfo(Script).Apply();
             new EstimateCalculationCost(Script).Apply();
             new PaintGraph(Script).Apply();
             new PaintDefines(Script).Apply();
             new InsertVaryings(Script).Apply();
-            EnsureInfo();
-            //InsertVaryings();
+            //EnsureInfo();
             InsertVariables();
             FillCollections();
         }
@@ -178,6 +177,8 @@ namespace Urho3DMaterialEditor.Model
                 return false;
             if (NodeTypes.IsUniform(node.Type) || NodeTypes.IsSampler(node.Type) || NodeTypes.IsAttribute(node.Type) ||
                 NodeTypes.IsConstant(node.Type))
+                return false;
+            if (node.Type == NodeTypes.Special.Default)
                 return false;
             if (node.OutputPins[0].Links.Count <= 1)
                 return false;
@@ -367,14 +368,6 @@ namespace Urho3DMaterialEditor.Model
             }
 
             return res;
-        }
-
-
-        private void EnsureInfo()
-        {
-            foreach (var node in Script.Nodes)
-                if (node.Extra == null)
-                    node.Extra = new NodeInfo();
         }
 
         private void SplitOutputs()

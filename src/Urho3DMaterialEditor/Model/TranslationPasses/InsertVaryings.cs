@@ -173,12 +173,12 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
                     if (altNode != dataSource)
                     {
                         _script.Link(altNode.OutputPins[pin.Links[0].From.Id], clone.InputPins[pin.Links[0].To.Id]);
+                        if (clone == scriptNode)
+                        {
+                            _script.RemoveLink(pin.Links[0]);
+                        }
                     }
 
-                    if (clone == scriptNode)
-                    {
-                        _script.RemoveLink(pin.Links[0]);
-                    }
                 }
             }
             return clone;

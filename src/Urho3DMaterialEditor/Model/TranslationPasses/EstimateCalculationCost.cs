@@ -39,7 +39,12 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
             }
             var sum = node.InputPins.ConnectedPins.Select(_ => _.Node).Select(_ => EvaluateCost(_)).Sum();
             node.Extra.EstimatedCost = sum;
-            if (NodeTypes.IsConstant(node.Type) || NodeTypes.IsConnectorType(node.Type) || NodeTypes.IsParameter(node.Type) || NodeTypes.IsSampler(node.Type) || NodeTypes.IsUniform(node.Type))
+            if (NodeTypes.IsConstant(node.Type) ||
+                (node.Type == NodeTypes.Special.Default) ||
+                NodeTypes.IsConnectorType(node.Type) || 
+                NodeTypes.IsParameter(node.Type) || 
+                NodeTypes.IsSampler(node.Type) || 
+                NodeTypes.IsUniform(node.Type))
                 return sum;
             if (NodeTypes.IsAttribute(node.Type))
             {
