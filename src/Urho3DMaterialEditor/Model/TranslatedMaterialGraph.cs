@@ -87,8 +87,8 @@ namespace Urho3DMaterialEditor.Model
             new EnsureInfo(Script).Apply();
             new EstimateCalculationCost(Script).Apply();
             new PaintGraph(Script).Apply();
-            new PaintDefines(Script).Apply();
             new InsertVaryings(Script).Apply();
+            new PaintDefines(Script).Apply();
             //EnsureInfo();
             InsertVariables();
             FillCollections();
