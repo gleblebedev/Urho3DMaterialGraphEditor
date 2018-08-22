@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Urho3DMaterialEditor.Model.DefineTree;
 
 namespace Urho3DMaterialEditor.Model.Templates
 {
@@ -48,7 +49,16 @@ namespace Urho3DMaterialEditor.Model.Templates
 
         public void WriteLine(string ifdef, string line)
         {
-            if (string.IsNullOrWhiteSpace(ifdef)) ifdef = null;
+            if (ifdef == BinaryTree.FalseConst)
+            {
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(ifdef))
+            {
+                ifdef = null;
+            }
+
             if (ifdef != _currentIfDef)
             {
                 if (_currentIfDef != null)
