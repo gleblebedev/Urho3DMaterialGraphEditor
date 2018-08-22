@@ -53,8 +53,11 @@ namespace Urho3DMaterialEditor.Model.Templates
             {
                 return;
             }
-
-            if (string.IsNullOrWhiteSpace(ifdef))
+            else if (ifdef == BinaryTree.TrueConst)
+            {
+                ifdef = null;
+            }
+            else if (string.IsNullOrWhiteSpace(ifdef))
             {
                 ifdef = null;
             }
@@ -105,6 +108,19 @@ namespace Urho3DMaterialEditor.Model.Templates
 
         public void WriteLine(string ifdef, string line)
         {
+            if (ifdef == BinaryTree.FalseConst)
+            {
+                return;
+            }
+            else if (ifdef == BinaryTree.TrueConst)
+            {
+                ifdef = null;
+            }
+            else if (string.IsNullOrWhiteSpace(ifdef))
+            {
+                ifdef = null;
+            }
+
             if (ifdef != _currentIfDef)
             {
                 if (_currentIfDef != null)

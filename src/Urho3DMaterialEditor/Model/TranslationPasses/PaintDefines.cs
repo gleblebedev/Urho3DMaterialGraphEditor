@@ -219,9 +219,12 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
 
             public void WriteLineIfDef(IT4Writer writer, string text)
             {
-                writer.WriteLine(IsAlways ? null : Expression, text);
+                writer.WriteLine(GetExpression(), text);
             }
-
+            public string GetExpression()
+            {
+                return IsAlways ? null : Expression;
+            }
             public void OrIfDef(IfDefReference reference)
             {
                 (IfDefs ?? (IfDefs = new List<IfDefReference>())).Add(reference);

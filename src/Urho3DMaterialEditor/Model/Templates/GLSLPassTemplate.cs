@@ -85,10 +85,14 @@ foreach (var uniform in VertexShaderUniformsAndFunctions.Uniforms)
 {
 	uniform.Extra.Define.WriteLineIfDef(this,"uniform "+GLSLCodeGen.GetType(uniform.Type)+" "+uniform.Name+GLSLCodeGen.GetArraySize(uniform.Type)+";");
 }
-foreach (var uniform in Graph.VertexShaderVaryings)
+foreach (var varyingGroup in Graph.VertexShaderVaryings.ToLookup(_=>_.Extra.Define.GetExpression()))
 {
-	uniform.Extra.Define.WriteLineIfDef(this,"varying "+GLSLCodeGen.GetType(GLSLCodeGen.GetVaryingType(uniform.InputPins[0].Type))+" v"+uniform.Value+GLSLCodeGen.GetArraySize(uniform.InputPins[0].Type)+";");
+    foreach (var varying in varyingGroup)
+    {
+        WriteLine(varyingGroup.Key, "varying " + GLSLCodeGen.GetType(GLSLCodeGen.GetVaryingType(varying.InputPins[0].Type)) + " v" + varying.Value + GLSLCodeGen.GetArraySize(varying.InputPins[0].Type) + ";");
+    }
 }
+
 this.WriteLine(null,"");
 
             
@@ -96,7 +100,7 @@ this.WriteLine(null,"");
             #line hidden
             this.Write("\r\nattribute float iObjectIndex;\r\n\r\n\r\n");
             
-            #line 65 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
+            #line 69 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
 
 	foreach (var function in VertexShaderUniformsAndFunctions.Functions)
 	{
@@ -110,7 +114,7 @@ this.WriteLine(null,"");
             #line hidden
             this.Write("\r\nvoid VS()\r\n{\r\n");
             
-            #line 76 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
+            #line 80 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
 
 	foreach (var varying in Graph.VertexShaderVaryings)
 		VertexShaderGenerator.GenerateCode(varying);
@@ -137,7 +141,7 @@ this.WriteLine(null,"");
 
 ");
             
-            #line 97 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
+            #line 101 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
 
 foreach (var uniform in PixelShaderUniformsAndFunctions.Uniforms)
 {
@@ -179,10 +183,14 @@ foreach (var uniform in Graph.Samplers)
 	uniform.Extra.Define.WriteLineIfDef(this,"uniform "+GLSLCodeGen.GetType(uniform.OutputPins[0])+" "+GLSLCodeGen.GetSamplerName(uniform)+";");
 	}
 }
-foreach (var uniform in Graph.PixelShaderVaryings)
+foreach (var varyingGroup in Graph.PixelShaderVaryings.ToLookup(_=>_.Extra.Define.GetExpression()))
 {
-	uniform.Extra.Define.WriteLineIfDef(this,"varying "+GLSLCodeGen.GetType(GLSLCodeGen.GetVaryingType(uniform.OutputPins[0].Type))+" v"+uniform.Value+GLSLCodeGen.GetArraySize(uniform.OutputPins[0].Type)+";");
+    foreach (var varying in varyingGroup)
+    {
+        WriteLine(varyingGroup.Key, "varying " + GLSLCodeGen.GetType(GLSLCodeGen.GetVaryingType(varying.OutputPins[0].Type)) + " v" + varying.Value + GLSLCodeGen.GetArraySize(varying.OutputPins[0].Type) + ";");
+    }
 }
+
 this.WriteLine(null,"");
 
             
@@ -190,7 +198,7 @@ this.WriteLine(null,"");
             #line hidden
             this.Write("\r\n");
             
-            #line 145 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
+            #line 153 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
 
 	foreach (var function in PixelShaderUniformsAndFunctions.Functions)
 	{
@@ -204,7 +212,7 @@ this.WriteLine(null,"");
             #line hidden
             this.Write("\r\nvoid PS()\r\n{\r\n");
             
-            #line 156 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
+            #line 164 "E:\MyWork\Urho3DMaterialGraphEditor\src\Urho3DMaterialEditor\Model\Templates\GLSLPassTemplate.tt"
 
 	foreach (var discard in Graph.Discards)
 		PixelShaderGenerator.GenerateCode(discard);
