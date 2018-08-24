@@ -143,22 +143,28 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
                 return scriptNode.Extra.PixelShaderCopy;
             }
 
+            if (scriptNode.Name == "MatDiffColor")
+            {
+                scriptNode.Name = scriptNode.Name;
+            }
+
             NodeHelper clone;
-            if (scriptNode.Extra.UsedInVertexShader)
+            //if (scriptNode.Extra.UsedInVertexShader)
             {
                 clone = scriptNode.Clone();
+                _script.Add(clone);
                 clone.Extra = scriptNode.Extra.Clone();
                 scriptNode.Extra.PixelShaderCopy = clone;
                 clone.Extra.PixelShaderCopy = clone;
                 scriptNode.Extra.PixelShaderCopy = clone;
-                scriptNode.Extra.UsedInPixelShader = false;
+                scriptNode.Extra.UsedInPixelShader = false; //TODO: It may be used more than once
                 clone.Extra.UsedInVertexShader = false;
             }
-            else
-            {
-                clone = scriptNode;
+            //else
+            //{
+            //    clone = scriptNode;
 
-            }
+            //}
             clone.Extra.RequiredInPixelShader = true;
 
             foreach (var pin in scriptNode.InputPins)

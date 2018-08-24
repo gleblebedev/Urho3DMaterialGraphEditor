@@ -8,7 +8,40 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
     public class InsertVaryingsTestFixture : BaseTestFixture
     {
         [Test]
-        public void CloneimpleTree()
+        public void ShallowTree()
+        {
+            var script = new ScriptHelper<TranslatedMaterialGraph.NodeInfo>();
+
+            var posOutput = CreateNode(script, NodeTypes.PositionOutput, PinType, NoPins);
+            var colorOutput = CreateNode(script, NodeTypes.Special.FinalColor, PinType, NoPins);
+            var arg = CreateNode(script, NodeTypes.MakeType(NodeTypes.ParameterPrefix, PinType), PinType, PinType);
+
+            script.LinkData(arg, colorOutput);
+            script.LinkData(arg, posOutput);
+            new PaintGraph(script).Apply();
+            new EstimateCalculationCost(script).Apply();
+
+            new InsertVaryings(script).Apply();
+
+            var posChain = EnumerateGraphToLeft(posOutput).ToArray();
+            var colorChain = EnumerateGraphToLeft(colorOutput).ToArray();
+
+            Assert.AreEqual(posChain.Length, colorChain.Length);
+            for (var index = 0; index < colorChain.Length; index++)
+            {
+                Assert.AreNotEqual(colorChain[index], posChain[index]);
+                Assert.IsTrue(colorChain[index].Node.Extra.UsedInPixelShader);
+                Assert.IsFalse(colorChain[index].Node.Extra.UsedInVertexShader);
+                Assert.IsTrue(colorChain[index].Node.Extra.RequiredInPixelShader);
+
+                Assert.IsFalse(posChain[index].Node.Extra.UsedInPixelShader);
+                Assert.IsFalse(posChain[index].Node.Extra.RequiredInPixelShader);
+                Assert.IsTrue(posChain[index].Node.Extra.UsedInVertexShader);
+            }
+        }
+
+        [Test]
+        public void CloneSimpleTree()
         {
             var script = new ScriptHelper<TranslatedMaterialGraph.NodeInfo>();
 
@@ -45,6 +78,7 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
                 Assert.IsTrue(posChain[index].Node.Extra.UsedInVertexShader);
             }
         }
+
         [Test]
         public void InsertVaryingsSimpleTree()
         {

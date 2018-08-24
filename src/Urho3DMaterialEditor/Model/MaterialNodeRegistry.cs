@@ -842,6 +842,32 @@ namespace Urho3DMaterialEditor.Model
                 NodeTypes.SubCategories.Arithmetic, "subtract",
                 new[] {new Pin(PinIds.X, PinTypes.Vec4), new Pin(PinIds.Y, PinTypes.Vec4)}, PinTypes.Vec4));
 
+            Add(FunctionNodeFactory.Function(NodeTypes.MinusFloat, NodeTypes.MinusFloat,
+                NodeTypes.SubCategories.Arithmetic, "minus",
+                new[] { new Pin(PinIds.X, PinTypes.Float) }, PinTypes.Float));
+            Add(FunctionNodeFactory.Function(NodeTypes.MinusVec2, NodeTypes.MinusVec2,
+                NodeTypes.SubCategories.Arithmetic, "minus",
+                new[] { new Pin(PinIds.X, PinTypes.Vec2) }, PinTypes.Vec2));
+            Add(FunctionNodeFactory.Function(NodeTypes.MinusVec3, NodeTypes.MinusVec3,
+                NodeTypes.SubCategories.Arithmetic, "minus",
+                new[] { new Pin(PinIds.X, PinTypes.Vec3) }, PinTypes.Vec3));
+            Add(FunctionNodeFactory.Function(NodeTypes.MinusVec4, NodeTypes.MinusVec4,
+                NodeTypes.SubCategories.Arithmetic, "minus",
+                new[] { new Pin(PinIds.X, PinTypes.Vec4) }, PinTypes.Vec4));
+
+            Add(FunctionNodeFactory.Function(NodeTypes.SaturateFloat, NodeTypes.SaturateFloat,
+                NodeTypes.SubCategories.Arithmetic, "saturate",
+                new[] { new Pin(PinIds.X, PinTypes.Float) }, PinTypes.Float));
+            Add(FunctionNodeFactory.Function(NodeTypes.SaturateVec2, NodeTypes.SaturateVec2,
+                NodeTypes.SubCategories.Arithmetic, "saturate",
+                new[] { new Pin(PinIds.X, PinTypes.Vec2) }, PinTypes.Vec2));
+            Add(FunctionNodeFactory.Function(NodeTypes.SaturateVec3, NodeTypes.SaturateVec3,
+                NodeTypes.SubCategories.Arithmetic, "saturate",
+                new[] { new Pin(PinIds.X, PinTypes.Vec3) }, PinTypes.Vec3));
+            Add(FunctionNodeFactory.Function(NodeTypes.SaturateVec4, NodeTypes.SaturateVec4,
+                NodeTypes.SubCategories.Arithmetic, "saturate",
+                new[] { new Pin(PinIds.X, PinTypes.Vec4) }, PinTypes.Vec4));
+
             Add(FunctionNodeFactory.Function(NodeTypes.CrossVec3Vec3, NodeTypes.CrossVec3Vec3, "cross",
                 new[] {new Pin(PinIds.X, PinTypes.Vec3), new Pin(PinIds.Y, PinTypes.Vec3)}, PinTypes.Vec3));
             Add(FunctionNodeFactory.Function(NodeTypes.NormalizeFloat, NodeTypes.NormalizeFloat, "normalize",

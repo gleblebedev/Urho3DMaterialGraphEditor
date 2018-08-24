@@ -339,11 +339,19 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                 case NodeTypes.SubtractVec3Vec3:
                 case NodeTypes.SubtractVec4Vec4:
                     return GenBinaryOperator("-", args);
-                case NodeTypes.MinusFloatFloat:
-                case NodeTypes.MinusVec2Vec2:
-                case NodeTypes.MinusVec3Vec3:
-                case NodeTypes.MinusVec4Vec4:
+                case NodeTypes.MinusFloat:
+                case NodeTypes.MinusVec2:
+                case NodeTypes.MinusVec3:
+                case NodeTypes.MinusVec4:
                     return GenUnaryOperator("-", args);
+                case NodeTypes.SaturateFloat:
+                    return "clamp(" + args[0] + ", 0.0, 1.0)";
+                case NodeTypes.SaturateVec2:
+                    return "clamp(" + args[0] + ", vec2(0.0, 0.0), vec2(1.0, 1.0))";
+                case NodeTypes.SaturateVec3:
+                    return "clamp(" + args[0] + ", vec3(0.0, 0.0, 0.0), vec3(1.0, 1.0, 1.0))";
+                case NodeTypes.SaturateVec4:
+                    return "clamp(" + args[0] + ", vec4(0.0, 0.0, 0.0, 0.0), vec4(1.0, 1.0, 1.0, 1.0))";
                 case NodeTypes.DivideFloatFloat:
                 case NodeTypes.DivideVec2Float:
                 case NodeTypes.DivideVec3Float:

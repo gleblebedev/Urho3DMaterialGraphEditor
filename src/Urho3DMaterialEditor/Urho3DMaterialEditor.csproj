@@ -471,12 +471,12 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomial%28float,vec2%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomial%28float,vec3%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\bernsteinPolynomial%28float,vec4%29.json" />
-    <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\1-float.json" />
-    <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\1-vec2.json" />
-    <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\1-vec3.json" />
-    <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\1-vec4.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Arithmetic\1-float.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Arithmetic\1-vec2.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Arithmetic\1-vec3.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Arithmetic\1-vec4.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\panner.json" />
-    <EmbeddedResource Include="Data\GraphFunctions\Functions\Math\random%28vec2%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Arithmetic\random%28vec2%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\cubicBell.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Splines\quinticBell.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Transform\getReflectionColorWithBiasAt.json" />
@@ -489,6 +489,7 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\neumannVisibility%28float,float%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\visibility%28float,float,float%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\smithGGXSchlickVisibility%28float,float,float%29.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\texture2D\sampleTexture2D.json" />
     <None Include="Data\MaterialGraphs\Butterflies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
