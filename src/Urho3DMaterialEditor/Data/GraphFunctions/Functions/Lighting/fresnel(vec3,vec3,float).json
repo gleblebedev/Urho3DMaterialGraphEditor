@@ -169,57 +169,6 @@
       "Id": 9
     },
     {
-      "Type": "float",
-      "Name": "float",
-      "Value": "1.0",
-      "GroupId": 0,
-      "Category": 6,
-      "InputPins": [],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "float"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 7
-    },
-    {
-      "Type": "float-float",
-      "Name": "float-float",
-      "Value": null,
-      "GroupId": 0,
-      "Category": 1,
-      "InputPins": [
-        {
-          "Connection": {
-            "NodeId": 7,
-            "PinId": ""
-          },
-          "Id": "x",
-          "Type": "float"
-        },
-        {
-          "Connection": {
-            "NodeId": 12,
-            "PinId": ""
-          },
-          "Id": "y",
-          "Type": "float"
-        }
-      ],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "float"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 8
-    },
-    {
       "Type": "connect(vec3)",
       "Name": "perPixelNormal",
       "Value": null,
@@ -243,45 +192,6 @@
       "Id": 10
     },
     {
-      "Type": "clamp(float,float,float)",
-      "Name": "clamp(float,float,float)",
-      "Value": null,
-      "GroupId": 0,
-      "Category": 1,
-      "InputPins": [
-        {
-          "Connection": {
-            "NodeId": 9,
-            "PinId": ""
-          },
-          "Id": "x",
-          "Type": "float"
-        },
-        {
-          "Connection": null,
-          "Id": "minVal",
-          "Type": "float"
-        },
-        {
-          "Connection": {
-            "NodeId": 7,
-            "PinId": ""
-          },
-          "Id": "maxVal",
-          "Type": "float"
-        }
-      ],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "float"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 12
-    },
-    {
       "Type": "pow(float,float)",
       "Name": "pow(float,float)",
       "Value": null,
@@ -290,7 +200,7 @@
       "InputPins": [
         {
           "Connection": {
-            "NodeId": 8,
+            "NodeId": 17,
             "PinId": ""
           },
           "Id": "x",
@@ -363,6 +273,58 @@
       "EnterPins": [],
       "ExitPins": [],
       "Id": 15
+    },
+    {
+      "Type": "saturate(float)",
+      "Name": "saturate(float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 9,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 16
+    },
+    {
+      "Type": "1-float",
+      "Name": "1-float",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 16,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 17
     }
   ],
   "Groups": [],
@@ -404,23 +366,9 @@
         "Height": 108.0
       },
       {
-        "NodeId": 7,
-        "X": 1793.5376,
-        "Y": 453.826263,
-        "Width": 184.0,
-        "Height": 108.0
-      },
-      {
-        "NodeId": 8,
-        "X": 2366.65747,
-        "Y": 350.146271,
-        "Width": 141.676666,
-        "Height": 108.0
-      },
-      {
         "NodeId": 9,
-        "X": 2035.45752,
-        "Y": 293.986267,
+        "X": 2019.90552,
+        "Y": 314.72226,
         "Width": 166.636673,
         "Height": 108.0
       },
@@ -430,13 +378,6 @@
         "Y": 268.066254,
         "Width": 242.303329,
         "Height": 37.96
-      },
-      {
-        "NodeId": 12,
-        "X": 2163.61768,
-        "Y": 514.3063,
-        "Width": 212.666672,
-        "Height": 108.0
       },
       {
         "NodeId": 13,
@@ -458,6 +399,20 @@
         "Y": 439.42627,
         "Width": 172.0,
         "Height": 37.96
+      },
+      {
+        "NodeId": 16,
+        "X": 2223.00928,
+        "Y": 181.2345,
+        "Width": 165.29,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 17,
+        "X": 2385.44141,
+        "Y": 359.218475,
+        "Width": 122.166664,
+        "Height": 108.0
       }
     ]
   }

@@ -40,7 +40,7 @@
       "InputPins": [
         {
           "Connection": {
-            "NodeId": 3,
+            "NodeId": 9,
             "PinId": ""
           },
           "Id": "",
@@ -56,45 +56,6 @@
       "EnterPins": [],
       "ExitPins": [],
       "Id": 2
-    },
-    {
-      "Type": "clamp(float,float,float)",
-      "Name": "clamp(float,float,float)",
-      "Value": null,
-      "GroupId": 0,
-      "Category": 1,
-      "InputPins": [
-        {
-          "Connection": {
-            "NodeId": 7,
-            "PinId": ""
-          },
-          "Id": "x",
-          "Type": "float"
-        },
-        {
-          "Connection": null,
-          "Id": "minVal",
-          "Type": "float"
-        },
-        {
-          "Connection": {
-            "NodeId": 8,
-            "PinId": ""
-          },
-          "Id": "maxVal",
-          "Type": "float"
-        }
-      ],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "float"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 3
     },
     {
       "Type": "uniform(vec4)",
@@ -220,12 +181,21 @@
       "Id": 7
     },
     {
-      "Type": "float",
-      "Name": "float",
-      "Value": "1.0",
+      "Type": "saturate(float)",
+      "Name": "saturate(float)",
+      "Value": null,
       "GroupId": 0,
-      "Category": 6,
-      "InputPins": [],
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 7,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "float"
+        }
+      ],
       "OutputPins": [
         {
           "Id": "",
@@ -234,7 +204,7 @@
       ],
       "EnterPins": [],
       "ExitPins": [],
-      "Id": 8
+      "Id": 9
     }
   ],
   "Groups": [],
@@ -253,13 +223,6 @@
         "Y": 382.04,
         "Width": 172.0,
         "Height": 37.96
-      },
-      {
-        "NodeId": 3,
-        "X": 839.0,
-        "Y": 423.04,
-        "Width": 212.666672,
-        "Height": 108.0
       },
       {
         "NodeId": 4,
@@ -290,10 +253,10 @@
         "Height": 108.0
       },
       {
-        "NodeId": 8,
-        "X": 722.0,
-        "Y": 560.04,
-        "Width": 184.0,
+        "NodeId": 9,
+        "X": 811.0,
+        "Y": 352.04,
+        "Width": 165.29,
         "Height": 108.0
       }
     ]

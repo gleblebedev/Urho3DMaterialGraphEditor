@@ -196,45 +196,6 @@
       "Id": 9
     },
     {
-      "Type": "clamp(float,float,float)",
-      "Name": "clamp(float,float,float)",
-      "Value": null,
-      "GroupId": 0,
-      "Category": 1,
-      "InputPins": [
-        {
-          "Connection": {
-            "NodeId": 14,
-            "PinId": ""
-          },
-          "Id": "x",
-          "Type": "float"
-        },
-        {
-          "Connection": null,
-          "Id": "minVal",
-          "Type": "float"
-        },
-        {
-          "Connection": {
-            "NodeId": 22,
-            "PinId": ""
-          },
-          "Id": "maxVal",
-          "Type": "float"
-        }
-      ],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "float"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 13
-    },
-    {
       "Type": "float-float",
       "Name": "float-float",
       "Value": null,
@@ -450,23 +411,6 @@
       "Id": 21
     },
     {
-      "Type": "float",
-      "Name": "float",
-      "Value": "1.0",
-      "GroupId": 0,
-      "Category": 6,
-      "InputPins": [],
-      "OutputPins": [
-        {
-          "Id": "",
-          "Type": "float"
-        }
-      ],
-      "EnterPins": [],
-      "ExitPins": [],
-      "Id": 22
-    },
-    {
       "Type": "vec3+vec3",
       "Name": "vec3+vec3",
       "Value": null,
@@ -577,7 +521,7 @@
       "InputPins": [
         {
           "Connection": {
-            "NodeId": 13,
+            "NodeId": 27,
             "PinId": ""
           },
           "Id": "x",
@@ -601,6 +545,32 @@
       "EnterPins": [],
       "ExitPins": [],
       "Id": 26
+    },
+    {
+      "Type": "saturate(float)",
+      "Name": "saturate(float)",
+      "Value": null,
+      "GroupId": 0,
+      "Category": 1,
+      "InputPins": [
+        {
+          "Connection": {
+            "NodeId": 14,
+            "PinId": ""
+          },
+          "Id": "x",
+          "Type": "float"
+        }
+      ],
+      "OutputPins": [
+        {
+          "Id": "",
+          "Type": "float"
+        }
+      ],
+      "EnterPins": [],
+      "ExitPins": [],
+      "Id": 27
     }
   ],
   "Groups": [],
@@ -653,13 +623,6 @@
         "X": -1841.224,
         "Y": 1162.97437,
         "Width": 221.78334,
-        "Height": 108.0
-      },
-      {
-        "NodeId": 13,
-        "X": -369.280029,
-        "Y": 806.04,
-        "Width": 212.666672,
         "Height": 108.0
       },
       {
@@ -719,13 +682,6 @@
         "Height": 108.0
       },
       {
-        "NodeId": 22,
-        "X": -621.52,
-        "Y": 976.56,
-        "Width": 184.0,
-        "Height": 108.0
-      },
-      {
         "NodeId": 23,
         "X": 558.443237,
         "Y": 1053.53918,
@@ -751,6 +707,13 @@
         "X": -49.6399956,
         "Y": 794.8,
         "Width": 142.286667,
+        "Height": 108.0
+      },
+      {
+        "NodeId": 27,
+        "X": -344.600037,
+        "Y": 761.24,
+        "Width": 165.29,
         "Height": 108.0
       }
     ]
