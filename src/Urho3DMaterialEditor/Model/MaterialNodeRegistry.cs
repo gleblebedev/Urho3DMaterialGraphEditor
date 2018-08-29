@@ -72,6 +72,15 @@ namespace Urho3DMaterialEditor.Model
             Add(new BuildInVariableNodeFactory(PinTypes.Vec4, NodeCategory.Parameter, NodeTypes.FragCoord));
             Add(new BuildInVariableNodeFactory(PinTypes.Bool, NodeCategory.Parameter, NodeTypes.FrontFacing));
 
+            // __________ ***
+            Add(new FunctionNodeFactory(NodeTypes.FunctionFloat, NodeTypes.FunctionFloat,new[] {"Text Function", "" },
+                   new[] { new Pin(PinIds.Value, PinTypes.Float) }, new[] { new Pin(PinIds.Value, PinTypes.Float) })
+                   );
+
+            //Add(FunctionNodeFactory.Function(NodeTypes.FunctionFloat, NodeTypes.FunctionFloat,
+            //      "Text Function", new[] { new Pin(PinIds.Value, PinTypes.Float) },
+            //      PinTypes.Float));
+
 #if DEBUG
             var debugVisibility = NodeFactoryVisibility.Visible;
 #else

@@ -225,6 +225,7 @@
     <Compile Include="ViewModels\AppFoldersViewModel.cs" />
     <Compile Include="ViewModels\ColorViewModel.cs" />
     <Compile Include="ViewModels\EnumViewModel.cs" />
+    <Compile Include="ViewModels\FunctionViewModel.cs" />
     <Compile Include="ViewModels\Generator.cs" />
     <Compile Include="ViewModels\GraphValidator.cs" />
     <Compile Include="ViewModels\IfDefViewModel.cs" />
@@ -249,6 +250,7 @@
     <Compile Include="Views\EnumNodeView.xaml.cs">
       <DependentUpon>EnumNodeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FunctionTextBox.cs" />
     <Compile Include="Views\SliderControl.cs" />
     <Compile Include="Views\SpecularNodeView.xaml.cs">
       <DependentUpon>SpecularNodeView.xaml</DependentUpon>
@@ -307,6 +309,10 @@
     </Page>
     <Page Include="Views\EnumNodeView.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FunctionNodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SpecularNodeView.xaml">
       <Generator>MSBuild:Compile</Generator>

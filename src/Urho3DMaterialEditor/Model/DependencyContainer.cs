@@ -17,6 +17,16 @@ namespace Urho3DMaterialEditor.Model
 
             #region ParametersAndValues
 
+            builder.RegisterType<FunctionViewModel>()
+                .Named<NodeViewModel>(NodeTypes.FunctionFloat)
+                .ExternallyOwned()
+                .InstancePerDependency();
+
+            //builder.RegisterType<FunctionViewModel>()
+            //     .Named<NodeViewModel>(NodeTypes.MakeType(NodeTypes.FunctionFloat, PinTypes.Float))
+            //     .ExternallyOwned()
+            //     .InstancePerDependency();
+
             builder.RegisterType<SamplerViewModel>()
                 .Named<NodeViewModel>(NodeTypes.Sampler2D)
                 .ExternallyOwned()
