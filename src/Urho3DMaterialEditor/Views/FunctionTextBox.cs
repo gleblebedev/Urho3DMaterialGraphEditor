@@ -34,10 +34,10 @@ namespace Urho3DMaterialEditor.Views
 
         private void UpdateStep(object sender, EventArgs e)
         {
-            if (this.Value.Length<1)
-            {
-                return;
-            }
+            //if (this.Value.Length<1)
+            //{
+            //    return;
+            //}
 
         }
       
@@ -60,34 +60,34 @@ namespace Urho3DMaterialEditor.Views
             {
                 Path = new PropertyPath(_path),
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
-                ValidatesOnNotifyDataErrors = true,
-                ValidatesOnDataErrors = true,
-                NotifyOnValidationError = true,
-                ValidationRules =
-                {
-                    new NumericValidationRule {ValidatesOnTargetUpdated = true, ValidationType = typeof(float)}
-                }
+                //ValidatesOnNotifyDataErrors = true,
+                //ValidatesOnDataErrors = true,
+                //NotifyOnValidationError = true,
+                //ValidationRules =
+                //{
+                //    new NumericValidationRule {ValidatesOnTargetUpdated = true, ValidationType = typeof(string)}
+                //}
                  
             });
         }
 
-        public string Value
-        {
-            get
-            {
-                    return Value;
-            }
-            set
-            {
-                if (value.Length<1)
-                {
-                    Text = string.Empty;
-                }else {
-                    Text = value;
-                }
+        public string Value;
+        //{
+        //    get
+        //    {
+        //            return Value;
+        //    }
+        //    set
+        //    {
+        //        if (value.Length<1)
+        //        {
+        //            Text = string.Empty;
+        //        }else {
+        //            Text = value;
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
        
     }
