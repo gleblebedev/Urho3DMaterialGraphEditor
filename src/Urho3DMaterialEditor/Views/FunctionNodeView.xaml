@@ -11,7 +11,8 @@
     <views:NodeBorder CanRename="{Binding CanRename}">
         <views:NodeBorder.NodeContent>
             <StackPanel Orientation="Vertical" MinWidth="100">
-                <local:FunctionTextBox Path="X"/>
+                <TextBlock Text="!!!!"/>
+                <!--<local:FunctionTextBox Path="X"/>-->
             </StackPanel>
         </views:NodeBorder.NodeContent>
     </views:NodeBorder>
