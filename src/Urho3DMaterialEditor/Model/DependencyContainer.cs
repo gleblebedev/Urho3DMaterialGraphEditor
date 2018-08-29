@@ -18,7 +18,7 @@ namespace Urho3DMaterialEditor.Model
             #region ParametersAndValues
 
             builder.RegisterType<FunctionViewModel>()
-                .Named<NodeViewModel>(NodeTypes.FunctionFloat)
+                .Named<NodeViewModel>(NodeTypes.Function)
                 .ExternallyOwned()
                 .InstancePerDependency();
 

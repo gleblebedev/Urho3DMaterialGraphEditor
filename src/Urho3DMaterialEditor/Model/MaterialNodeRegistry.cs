@@ -73,7 +73,7 @@ namespace Urho3DMaterialEditor.Model
             Add(new BuildInVariableNodeFactory(PinTypes.Bool, NodeCategory.Parameter, NodeTypes.FrontFacing));
 
             // __________ ***
-            Add(new FunctionNodeFactory(NodeTypes.FunctionFloat, NodeTypes.FunctionFloat,new[] {"Text Function", "" },
+            Add(new FunctionNodeFactory(NodeTypes.Function, NodeTypes.Function,new[] {"Text Function", "" },
                    new[] { new Pin(PinIds.Value, PinTypes.Float) }, new[] { new Pin(PinIds.Value, PinTypes.Float) })
                    );
 

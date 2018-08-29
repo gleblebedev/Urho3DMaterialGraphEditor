@@ -415,7 +415,7 @@ namespace Urho3DMaterialEditor.Model
         public const string UniformPrefix = "uniform"; //
         public const string ParameterPrefix = "parameter"; //
 
-        public const string FunctionFloat = "function(float)"; //
+        public const string Function = "function"; //
 
 
         internal static Dictionary<string, string> _connectors;
