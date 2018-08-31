@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reactive.Linq;
 using ReactiveUI;
 using Toe.Scripting;
@@ -11,12 +12,25 @@ namespace Urho3DMaterialEditor.ViewModels
         private readonly IDisposable _subscription;
         private string _value;
 
+        public List<string> inParam = new List<string>();
+
+
         public FunctionViewModel(ScriptViewModel script, ScriptNode node) : base(script, node)
         {
             _value = node.Value;
             _subscription = this.WhenAnyValue(_ => _.EditableValue).Throttle(TimeSpan.FromSeconds(0.25))
                 .ObserveOnDispatcher()
                 .Subscribe(_ => BuildNodeValue());
+
+
+        }
+
+        internal void AddPin(string val) {
+            inParam.Add(val);
+            var np = new PinWithConnection(val,val);
+            
+            Node.InputPins.Add(np); //TODO refresh on screen.
+           
         }
 
         public string EditableValue

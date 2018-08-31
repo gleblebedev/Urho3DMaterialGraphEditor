@@ -8,12 +8,51 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <views:NodeBorder CanRename="{Binding CanRename}">
+    <views:NodeBorder CanRename="{Binding CanRename}" >
         <views:NodeBorder.NodeContent>
-            <StackPanel Orientation="Vertical" MinWidth="100">
-                <!--<TextBlock Text="!!!!"/>-->
-                <local:FunctionTextBox Path="X"/>
-            </StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="16" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid  Grid.Row="0" MinWidth="100" Background="Black">
+                    <Menu HorizontalAlignment="Left">
+                        <MenuItem Header="Add Pin" Click="MenuItem_Click">
+                            <MenuItem Header="float"></MenuItem>
+                            <Separator></Separator>
+                            <MenuItem Header="vec2"></MenuItem>
+                            <MenuItem Header="vec3"></MenuItem>
+                            <MenuItem Header="vec4"></MenuItem>
+                            <Separator></Separator>
+                            <MenuItem Header="mat3"></MenuItem>
+                            <MenuItem Header="mat4"></MenuItem>
+                        </MenuItem>
+                    </Menu>
+                    <Menu HorizontalAlignment="Center">
+                        <MenuItem Header="Script">
+                            <MenuItem Header="Clear"></MenuItem>
+                            <MenuItem Header="Load"></MenuItem>
+                            <MenuItem Header="SaveAs..."></MenuItem>
+                        </MenuItem>
+
+                    </Menu>
+                    <Menu HorizontalAlignment="Right" >
+                        <MenuItem Header="Output">
+                            <MenuItem Header="float"></MenuItem>
+                            <Separator></Separator>
+                            <MenuItem Header="vec2"></MenuItem>
+                            <MenuItem Header="vec3"></MenuItem>
+                            <MenuItem Header="vec4"></MenuItem>
+                            <Separator></Separator>
+                            <MenuItem Header="mat3"></MenuItem>
+                            <MenuItem Header="mat4"></MenuItem>
+                        </MenuItem>
+                    </Menu>
+                </Grid>
+                <StackPanel  Grid.Row="1" Orientation="Vertical" MinWidth="100">
+                    <local:FunctionTextBox Path="X"/>
+                </StackPanel>
+            </Grid>
         </views:NodeBorder.NodeContent>
     </views:NodeBorder>
 

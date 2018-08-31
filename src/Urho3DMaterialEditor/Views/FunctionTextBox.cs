@@ -29,15 +29,12 @@ namespace Urho3DMaterialEditor.Views
             VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
             HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
 
-            Height = 120;
+            Height = 140; Width = 220;
         }
 
         private void UpdateStep(object sender, EventArgs e)
         {
-            //if (this.Value.Length<1)
-            //{
-            //    return;
-            //}
+            Value = Text;
 
         }
       
@@ -71,24 +68,18 @@ namespace Urho3DMaterialEditor.Views
             });
         }
 
-        public string Value;
-        //{
-        //    get
-        //    {
-        //            return Value;
-        //    }
-        //    set
-        //    {
-        //        if (value.Length<1)
-        //        {
-        //            Text = string.Empty;
-        //        }else {
-        //            Text = value;
-        //        }
+        public string Value //{ get; set; }
+        {
+            get
+            {
+                    return Value;
+            }
+            set
+            {
+                    Text = value;
+            }
+        }
 
-        //    }
-        //}
-
-       
+      
     }
 }
