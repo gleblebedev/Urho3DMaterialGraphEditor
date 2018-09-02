@@ -14,6 +14,8 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="16" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="16" />
+
                 </Grid.RowDefinitions>
                 <Grid  Grid.Row="0" MinWidth="100" Background="Black">
                     <Menu HorizontalAlignment="Left">
@@ -51,6 +53,17 @@
                 </Grid>
                 <StackPanel  Grid.Row="1" Orientation="Vertical" MinWidth="100">
                     <local:FunctionTextBox Path="X"/>
+                </StackPanel>
+                <StackPanel  Grid.Row="2" Orientation="Vertical" MinWidth="100">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Text="return" IsReadOnly="True" Background="Black" Foreground="White"/>
+                        <TextBox Text="" Grid.Column="1" Background="White" Foreground="Black"/>
+
+                    </Grid>
                 </StackPanel>
             </Grid>
         </views:NodeBorder.NodeContent>
