@@ -12,8 +12,6 @@ namespace Urho3DMaterialEditor.ViewModels
         private readonly IDisposable _subscription;
         private string _value;
 
-        public List<string> inParam = new List<string>();
-
 
         public FunctionViewModel(ScriptViewModel script, ScriptNode node) : base(script, node)
         {
@@ -26,11 +24,9 @@ namespace Urho3DMaterialEditor.ViewModels
         }
 
         internal void AddPin(string val) {
-            inParam.Add(val);
             var np = new PinWithConnection(val,val);
-            
-            Node.InputPins.Add(np); //TODO refresh on screen.
-           
+            Node.InputPins.Add(np);
+            InputPins.Add(new InputPinViewModel(this, np));
         }
 
         public string EditableValue

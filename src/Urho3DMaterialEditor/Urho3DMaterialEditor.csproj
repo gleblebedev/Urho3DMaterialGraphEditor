@@ -253,7 +253,6 @@
     <Compile Include="Views\FunctionNodeView.xaml.cs">
       <DependentUpon>FunctionNodeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FunctionTextBox.cs" />
     <Compile Include="Views\SliderControl.cs" />
     <Compile Include="Views\SpecularNodeView.xaml.cs">
       <DependentUpon>SpecularNodeView.xaml</DependentUpon>
