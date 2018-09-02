@@ -51,16 +51,17 @@
                         </MenuItem>
                     </Menu>
                 </Grid>
-                <TextBox Grid.Row="1"  Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
+
+                <StackPanel  Grid.Row="1" Orientation="Vertical" MinWidth="100" MinHeight="160">
+                    <TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
                              Background="Black" Foreground="White"
                              VerticalScrollBarVisibility="Visible"
                              HorizontalScrollBarVisibility="Auto"
                              TextWrapping="Wrap"
                              AcceptsReturn="True"
                              AcceptsTab="True"
+                             MinWidth="240" MinHeight="180"
                              />
-                <!--<StackPanel  Grid.Row="1" Orientation="Vertical" MinWidth="100">
-                    <local:FunctionTextBox Path="X"/>
                 </StackPanel>
                 <StackPanel  Grid.Row="2" Orientation="Vertical" MinWidth="100">
                     <Grid>
@@ -70,9 +71,8 @@
                         </Grid.ColumnDefinitions>
                         <TextBox Text="return" IsReadOnly="True" Background="Black" Foreground="White"/>
                         <TextBox Text="" Grid.Column="1" Background="White" Foreground="Black"/>
-
                     </Grid>
-                </StackPanel>-->
+                </StackPanel>
             </Grid>
         </views:NodeBorder.NodeContent>
     </views:NodeBorder>
