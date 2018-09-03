@@ -219,6 +219,8 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                 return GetConstantValue(node.Value, constType);
             switch (node.Type)
             {
+                case NodeTypes.Function:
+                    return node.Name + "(" + string.Join(",", args) + ")";
                 case NodeTypes.Special.Default:
                     return GenerateDefaultValue(node.OutputPins[0].Type);
                 case NodeTypes.Special.ShadowMapOutput:
