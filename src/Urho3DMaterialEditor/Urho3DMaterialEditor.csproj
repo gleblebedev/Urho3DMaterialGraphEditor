@@ -250,6 +250,9 @@
     <Compile Include="Views\EnumNodeView.xaml.cs">
       <DependentUpon>EnumNodeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FuncBorder.xaml.cs">
+      <DependentUpon>FuncBorder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FunctionNodeView.xaml.cs">
       <DependentUpon>FunctionNodeView.xaml</DependentUpon>
     </Compile>
@@ -311,6 +314,10 @@
     </Page>
     <Page Include="Views\EnumNodeView.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FuncBorder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\FunctionNodeView.xaml">
       <Generator>MSBuild:Compile</Generator>
