@@ -1,0 +1,141 @@
+﻿<UserControl x:Class="Urho3DMaterialEditor.Views.FuncAloneNodeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             
+             xmlns:converters="clr-namespace:Toe.Scripting.WPF.Converters;assembly=Toe.Scripting.WPF"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="hiddenItemConverter" True="Collapsed" False="Visible"/>
+        <converters:MenuItemViewModelToMenuItemConverter x:Key="menuItemViewModelToMenuItemConverter" />
+        <converters:BooleanToVisibilityConverter x:Key="nameTextBoxVisibility" True="Visible" False="Collapsed" />
+        <converters:BooleanToVisibilityConverter x:Key="errorVisibility" True="Visible" False="Collapsed" />
+        <converters:BooleanToVisibilityConverter x:Key="nameTextBlockVisibility" True="Collapsed" False="Visible" />
+        <converters:BooleanToBrushConverter x:Key="nodeSelectedBrush" True="#FFD59D2E" False="#00D59D2E" />
+        <converters:CategoryToBackgroundConverter x:Key="categoryToBackgroundConverter" Unknown="#515151"
+                                                  Parameter="#420F4F" Event="#721B1A" Value="#3D4F3A"
+                                                  Converter="#155457" />
+
+    </UserControl.Resources>
+    <UserControl.ContextMenu>
+        <ContextMenu ItemsSource="{Binding MenuItems, Converter={StaticResource menuItemViewModelToMenuItemConverter}}" />
+    </UserControl.ContextMenu>
+
+    <Border IsHitTestVisible="True"
+            Visibility="{Binding IsHidden, Converter={StaticResource hiddenItemConverter}}"
+            MouseLeftButtonDown="StartDragging"
+            MouseRightButtonDown="SelectIfNotSelected"
+            MinWidth="100" BorderThickness="4" CornerRadius="10,10,10,10"
+            BorderBrush="{Binding IsSelected, Converter={StaticResource ResourceKey=nodeSelectedBrush}}"
+            Background="#5B627693">
+
+        <Border MinWidth="100" MinHeight="100" BorderThickness="2" CornerRadius="8,8,8,8" BorderBrush="Black">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border BorderThickness="0" CornerRadius="6,6,0,0"
+                        Background="{Binding Category, Converter={StaticResource categoryToBackgroundConverter}}"
+                        Grid.ColumnSpan="3" MinHeight="26">
+                    <Grid>
+
+                        <Grid.Background >
+                            <LinearGradientBrush EndPoint="0.486,0.986" StartPoint="0.486,0">
+                                <LinearGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                        <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </LinearGradientBrush.RelativeTransform>
+                                <GradientStop Color="#3DFFFFFF"/>
+                                <GradientStop Color="#3D6E6C6C" Offset="0.941"/>
+                                <GradientStop Color="#3D000000" Offset="0.1"/>
+                                <GradientStop Color="#3DFFFFFF" Offset="0.025"/>
+                                <GradientStop Color="#3D000000" Offset="0.983"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+
+                        <Grid Visibility="{Binding CanRename, Converter={StaticResource nameTextBoxVisibility}}">
+                            <TextBox FontWeight="Bold" HorizontalAlignment="Center" Padding="4" Foreground="White"
+                                     Background="Transparent" BorderBrush="Transparent" MinWidth="32"
+                                     Margin="32,0,32,0">
+                                <TextBox.Text>
+                                    <Binding Path="Name" />
+                                </TextBox.Text>
+                            </TextBox>
+                        </Grid>
+                        <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Padding="4" Foreground="White"
+                                   Background="Transparent" MinWidth="32" Margin="32,0,32,0"
+                                   Visibility="{Binding CanRename, Converter={StaticResource nameTextBlockVisibility}}">
+                            <TextBlock.Text>
+                                <Binding Path="Name" />
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="1">
+                    <Grid Grid.Column="1">
+                         <Grid Grid.Row="1" MinWidth="80" MinHeight="60" Margin="3,3,3,3">
+                            <TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
+                             Background="Black" Foreground="White"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Auto"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             AcceptsTab="True"
+                             MinWidth="180" MinHeight="80"
+                             />
+                            <ToggleButton Grid.Column="1" Content="" MinHeight="24" MinWidth="24" MaxHeight="24" MaxWidth="24" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <ToggleButton.Style>
+                                    <Style TargetType="{x:Type ToggleButton}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ToggleButton">
+                                                    <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                                                         Background="{TemplateBinding Background}">
+                                                        <ContentPresenter HorizontalAlignment="Center"                  
+                                              VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsChecked" Value="True">
+                                                <Setter Property="Background" Value="Green" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ToggleButton.Style>
+                            </ToggleButton>
+
+                        </Grid>
+                      
+                    </Grid>
+                </Grid>
+
+<!--______________-->
+
+
+                <Grid Grid.RowSpan="2" Grid.ColumnSpan="3" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red" MinWidth="20" 
+                      ToolTip="{Binding Error}"
+                      Visibility="{Binding HasError, Converter={StaticResource errorVisibility}}">
+                    <TextBlock Text="!" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+
+
+
+            </Grid>
+        </Border>
+    </Border>
+</UserControl>

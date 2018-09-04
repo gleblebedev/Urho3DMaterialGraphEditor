@@ -22,10 +22,10 @@ namespace Urho3DMaterialEditor.Model
                 .ExternallyOwned()
                 .InstancePerDependency();
 
-            //builder.RegisterType<FunctionViewModel>()
-            //     .Named<NodeViewModel>(NodeTypes.MakeType(NodeTypes.FunctionFloat, PinTypes.Float))
-            //     .ExternallyOwned()
-            //     .InstancePerDependency();
+            builder.RegisterType<FunctAloneViewModel>()
+                .Named<NodeViewModel>(NodeTypes.FuncAlone)
+                .ExternallyOwned()
+                .InstancePerDependency();
 
             builder.RegisterType<SamplerViewModel>()
                 .Named<NodeViewModel>(NodeTypes.Sampler2D)

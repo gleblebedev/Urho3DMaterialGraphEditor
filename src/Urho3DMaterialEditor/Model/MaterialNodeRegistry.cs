@@ -77,6 +77,9 @@ namespace Urho3DMaterialEditor.Model
                    new[] { new Pin(PinTypes.Float, PinTypes.Float) }, new[] { new Pin("", PinTypes.Float) })
                    );
 
+            Add(new FunctionNodeFactory(NodeTypes.FuncAlone, NodeTypes.FuncAlone, new[] { "Text Function", "" },
+                   new[] { new Pin(PinTypes.Float, PinTypes.Float) }, new[] { new Pin("", PinTypes.Float) })
+                   );
 #if DEBUG
             var debugVisibility = NodeFactoryVisibility.Visible;
 #else

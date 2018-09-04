@@ -416,7 +416,7 @@ namespace Urho3DMaterialEditor.Model
         public const string ParameterPrefix = "parameter"; //
 
         public const string Function = "function"; //
-
+        public const string FuncAlone = "functionAlone"; //
 
         internal static Dictionary<string, string> _connectors;
         internal static Dictionary<string, string> _ifdefs;
