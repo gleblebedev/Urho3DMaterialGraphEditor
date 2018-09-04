@@ -74,7 +74,7 @@ namespace Urho3DMaterialEditor.Model
 
             // __________ ***
             Add(new FunctionNodeFactory(NodeTypes.Function, NodeTypes.Function,new[] {"Text Function", "" },
-                   new[] { new Pin(PinTypes.Float, PinTypes.Float) }, new[] { new Pin(PinTypes.Float, PinTypes.Float) })
+                   new[] { new Pin("var1", PinTypes.Float) }, new[] { new Pin("", PinTypes.Float) })
                    );
 
             //Add(FunctionNodeFactory.Function(NodeTypes.FunctionFloat, NodeTypes.FunctionFloat,

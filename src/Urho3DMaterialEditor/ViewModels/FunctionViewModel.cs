@@ -49,12 +49,11 @@ namespace Urho3DMaterialEditor.ViewModels
             functionTXT = FuncHeader + "\n{\n" + (Value??"") + "\n" + "return "+ funcFoot+ ";\n}";
         }
 
-        internal void OutPin(string val) {
-            var np = new PinWithConnection(val, val);
-            Node.OutputPins.Clear();
-            Node.OutputPins.Add(np);
+        internal void OutPin(string val)
+        {
+            Node.OutputPins[0].Type = val;
             OutputPins.Clear();
-            OutputPins.Add(new OutputPinViewModel(this, np));
+            OutputPins.Add(new OutputPinViewModel(this, Node.OutputPins[0]));
 
             CreateFuncTXT();
         }

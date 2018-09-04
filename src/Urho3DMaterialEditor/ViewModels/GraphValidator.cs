@@ -73,47 +73,51 @@ namespace Urho3DMaterialEditor.ViewModels
                         return new MaterialCompilationException(
                             "Pin " + pinViewModel.Id + " has unknown type " + pinViewModel.Type, scriptNode.Id);
 
-                var factories = _nodeRegistry.ResolveFactories(scriptNode.Node.Type).ToList();
-                if (factories.Count == 0)
-                    return new MaterialCompilationException("Unknown node type " + scriptNode.Node.Type, scriptNode.Id);
-
-                if (factories.Count == 1)
+                if (scriptNode.Node.Type != NodeTypes.Function)
                 {
-                    var n = factories[0].Build();
-                    if (n.InputPins.Count != scriptNode.InputPins.Count)
-                        return new MaterialCompilationException("Input pin doesn't match", scriptNode.Id);
+                    var factories = _nodeRegistry.ResolveFactories(scriptNode.Node.Type).ToList();
+                    if (factories.Count == 0)
+                        return new MaterialCompilationException("Unknown node type " + scriptNode.Node.Type,
+                            scriptNode.Id);
 
-                    if (n.OutputPins.Count != scriptNode.OutputPins.Count)
-                        return new MaterialCompilationException("Output pin doesn't match", scriptNode.Id);
-
-                    foreach (var pinPair in n.InputPins.Zip(scriptNode.InputPins,
-                        (nn, ss) => new {Expected = nn, Actial = ss}))
+                    if (factories.Count == 1)
                     {
-                        var actualPin = pinPair.Actial.Pin;
-                        var expectedPin = pinPair.Expected;
-                        if (expectedPin.Id != actualPin.Id)
-                            return new MaterialCompilationException(
-                                "Expected pin " + expectedPin.Id + " but found pin " + actualPin.Id, scriptNode.Id);
+                        var n = factories[0].Build();
+                        if (n.InputPins.Count != scriptNode.InputPins.Count)
+                            return new MaterialCompilationException("Input pin doesn't match", scriptNode.Id);
 
-                        if (expectedPin.Type != actualPin.Type)
-                            return new MaterialCompilationException(
-                                "Expected pin " + expectedPin.Id + " of type " + expectedPin.Type +
-                                " but found pin of type " + actualPin.Type, scriptNode.Id);
-                    }
+                        if (n.OutputPins.Count != scriptNode.OutputPins.Count)
+                            return new MaterialCompilationException("Output pin doesn't match", scriptNode.Id);
 
-                    foreach (var pinPair in n.OutputPins.Zip(scriptNode.OutputPins,
-                        (nn, ss) => new {Expected = nn, Actial = ss}))
-                    {
-                        var actualPin = pinPair.Actial.Pin;
-                        var expectedPin = pinPair.Expected;
-                        if (expectedPin.Id != actualPin.Id)
-                            return new MaterialCompilationException(
-                                "Expected pin " + expectedPin.Id + " but found pin " + actualPin.Id, scriptNode.Id);
+                        foreach (var pinPair in n.InputPins.Zip(scriptNode.InputPins,
+                            (nn, ss) => new {Expected = nn, Actial = ss}))
+                        {
+                            var actualPin = pinPair.Actial.Pin;
+                            var expectedPin = pinPair.Expected;
+                            if (expectedPin.Id != actualPin.Id)
+                                return new MaterialCompilationException(
+                                    "Expected pin " + expectedPin.Id + " but found pin " + actualPin.Id, scriptNode.Id);
 
-                        if (expectedPin.Type != actualPin.Type)
-                            return new MaterialCompilationException(
-                                "Expected pin " + expectedPin.Id + " of type " + expectedPin.Type +
-                                " but found pin of type " + actualPin.Type, scriptNode.Id);
+                            if (expectedPin.Type != actualPin.Type)
+                                return new MaterialCompilationException(
+                                    "Expected pin " + expectedPin.Id + " of type " + expectedPin.Type +
+                                    " but found pin of type " + actualPin.Type, scriptNode.Id);
+                        }
+
+                        foreach (var pinPair in n.OutputPins.Zip(scriptNode.OutputPins,
+                            (nn, ss) => new {Expected = nn, Actial = ss}))
+                        {
+                            var actualPin = pinPair.Actial.Pin;
+                            var expectedPin = pinPair.Expected;
+                            if (expectedPin.Id != actualPin.Id)
+                                return new MaterialCompilationException(
+                                    "Expected pin " + expectedPin.Id + " but found pin " + actualPin.Id, scriptNode.Id);
+
+                            if (expectedPin.Type != actualPin.Type)
+                                return new MaterialCompilationException(
+                                    "Expected pin " + expectedPin.Id + " of type " + expectedPin.Type +
+                                    " but found pin of type " + actualPin.Type, scriptNode.Id);
+                        }
                     }
                 }
             }
