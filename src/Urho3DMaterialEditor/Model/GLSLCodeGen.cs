@@ -20,6 +20,8 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
 }
 ";
 
+        private Dictionary<string, string> _dynamicFunctions = new Dictionary<string, string>();
+
         private int _ifDefCount;
         public Dictionary<NodeHelper<TranslatedMaterialGraph.NodeInfo>, string> _variables;
 
@@ -38,11 +40,24 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
         {
             switch (node.Type)
             {
+                case NodeTypes.Function:
+                    _dynamicFunctions.Add(node.Name, BuildFunction(node));
+                    yield return new RequiredFunction(node.Name);
+                    break;
                 case NodeTypes.MakeMat3FromMat4x3:
                 case NodeTypes.MakeMat3FromMat4:
                     yield return new RequiredFunction(GetNormalMatrix);
                     break;
             }
+        }
+
+        private string BuildFunction(NodeHelper<TranslatedMaterialGraph.NodeInfo> node)
+        {
+            return node.OutputPins[0].Type + " " + node.Name + "(" +
+                   string.Join(", ", node.InputPins.Select(_ => _.Type + " " + _.Id)) + ")" + Environment.NewLine
+                   + "{" + Environment.NewLine
+                   + node.Value
+                   + "}" + Environment.NewLine;
         }
 
         public IEnumerable<NodeHelper<TranslatedMaterialGraph.NodeInfo>> GetRequiredUniforms(
@@ -77,6 +92,9 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                 case GetNormalMatrix:
                     return _getNormalMatrix;
                 default:
+                    string txt;
+                    if (_dynamicFunctions.TryGetValue(function.Name, out txt))
+                        return txt;
                     throw new NotImplementedException();
             }
         }
