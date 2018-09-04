@@ -53,11 +53,13 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
 
         private string BuildFunction(NodeHelper<TranslatedMaterialGraph.NodeInfo> node)
         {
-            return node.OutputPins[0].Type + " " + node.Name + "(" +
-                   string.Join(", ", node.InputPins.Select(_ => _.Type + " " + _.Id)) + ")" + Environment.NewLine
+            var tx= node.OutputPins[0].Type + " " + node.Name + "(" +
+                   string.Join(", ", node.InputPins.Select((x, index) => x.Type + " var" + (index+1).ToString())) + ")" + Environment.NewLine
                    + "{" + Environment.NewLine
                    + node.Value
                    + "}" + Environment.NewLine;
+            
+            return tx;
         }
 
         public IEnumerable<NodeHelper<TranslatedMaterialGraph.NodeInfo>> GetRequiredUniforms(

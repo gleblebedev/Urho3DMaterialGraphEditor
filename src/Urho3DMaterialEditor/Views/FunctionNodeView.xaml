@@ -3,11 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Urho3DMaterialEditor.Views"
              xmlns:local1="clr-namespace:Toe.Scripting.WPF.Views;assembly=Toe.Scripting.WPF"
              mc:Ignorable="d"
              
-             xmlns:viewModels="clr-namespace:Toe.Scripting.WPF.ViewModels"
              xmlns:converters="clr-namespace:Toe.Scripting.WPF.Converters;assembly=Toe.Scripting.WPF"
              d:DesignHeight="450" d:DesignWidth="800">
 
