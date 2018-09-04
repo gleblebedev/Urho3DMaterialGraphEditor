@@ -154,25 +154,75 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="20" />
                             <RowDefinition Height="*" />
-                            <RowDefinition Height="24" />
+                            <!--<RowDefinition Height="24" />-->
 
                         </Grid.RowDefinitions>
-                        <Grid  Grid.Row="0" MinWidth="100">
-                            <TextBox Text="{Binding FuncHeader, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Background="Black" Foreground="White" />
+                        
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0"  MinWidth="100">
+                                <TextBox Text="{Binding FuncHeader, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Background="Black" Foreground="White" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <Menu  Grid.Column="2" HorizontalAlignment="Right" >
+                                        <MenuItem Header="..." Click="MenuItem_Click_1">
+                                            <MenuItem Header="float"></MenuItem>
+                                            <Separator></Separator>
+                                            <MenuItem Header="vec2"></MenuItem>
+                                            <MenuItem Header="vec3"></MenuItem>
+                                            <MenuItem Header="vec4"></MenuItem>
+                                            <Separator></Separator>
+                                            <MenuItem Header="mat3"></MenuItem>
+                                            <MenuItem Header="mat4"></MenuItem>
+                                        </MenuItem>
+                                    </Menu>
+                                    <!-- RIGHT PIN BLOCK -->
+                                    <StackPanel  HorizontalAlignment="Right" MinWidth="18" MaxWidth="18">
+                                        <ItemsControl ItemsSource="{Binding ExitPins}" HorizontalAlignment="Right">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <local1:ExitExecutionPin />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                        <ItemsControl ItemsSource="{Binding OutputPins}" HorizontalAlignment="Right">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <local1:OutputPinView />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
                         </Grid>
 
-                        <StackPanel  Grid.Row="1" Orientation="Vertical" MinWidth="100" MinHeight="160">
+                        <Grid Grid.Row="1" MinWidth="80" MinHeight="60" Margin="0,0,3,3">
                             <TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
                              Background="Black" Foreground="White"
-                             VerticalScrollBarVisibility="Visible"
+                             VerticalScrollBarVisibility="Auto"
                              HorizontalScrollBarVisibility="Auto"
                              TextWrapping="Wrap"
                              AcceptsReturn="True"
                              AcceptsTab="True"
-                             MinWidth="240" MinHeight="180"
+                             MinWidth="180" MinHeight="80"
                              />
-                        </StackPanel>
-                        <StackPanel  Grid.Row="2" Orientation="Vertical" MinWidth="100">
+                        </Grid>
+                        <!--<StackPanel  Grid.Row="2" Orientation="Vertical" MinWidth="100">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
@@ -180,50 +230,12 @@
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Text="return" IsReadOnly="True" Background="Black" Foreground="White"/>
-                                <TextBox Name="funcFoot" Text="" Grid.Column="1" Background="Black" Foreground="Yellow" LostFocus="funcFoot_LostFocus"/>
+                                --><!--<TextBox Text="return" IsReadOnly="True" Background="Black" Foreground="White"/>
+                                <TextBox Name="funcFoot" Text="" Grid.Column="1" Background="Black" Foreground="Yellow" LostFocus="funcFoot_LostFocus"/>--><!--
 
-                                <Menu  Grid.Column="2" HorizontalAlignment="Right" >
-                                    <MenuItem Header="type" Click="MenuItem_Click_1">
-                                        <MenuItem Header="float"></MenuItem>
-                                        <Separator></Separator>
-                                        <MenuItem Header="vec2"></MenuItem>
-                                        <MenuItem Header="vec3"></MenuItem>
-                                        <MenuItem Header="vec4"></MenuItem>
-                                        <Separator></Separator>
-                                        <MenuItem Header="mat3"></MenuItem>
-                                        <MenuItem Header="mat4"></MenuItem>
-                                    </MenuItem>
-                                </Menu>
-                                <!-- RIGHT PIN BLOCK -->
-                                <StackPanel Grid.Column="3" HorizontalAlignment="Right" MinWidth="32">
-                                    <ItemsControl ItemsSource="{Binding ExitPins}" HorizontalAlignment="Right">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <local1:ExitExecutionPin />
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                    </ItemsControl>
-                                    <ItemsControl ItemsSource="{Binding OutputPins}" HorizontalAlignment="Right">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <local1:OutputPinView />
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                    </ItemsControl>
-                                </StackPanel>
+                              
                             </Grid>
-                        </StackPanel>
+                        </StackPanel>-->
 
                     </Grid>
                 </Grid>

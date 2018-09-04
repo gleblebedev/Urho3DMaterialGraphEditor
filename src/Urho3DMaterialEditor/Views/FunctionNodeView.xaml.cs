@@ -50,11 +50,12 @@ namespace Urho3DMaterialEditor.Views {
             dc.ClearInPins();
         }
 
-        private void funcFoot_LostFocus(object sender, RoutedEventArgs e) {
-            var dc = DataContext as ViewModels.FunctionViewModel;
-            dc.funcFoot = funcFoot.Text;
-            dc.CreateFuncTXT();
-        }
+        //private void funcFoot_LostFocus(object sender, RoutedEventArgs e) {
+        //    if (DataContext is ViewModels.FunctionViewModel dc) {
+        //        dc.funcFoot = funcFoot.Text;
+        //        dc.CreateFuncTXT();
+        //    }
+        //}
 
         //_______________________________________DRAg & DROP
 

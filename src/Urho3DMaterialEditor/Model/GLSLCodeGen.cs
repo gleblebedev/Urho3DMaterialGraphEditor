@@ -54,8 +54,8 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
         private string BuildFunction(NodeHelper<TranslatedMaterialGraph.NodeInfo> node)
         {
             var tx= node.OutputPins[0].Type + " " + node.Name + "(" +
-                   string.Join(", ", node.InputPins.Select((x, index) => x.Type + " var" + (index+1).ToString())) + ")" + Environment.NewLine
-                   + "{" + Environment.NewLine
+                   string.Join(", ", node.InputPins.Select((x, index) => x.Type + " var" + (index+1).ToString())) + ")" 
+                   + Environment.NewLine + "{" + Environment.NewLine
                    + node.Value
                    + "}" + Environment.NewLine;
             

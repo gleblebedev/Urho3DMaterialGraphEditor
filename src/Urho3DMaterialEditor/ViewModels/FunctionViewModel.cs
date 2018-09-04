@@ -52,6 +52,7 @@ namespace Urho3DMaterialEditor.ViewModels
         internal void OutPin(string val)
         {
             Node.OutputPins[0].Type = val;
+            //Node.OutputPins[0].Id = val;
             OutputPins.Clear();
             OutputPins.Add(new OutputPinViewModel(this, Node.OutputPins[0]));
 
