@@ -19,15 +19,14 @@ namespace Urho3DMaterialEditor.ViewModels
                 .ObserveOnDispatcher()
                 .Subscribe(_ => BuildNodeValue());
             CanRename = true;
-
+           
         }
         
 
         public string EditableValue
         {
             get => _value;
-            set => 
-                RaiseAndSetIfChanged(ref _value, value);
+            set => RaiseAndSetIfChanged(ref _value, value);
         }
 
 

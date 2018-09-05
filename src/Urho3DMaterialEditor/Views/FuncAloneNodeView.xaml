@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              
              xmlns:converters="clr-namespace:Toe.Scripting.WPF.Converters;assembly=Toe.Scripting.WPF"
+             xmlns:local1="clr-namespace:Toe.Scripting.WPF.Views;assembly=Toe.Scripting.WPF"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
@@ -46,7 +47,6 @@
                         Background="{Binding Category, Converter={StaticResource categoryToBackgroundConverter}}"
                         Grid.ColumnSpan="3" MinHeight="26">
                     <Grid>
-
                         <Grid.Background >
                             <LinearGradientBrush EndPoint="0.486,0.986" StartPoint="0.486,0">
                                 <LinearGradientBrush.RelativeTransform>
@@ -64,6 +64,32 @@
                                 <GradientStop Color="#3D000000" Offset="0.983"/>
                             </LinearGradientBrush>
                         </Grid.Background>
+
+                        <ToggleButton Name="enable" MinHeight="18" MinWidth="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,4,4,4">
+                            <ToggleButton.Style>
+                                <Style TargetType="{x:Type ToggleButton}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                                                         Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center"                  
+                                              VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter Property="Background" Value="Green" />
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="False">
+                                            <Setter Property="Background" Value="IndianRed" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ToggleButton.Style>
+                        </ToggleButton>
 
                         <Grid Visibility="{Binding CanRename, Converter={StaticResource nameTextBoxVisibility}}">
                             <TextBox FontWeight="Bold" HorizontalAlignment="Center" Padding="4" Foreground="White"
@@ -96,29 +122,6 @@
                              AcceptsTab="True"
                              MinWidth="180" MinHeight="80"
                              />
-                            <ToggleButton Grid.Column="1" Content="" MinHeight="24" MinWidth="24" MaxHeight="24" MaxWidth="24" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                <ToggleButton.Style>
-                                    <Style TargetType="{x:Type ToggleButton}">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="ToggleButton">
-                                                    <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                                                         Background="{TemplateBinding Background}">
-                                                        <ContentPresenter HorizontalAlignment="Center"                  
-                                              VerticalAlignment="Center"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsChecked" Value="True">
-                                                <Setter Property="Background" Value="Green" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </ToggleButton.Style>
-                            </ToggleButton>
-
                         </Grid>
                       
                     </Grid>

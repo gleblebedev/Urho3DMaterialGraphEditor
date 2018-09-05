@@ -166,6 +166,10 @@
                         <DataTemplate DataType="{x:Type viewModels:FunctionViewModel}">
                             <views1:FunctionNodeView />
                         </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewModels:FunctAloneViewModel}">
+                            <views1:FuncAloneNodeView />
+                        </DataTemplate>
+
                     </views:ScriptView.Resources>
                 </views:ScriptView>
                 <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />

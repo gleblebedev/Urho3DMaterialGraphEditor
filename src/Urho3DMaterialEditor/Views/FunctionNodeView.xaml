@@ -65,7 +65,31 @@
                                 <GradientStop Color="#3D000000" Offset="0.983"/>
                             </LinearGradientBrush>
                         </Grid.Background>
-
+                        <ToggleButton Name="enable" MinHeight="18" MinWidth="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,4,4,4">
+                            <ToggleButton.Style>
+                                <Style TargetType="{x:Type ToggleButton}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                                                         Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center"                  
+                                              VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter Property="Background" Value="Green" />
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="False">
+                                            <Setter Property="Background" Value="IndianRed" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ToggleButton.Style>
+                        </ToggleButton>
                         <Grid Visibility="{Binding CanRename, Converter={StaticResource nameTextBoxVisibility}}">
                             <TextBox FontWeight="Bold" HorizontalAlignment="Center" Padding="4" Foreground="White"
                                      Background="Transparent" BorderBrush="Transparent" MinWidth="32"
