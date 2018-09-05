@@ -38,6 +38,8 @@ namespace Urho3DMaterialEditor.ViewModels
         private void BuildNodeValue()
         {
             Value = _value;
+            //if (Value?.Length > 0)
+            Model.GLSLCodeGen.aloneFunc = Value;
         }
 
     }

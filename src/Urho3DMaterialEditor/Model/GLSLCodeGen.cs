@@ -20,6 +20,7 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
 }
 ";
 
+        static public string aloneFunc;
         private Dictionary<string, string> _dynamicFunctions = new Dictionary<string, string>();
 
         private int _ifDefCount;
@@ -53,11 +54,13 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
 
         private string BuildFunction(NodeHelper<TranslatedMaterialGraph.NodeInfo> node)
         {
-            var tx= node.OutputPins[0].Type + " " + node.Name + "(" +
-                   string.Join(", ", node.InputPins.Select((x, index) => x.Type + " var" + (index+1).ToString())) + ")" 
+            var tx = node.OutputPins[0].Type + " " + node.Name + "(" +
+                   string.Join(", ", node.InputPins.Select((x, index) => x.Type + " var" + (index + 1).ToString())) + ")"
                    + Environment.NewLine + "{" + Environment.NewLine
                    + node.Value
                    + "}" + Environment.NewLine;
+
+            if (aloneFunc.Length > 0) tx = aloneFunc + Environment.NewLine + tx;
             
             return tx;
         }

@@ -18,7 +18,8 @@ namespace Urho3DMaterialEditor.Model
 
             foreach (var scriptNode in nodes)
             {
-                foreach (var uniform in codeGen.GetRequiredUniforms(scriptNode)) Uniforms.Add(uniform);
+                foreach (var uniform in codeGen.GetRequiredUniforms(scriptNode))
+                    Uniforms.Add(uniform);
                 foreach (var requiredFunction in codeGen.GetRequiredFunctions(scriptNode))
                     AddFunction(requiredFunction, codeGen);
             }
