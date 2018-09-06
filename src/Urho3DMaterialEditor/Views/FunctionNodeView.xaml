@@ -129,16 +129,8 @@
                             <Menu Margin="4,4,4,6">
                                 <MenuItem Header="Menu" >
                                     <MenuItem Header="Clear" Click="MenuItem_Click_2"/>
-                                    <MenuItem Header="Add pin" Click="MenuItem_Click">
-                                        <MenuItem Header="float"></MenuItem>
-                                        <Separator></Separator>
-                                        <MenuItem Header="vec2"></MenuItem>
-                                        <MenuItem Header="vec3"></MenuItem>
-                                        <MenuItem Header="vec4"></MenuItem>
-                                        <Separator></Separator>
-                                        <MenuItem Header="mat3"></MenuItem>
-                                        <MenuItem Header="mat4"></MenuItem>
-                                    </MenuItem>
+                                    <MenuItem Name="menuVars"  Header="Add pin" Click="MenuItem_Click"/>
+
                                     <MenuItem Header="Script">
                                         <MenuItem Header="Clear"></MenuItem>
                                         <MenuItem Header="Load"></MenuItem>
@@ -240,10 +232,11 @@
                              Background="Black" Foreground="White"
                              VerticalScrollBarVisibility="Auto"
                              HorizontalScrollBarVisibility="Auto"
-                             TextWrapping="Wrap"
+                             TextWrapping="NoWrap" 
                              AcceptsReturn="True"
-                             AcceptsTab="True"
+                             AcceptsTab="False"
                              MinWidth="180" MinHeight="80"
+                             MaxHeight="260" MaxWidth="440"
                              />
                         </Grid>
                         <!--<StackPanel  Grid.Row="2" Orientation="Vertical" MinWidth="100">

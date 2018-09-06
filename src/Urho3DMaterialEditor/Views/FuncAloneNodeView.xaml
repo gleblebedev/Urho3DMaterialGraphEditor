@@ -112,15 +112,16 @@
 
                 <Grid Grid.Row="1">
                     <Grid Grid.Column="1">
-                         <Grid Grid.Row="1" MinWidth="80" MinHeight="60" Margin="3,3,3,3">
+                         <Grid Grid.Row="1" MinWidth="80" MinHeight="60"  Margin="3,3,3,3">
                             <TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
                              Background="Black" Foreground="White"
                              VerticalScrollBarVisibility="Auto"
                              HorizontalScrollBarVisibility="Auto"
-                             TextWrapping="Wrap"
+                             TextWrapping="NoWrap"
                              AcceptsReturn="True"
-                             AcceptsTab="True"
+                             AcceptsTab="False"
                              MinWidth="180" MinHeight="80"
+                             MaxHeight="260" MaxWidth="440"
                              />
                         </Grid>
                       

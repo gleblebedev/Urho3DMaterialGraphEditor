@@ -60,7 +60,7 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                    + node.Value
                    + "}" + Environment.NewLine;
 
-            if (aloneFunc.Length > 0) tx = aloneFunc + Environment.NewLine + tx;
+            if (aloneFunc?.Length > 0) tx = aloneFunc + Environment.NewLine + tx;
             
             return tx;
         }

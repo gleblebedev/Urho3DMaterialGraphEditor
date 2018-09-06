@@ -106,6 +106,10 @@ namespace Urho3DMaterialEditor.Views {
             if (viewModel != null && !viewModel.IsSelected) viewModel.Script.Select(viewModel);
         }
 
+        protected override void OnMouseWheel(MouseWheelEventArgs e) {
+            base.OnMouseWheel(e);
+            e.Handled = true;
+        }
 
     }
 }

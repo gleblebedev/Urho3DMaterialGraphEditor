@@ -21,15 +21,15 @@ namespace Urho3DMaterialEditor.Views {
             InitializeComponent();
             LayoutUpdated += UpdateSize;
 
-            // FillMenuPins();
+            FillMenuPins();
         }
 
         private void FillMenuPins() {
             foreach (var item in PinTypes.DataTypes) {
-                //LeftMenu.Items.Add(new MenuItem() { Header=item });
+                menuVars.Items.Add(new MenuItem() { Header = item });
             }
-            
-            
+            menuVars.Items.Add(new MenuItem() { Header = PinTypes.Sampler2D});
+            menuVars.Items.Add(new MenuItem() { Header = PinTypes.SamplerCube});
         }
 
         private void MenuItem_Click(object sender, System.Windows.RoutedEventArgs e) {
@@ -48,6 +48,10 @@ namespace Urho3DMaterialEditor.Views {
         private void MenuItem_Click_2(object sender, System.Windows.RoutedEventArgs e) {
             var dc = DataContext as ViewModels.FunctionViewModel;
             dc.ClearInPins();
+        }
+        protected override void OnMouseWheel(MouseWheelEventArgs e) {
+            base.OnMouseWheel(e);
+            e.Handled = true;
         }
 
         //private void funcFoot_LostFocus(object sender, RoutedEventArgs e) {
