@@ -124,7 +124,11 @@
                              MaxHeight="260" MaxWidth="440"
                              />-->
 
-                        <local:CodeEditor x:Name="codeEd"  TxT="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}"               />
+                        <local:CodeEditor x:Name="codeEd" />
+                             
+                        <!--<local:CodeTextboxHost Text="{Binding MyTextField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+                             
+                        <!--TxT="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}"-->               
 
 
                     </Grid>

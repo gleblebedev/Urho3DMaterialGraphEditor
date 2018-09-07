@@ -11,7 +11,10 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Name="grid"                           
           MinWidth="200" MinHeight="140">
-   
+
+
+        <local:CodeTextboxHost Text="{Binding MyTextField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
         <!--<WindowsFormsHost>
             <fast:FastColoredTextBox>
             </fast:FastColoredTextBox>
