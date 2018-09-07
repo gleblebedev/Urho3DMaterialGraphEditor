@@ -7,6 +7,9 @@ using System.Windows.Input;
 using Toe.Scripting.WPF.ViewModels;
 using Toe.Scripting.WPF.Views;
 
+using FastColoredTextBoxNS;
+using System.Windows.Forms.Integration;
+
 namespace Urho3DMaterialEditor.Views {
     /// <summary>
     ///     Interaction logic for FuncAloneNodeView.xaml
@@ -21,8 +24,19 @@ namespace Urho3DMaterialEditor.Views {
             InitializeComponent();
             LayoutUpdated += UpdateSize;
 
+
+
+            //WindowsFormsHost host = new WindowsFormsHost();
+            //FastColoredTextBox textBox = new FastColoredTextBox();
+            //host.Child = textBox;
+
+            //textBox.TextChanged += Ts_TextChanged;
+            //textBox.Text = "public class Hello {  }";
+
+            //grigForTXT.Children.Add(host);
         }
 
+       
 
 
         //_______________________________________DRAg & DROP

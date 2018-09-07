@@ -174,6 +174,8 @@
                 </views:ScriptView>
                 <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                 <Grid Grid.Row="2" >
+                    <!--<views1:CodeEditor x:Name="codeEd"                />-->
+
                     <TextBox Text="{Binding GLSLSource}" Background="Black" Foreground="Wheat" FontSize="13" TextWrapping="NoWrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto"/>
                 </Grid>
 
