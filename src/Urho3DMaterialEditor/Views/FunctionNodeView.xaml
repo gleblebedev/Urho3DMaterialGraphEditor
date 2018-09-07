@@ -7,6 +7,7 @@
              mc:Ignorable="d"
              
              xmlns:converters="clr-namespace:Toe.Scripting.WPF.Converters;assembly=Toe.Scripting.WPF"
+             xmlns:local="clr-namespace:Urho3DMaterialEditor.Views"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
@@ -227,8 +228,8 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Grid.Row="1" MinWidth="80" MinHeight="60" Margin="0,0,3,3">
-                            <TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
+                        <Grid Grid.Row="1" MinWidth="80" MinHeight="60" Margin="0,0,3,3" Background="White">
+                            <!--<TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
                              Background="Black" Foreground="White"
                              VerticalScrollBarVisibility="Auto"
                              HorizontalScrollBarVisibility="Auto"
@@ -237,7 +238,10 @@
                              AcceptsTab="False"
                              MinWidth="180" MinHeight="80"
                              MaxHeight="260" MaxWidth="440"
-                             />
+                             />-->
+
+                            <local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
                         </Grid>
                         <!--<StackPanel  Grid.Row="2" Orientation="Vertical" MinWidth="100">
                             <Grid>

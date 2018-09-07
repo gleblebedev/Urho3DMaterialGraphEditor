@@ -252,9 +252,7 @@
     <Compile Include="Views\AppFoldersDialog.xaml.cs">
       <DependentUpon>AppFoldersDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CodeEditor.xaml.cs">
-      <DependentUpon>CodeEditor.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Views\CEditor.cs" />
     <Compile Include="Views\EnumNodeView.xaml.cs">
       <DependentUpon>EnumNodeView.xaml</DependentUpon>
     </Compile>
@@ -318,10 +316,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AppFoldersDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CodeEditor.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EnumNodeView.xaml">

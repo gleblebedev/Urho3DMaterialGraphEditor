@@ -110,10 +110,14 @@
                     </Grid>
                 </Border>
 
-                <Grid Grid.Row="1">
-                   
-                         <Grid Name="grigForTXT" Grid.Row="1" MinWidth="80" MinHeight="60"  Margin="3,3,3,3">
-                            <!--<TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
+                <Grid Grid.Row="1" >
+
+
+                    <Grid Name="grigForTXT" Grid.Row="1"  Margin="3,3,3,3" MinWidth="180" MinHeight="140" Background="White"
+                               MaxHeight="260" MaxWidth="440"
+                          >
+
+                        <!--<TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
                              Background="Black" Foreground="White"
                              VerticalScrollBarVisibility="Auto"
                              HorizontalScrollBarVisibility="Auto"
@@ -124,19 +128,14 @@
                              MaxHeight="260" MaxWidth="440"
                              />-->
 
-                        <local:CodeEditor x:Name="codeEd" />
-                             
-                        <!--<local:CodeTextboxHost Text="{Binding MyTextField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
-                             
-                        <!--TxT="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}"-->               
-
+                        <local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     </Grid>
-                      
-                   
+
+
                 </Grid>
 
-<!--______________-->
+                <!--______________-->
 
 
                 <Grid Grid.RowSpan="2" Grid.ColumnSpan="3" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red" MinWidth="20" 
