@@ -116,7 +116,7 @@
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="0"  Name="rowSh"/>
                 </Grid.RowDefinitions>
-                <views:ScriptView DataContext="{Binding ScriptViewModel}" Grid.Row="0">
+                <views:ScriptView Name="rowMn2" DataContext="{Binding ScriptViewModel}" Grid.Row="0">
                     <views:ScriptView.Resources>
                         <DataTemplate DataType="{x:Type viewModels:EnumViewModel}">
                             <views1:EnumNodeView />

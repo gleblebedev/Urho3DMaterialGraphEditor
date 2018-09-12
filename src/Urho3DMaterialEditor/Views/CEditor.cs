@@ -4,6 +4,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 namespace Urho3DMaterialEditor.Views {
 
@@ -24,14 +25,25 @@ namespace Urho3DMaterialEditor.Views {
 
         public CEditor() {
              Child = _Tbox;
-
+            //_Tbox.KeyPressing += _innerTextbox_key;
             _Tbox.TextChanged += _innerTextbox_TextChanged;
             _Tbox.Font = new System.Drawing.Font("Consolas", 9);
             //_Tbox.SyntaxHighlighter = new SyntaxHighlighter() {  "C#" };
             //_Textbox.ForeColor = System.Drawing.Color.White;
             synt();
+
+            //_Tbox.MouseDown += _inner_click;
+
         }
 
+        private void _inner_click(object sender, MouseEventArgs e) {
+        }
+
+        private void _innerTextbox_key(object sender, KeyPressEventArgs e) {
+            e.Handled = true;
+        }
+
+   
         private void synt() {
             _Tbox.Language = FastColoredTextBoxNS.Language.CSharp;
             _Tbox.CommentPrefix = "//";
@@ -42,6 +54,7 @@ namespace Urho3DMaterialEditor.Views {
 
         private void _innerTextbox_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e) {
             SetValue(TextProperty, _Tbox.Text);
+            
         }
 
         public string Text {

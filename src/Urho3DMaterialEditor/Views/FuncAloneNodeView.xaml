@@ -21,13 +21,13 @@
                                                   Converter="#155457" />
 
     </UserControl.Resources>
-    <UserControl.ContextMenu>
+    <!--<UserControl.ContextMenu>
         <ContextMenu ItemsSource="{Binding MenuItems, Converter={StaticResource menuItemViewModelToMenuItemConverter}}" />
-    </UserControl.ContextMenu>
+    </UserControl.ContextMenu>-->
 
     <Border IsHitTestVisible="True"
             Visibility="{Binding IsHidden, Converter={StaticResource hiddenItemConverter}}"
-            MouseLeftButtonDown="StartDragging"
+            MouseLeftButtonDown="StartDragging"  
             MouseRightButtonDown="SelectIfNotSelected"
             MinWidth="100" BorderThickness="4" CornerRadius="10,10,10,10"
             BorderBrush="{Binding IsSelected, Converter={StaticResource ResourceKey=nodeSelectedBrush}}"
@@ -113,11 +113,11 @@
                 <Grid Grid.Row="1" >
 
 
-                    <Grid Name="grigForTXT" Grid.Row="1"  Margin="3,3,3,3" MinWidth="180" MinHeight="140" Background="White"
-                               MaxHeight="260" MaxWidth="440"
+                    <Grid Name="grigForTXT" Grid.Row="1"  Margin="3,3,3,3"  MinWidth="360" MinHeight="360" Background="White"
+                               
                           >
 
-                        <!--<TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}" 
+                        <TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}"  TextChanged="TextBox_TextChanged"
                              Background="Black" Foreground="White"
                              VerticalScrollBarVisibility="Auto"
                              HorizontalScrollBarVisibility="Auto"
@@ -126,11 +126,12 @@
                              AcceptsTab="False"
                              MinWidth="180" MinHeight="80"
                              MaxHeight="260" MaxWidth="440"
-                             />-->
+                             />
 
-                        <local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <!--<local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
 
                     </Grid>
+                    <!--<local:BorderSized Background="PaleVioletRed" MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-3,-3"/>-->
 
 
                 </Grid>
@@ -148,5 +149,6 @@
 
             </Grid>
         </Border>
+
     </Border>
 </UserControl>

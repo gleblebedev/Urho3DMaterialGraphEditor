@@ -38,6 +38,7 @@ namespace Urho3DMaterialEditor.ViewModels
 
         public void CreateFuncTXT() {
             var outP = Node.OutputPins[0]?.Type;
+
             FuncHeader = outP + " " + Name + " (";
             int nn = 1;
             foreach (var item in Node.InputPins) {
@@ -47,6 +48,8 @@ namespace Urho3DMaterialEditor.ViewModels
             FuncHeader = FuncHeader.Substring(0, FuncHeader.Length - 2)+")";
 
             functionTXT = FuncHeader + "\n{\n" + (Value??"") + "\n" + "return "+ funcFoot+ ";\n}";
+
+
         }
 
         internal void OutPin(string val)

@@ -142,6 +142,9 @@ namespace Urho3DMaterialEditor.Views {
             if (viewModel != null && !viewModel.IsSelected) viewModel.Script.Select(viewModel);
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            if(sender is TextBox tx) tx.Text=tx.Text.Replace("iChannel0", "sDiffMap").Replace("iChannel1", "sSpecMap").Replace("iChannel2", "sNormalMap");
 
+        }
     }
 }

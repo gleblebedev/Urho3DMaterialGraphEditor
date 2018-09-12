@@ -252,6 +252,7 @@
     <Compile Include="Views\AppFoldersDialog.xaml.cs">
       <DependentUpon>AppFoldersDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BorderSized.cs" />
     <Compile Include="Views\CEditor.cs" />
     <Compile Include="Views\EnumNodeView.xaml.cs">
       <DependentUpon>EnumNodeView.xaml</DependentUpon>

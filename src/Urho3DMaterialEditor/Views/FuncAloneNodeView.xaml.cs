@@ -25,15 +25,6 @@ namespace Urho3DMaterialEditor.Views {
             LayoutUpdated += UpdateSize;
 
 
-
-            //WindowsFormsHost host = new WindowsFormsHost();
-            //FastColoredTextBox textBox = new FastColoredTextBox();
-            //host.Child = textBox;
-
-            //textBox.TextChanged += Ts_TextChanged;
-            //textBox.Text = "public class Hello {  }";
-
-            //grigForTXT.Children.Add(host);
         }
 
        
@@ -125,5 +116,8 @@ namespace Urho3DMaterialEditor.Views {
             e.Handled = true;
         }
 
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            if (sender is TextBox tx) tx.Text = tx.Text.Replace("iChannel0", "sDiffMap").Replace("iChannel1", "sSpecMap").Replace("iChannel2", "sNormalMap");
+        }
     }
 }

@@ -32,6 +32,10 @@ namespace Urho3DMaterialEditor
             _viewModel = _container.Resolve<MainViewModel>();
             DataContext = _viewModel;
             Loaded += OnLoaded;
+
+            //rowMn2.MouseDown += Views.BorderSized.canvas1_MouseDown;
+            //rowMn2.MouseMove += Views.BorderSized.canvas1_MouseMove;
+            //rowMn2.MouseUp += Views.BorderSized.canvas1_MouseUp;
         }
 
         private async void OnLoaded(object s, EventArgs e)
