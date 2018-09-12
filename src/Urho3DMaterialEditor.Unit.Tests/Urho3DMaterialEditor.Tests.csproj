@@ -44,9 +44,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Toe.Scripting, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Toe.Scripting.0.1.1\lib\netstandard2.0\Toe.Scripting.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlslCodeGenTextFixtute.cs" />
@@ -57,9 +54,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Toe.Scripting.Standard\Toe.Scripting.Standard.csproj">
-      <Project>{619C328F-9234-4DE7-B67A-EE89294101BF}</Project>
-      <Name>Toe.Scripting.Standard</Name>
+    <ProjectReference Include="..\submodules\Toe.Scripting.Core\src\Toe.Scripting.WPF\Toe.Scripting.WPF.csproj">
+      <Project>{1581dffb-1cc1-40b3-88d2-aa56d475200c}</Project>
+      <Name>Toe.Scripting.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\submodules\Toe.Scripting.Core\src\Toe.Scripting\Toe.Scripting.Core.csproj">
+      <Project>{2af30c5f-3922-4475-8087-7bd2dfd5bc21}</Project>
+      <Name>Toe.Scripting.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Urho3DMaterialEditor\Urho3DMaterialEditor.csproj">
       <Project>{0bd7123b-7a61-45f4-b213-7e4f34b18c1a}</Project>

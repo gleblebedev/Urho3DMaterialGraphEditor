@@ -7,6 +7,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho3DMaterialEditor", "Urh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urho3DMaterialEditor.Tests", "Urho3DMaterialEditor.Unit.Tests\Urho3DMaterialEditor.Tests.csproj", "{79BBFBC2-262D-46DA-86B0-91BBC9D4BE5E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toe.Scripting.Core", "submodules\Toe.Scripting.Core\src\Toe.Scripting\Toe.Scripting.Core.csproj", "{2AF30C5F-3922-4475-8087-7BD2DFD5BC21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toe.Scripting.WPF", "submodules\Toe.Scripting.Core\src\Toe.Scripting.WPF\Toe.Scripting.WPF.csproj", "{1581DFFB-1CC1-40B3-88D2-AA56D475200C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8B78A0F3-4B7A-455D-8404-AF12423F54DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{5A31DF6C-F209-4653-96A2-A8317DFD3842}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toe.Scripting.Tests", "submodules\Toe.Scripting.Core\src\Toe.Scripting.Tests\Toe.Scripting.Tests.csproj", "{D103E4B8-4A96-4041-B002-5C9F316CF488}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toe.Scripting.Standard", "submodules\Toe.Scripting.Core\src\Toe.Scripting.Standard\Toe.Scripting.Standard.csproj", "{A1A7EA2F-5120-41CE-BA7B-3611E1B7A0DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +33,31 @@ Global
 		{79BBFBC2-262D-46DA-86B0-91BBC9D4BE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79BBFBC2-262D-46DA-86B0-91BBC9D4BE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79BBFBC2-262D-46DA-86B0-91BBC9D4BE5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AF30C5F-3922-4475-8087-7BD2DFD5BC21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF30C5F-3922-4475-8087-7BD2DFD5BC21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF30C5F-3922-4475-8087-7BD2DFD5BC21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF30C5F-3922-4475-8087-7BD2DFD5BC21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1581DFFB-1CC1-40B3-88D2-AA56D475200C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1581DFFB-1CC1-40B3-88D2-AA56D475200C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1581DFFB-1CC1-40B3-88D2-AA56D475200C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1581DFFB-1CC1-40B3-88D2-AA56D475200C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D103E4B8-4A96-4041-B002-5C9F316CF488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D103E4B8-4A96-4041-B002-5C9F316CF488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D103E4B8-4A96-4041-B002-5C9F316CF488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D103E4B8-4A96-4041-B002-5C9F316CF488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A7EA2F-5120-41CE-BA7B-3611E1B7A0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A7EA2F-5120-41CE-BA7B-3611E1B7A0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A7EA2F-5120-41CE-BA7B-3611E1B7A0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A7EA2F-5120-41CE-BA7B-3611E1B7A0DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2AF30C5F-3922-4475-8087-7BD2DFD5BC21} = {8B78A0F3-4B7A-455D-8404-AF12423F54DE}
+		{1581DFFB-1CC1-40B3-88D2-AA56D475200C} = {5A31DF6C-F209-4653-96A2-A8317DFD3842}
+		{D103E4B8-4A96-4041-B002-5C9F316CF488} = {8B78A0F3-4B7A-455D-8404-AF12423F54DE}
+		{A1A7EA2F-5120-41CE-BA7B-3611E1B7A0DA} = {8B78A0F3-4B7A-455D-8404-AF12423F54DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E716DECA-27A1-40E8-9B8B-7B30FB110754}
