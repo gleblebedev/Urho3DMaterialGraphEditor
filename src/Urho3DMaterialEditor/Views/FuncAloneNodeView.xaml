@@ -123,11 +123,7 @@
                         </avalonedit:TextEditor>-->
 
 
-                        <local:MvvmTextEditor x:Name="codeEdit"    
-                             FontFamily="Consolas"
-                             FontSize="10pt"
-                             ShowLineNumbers="True"            
-                             SyntaxHighlighting="C++" >
+                        <local:MvvmTextEditor x:Name="codeEdit"       >
                             <local:MvvmTextEditor.DocumentText>
                                 <Binding Path ="EditableValue" Mode="TwoWay"   UpdateSourceTrigger="PropertyChanged"/>
                             </local:MvvmTextEditor.DocumentText>

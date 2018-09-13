@@ -208,8 +208,12 @@
                 </views:ScriptView>
                 <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                 <Grid Grid.Row="2" >
+                    <views1:MvvmTextEditor x:Name="codeEdit" >
+                        <views1:MvvmTextEditor.DocumentText>
+                            <Binding Path ="GLSLSource" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                        </views1:MvvmTextEditor.DocumentText>
+                    </views1:MvvmTextEditor>
                     <!--<views1:CEditor Text="{Binding GLSLSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
-
                     <!--<TextBox Text="{Binding GLSLSource}" Background="Black" Foreground="Wheat" FontSize="13" TextWrapping="NoWrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto"/>-->
                 </Grid>
 
