@@ -124,6 +124,18 @@
 
 
                         <local:MvvmTextEditor x:Name="codeEdit"       >
+                            <local:MvvmTextEditor.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem  Header="Undo" Click="MenuItem_Click"/>
+                                    <MenuItem  Header="Redo" Click="MenuItem_Click"/>
+                                    <Separator></Separator>
+                                    <MenuItem  Header="Search..." Click="MenuItem_Click" />
+                                    <MenuItem  Header="Cut" Click="MenuItem_Click"/>
+                                    <MenuItem  Header="Copy" Click="MenuItem_Click"/>
+                                    <MenuItem  Header="Paste" Click="MenuItem_Click"/>
+                                    <MenuItem  Header="Delete" Click="MenuItem_Click"/>
+                                </ContextMenu>
+                            </local:MvvmTextEditor.ContextMenu>
                             <local:MvvmTextEditor.DocumentText>
                                 <Binding Path ="EditableValue" Mode="TwoWay"   UpdateSourceTrigger="PropertyChanged"/>
                             </local:MvvmTextEditor.DocumentText>

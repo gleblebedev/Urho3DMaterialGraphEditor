@@ -2,6 +2,7 @@
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Highlighting;
+using ICSharpCode.AvalonEdit.Search;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,10 +24,15 @@ namespace Urho3DMaterialEditor.Views {
         public string DocumentText {
             get { return base.Text; }
             set {
-       
-                var od = base.SelectionStart;
-                if (value!=null)base.Document.Text = value;
-                base.SelectionStart = od;
+
+                if (value != null) {
+                    if (value.Contains("iChannel")) value = value.Replace("iChannel0", "sDiffMap").Replace("iChannel1", "sSpecMap").Replace("iChannel2", "sNormalMap");
+
+                    var od = base.SelectionStart;
+                    base.Document.Text = value;
+                    base.SelectionStart = od>600?600:od;
+                }
+                
     
             }
         }
@@ -49,8 +55,15 @@ namespace Urho3DMaterialEditor.Views {
             foldingStrategy = new BraceFoldingStrategy();
             foldingStrategy.UpdateFoldings(foldingManager, this.Document);
 
+            // var search = new SearchInputHandler(this.TextArea);
+            //this.TextArea.DefaultInputHandler.NestedInputHandlers.Add(search);
+            SearchPanel.Install(this.TextArea);
+
         }
 
+        public void searchShow() {
+           // this... = true;
+        }
 
         protected override void OnTextChanged(EventArgs e) {
             //RaisePropertyChanged("DocumentText");
@@ -67,8 +80,33 @@ namespace Urho3DMaterialEditor.Views {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
         }
 
+        internal void ClickMenu(string header) {
+            switch (header) {
+                case "Undo":
+                    if (CanUndo) Undo();
+                    break;
+                case "Redo":
+                    if (CanRedo) Redo();
+                    break;
+                case "Cut":
+                    Cut();
+                    break;
+                case "Copy":
+                    Copy();
+                    break;
+                case "Paste":
+                    Paste();
+                    break;
+                case "Delete":
+                    Delete();
+                    break;
 
+                default:
+                    break;
+            }
+        }
     }
+
     public class BraceFoldingStrategy {
         /// <summary>
         /// Gets/Sets the opening brace. The default value is '{'.

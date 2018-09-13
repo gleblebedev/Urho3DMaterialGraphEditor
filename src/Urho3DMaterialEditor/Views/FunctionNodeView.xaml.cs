@@ -32,7 +32,7 @@ namespace Urho3DMaterialEditor.Views {
             menuVars.Items.Add(new MenuItem() { Header = PinTypes.SamplerCube});
         }
 
-        private void MenuItem_Click(object sender, System.Windows.RoutedEventArgs e) {
+        private void MenuItem_Click_3(object sender, System.Windows.RoutedEventArgs e) {
             var cl = e.Source as MenuItem;
             var dc = DataContext as ViewModels.FunctionViewModel;
             dc.AddPin(cl.Header.ToString() );
@@ -142,9 +142,8 @@ namespace Urho3DMaterialEditor.Views {
             if (viewModel != null && !viewModel.IsSelected) viewModel.Script.Select(viewModel);
         }
 
-        //private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
-        //    if(sender is TextBox tx) tx.Text=tx.Text.Replace("iChannel0", "sDiffMap").Replace("iChannel1", "sSpecMap").Replace("iChannel2", "sNormalMap");
-
-        //}
+        private void MenuItem_Click(object sender, RoutedEventArgs e) {
+            codeEdit.ClickMenu((e.Source as MenuItem).Header.ToString());
+        }
     }
 }

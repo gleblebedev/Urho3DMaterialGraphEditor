@@ -109,13 +109,13 @@
                             <Menu Margin="4,4,4,6">
                                 <MenuItem Header="Menu" >
                                     <MenuItem Header="Clear" Click="MenuItem_Click_2"/>
-                                    <MenuItem Name="menuVars"  Header="Add pin" Click="MenuItem_Click"/>
+                                    <MenuItem Name="menuVars"  Header="Add pin" Click="MenuItem_Click_3"/>
 
-                                    <MenuItem Header="Script">
+                                    <!--<MenuItem Header="Script">
                                         <MenuItem Header="Clear"></MenuItem>
                                         <MenuItem Header="Load"></MenuItem>
                                         <MenuItem Header="SaveAs..."></MenuItem>
-                                    </MenuItem>
+                                    </MenuItem>-->
                                 </MenuItem>
                             </Menu>
                         </StackPanel>
@@ -227,6 +227,18 @@
 
 
                             <local:MvvmTextEditor x:Name="codeEdit" >
+                                <local:MvvmTextEditor.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem  Header="Undo" Click="MenuItem_Click"/>
+                                        <MenuItem  Header="Redo" Click="MenuItem_Click"/>
+                                        <Separator></Separator>
+                                        <MenuItem  Header="Search..." Click="MenuItem_Click" />
+                                        <MenuItem  Header="Cut" Click="MenuItem_Click"/>
+                                        <MenuItem  Header="Copy" Click="MenuItem_Click"/>
+                                        <MenuItem  Header="Paste" Click="MenuItem_Click"/>
+                                        <MenuItem  Header="Delete" Click="MenuItem_Click"/>
+                                    </ContextMenu>
+                                </local:MvvmTextEditor.ContextMenu>
                                 <local:MvvmTextEditor.DocumentText>
                                     <Binding Path ="EditableValue" Mode="TwoWay"   UpdateSourceTrigger="PropertyChanged">
 
