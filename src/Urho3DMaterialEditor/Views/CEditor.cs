@@ -24,8 +24,9 @@ namespace Urho3DMaterialEditor.Views {
             }), null));
 
         public CEditor() {
-             Child = _Tbox;
+            Child = _Tbox;
             //_Tbox.KeyPressing += _innerTextbox_key;
+            
             _Tbox.TextChanged += _innerTextbox_TextChanged;
             _Tbox.Font = new System.Drawing.Font("Consolas", 9);
             //_Tbox.SyntaxHighlighter = new SyntaxHighlighter() {  "C#" };
@@ -33,15 +34,20 @@ namespace Urho3DMaterialEditor.Views {
             synt();
 
             //_Tbox.MouseDown += _inner_click;
-
+            Toe.Scripting.WPF.Views.ScriptView.refr+=refresh;
+            _Tbox.AutoScaleMode =  AutoScaleMode.Inherit;
+       
         }
 
-        private void _inner_click(object sender, MouseEventArgs e) {
+        private void refresh(float s){
+            _Tbox.Width+=1; _Tbox.Width -= 1;
         }
+        //private void _inner_click(object sender, MouseEventArgs e) {
+        //}
 
-        private void _innerTextbox_key(object sender, KeyPressEventArgs e) {
-            e.Handled = true;
-        }
+        //private void _innerTextbox_key(object sender, KeyPressEventArgs e) {
+        //    e.Handled = true;
+        //}
 
    
         private void synt() {
@@ -53,6 +59,7 @@ namespace Urho3DMaterialEditor.Views {
         }
 
         private void _innerTextbox_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e) {
+         if(_Tbox.Text.Contains("iChannel")) _Tbox.Text = _Tbox.Text.Replace("iChannel0", "sDiffMap").Replace("iChannel1", "sSpecMap").Replace("iChannel2", "sNormalMap");
             SetValue(TextProperty, _Tbox.Text);
             
         }

@@ -117,7 +117,7 @@
                                
                           >
 
-                        <TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}"  TextChanged="TextBox_TextChanged"
+                        <!--<TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}"  TextChanged="TextBox_TextChanged"
                              Background="Black" Foreground="White"
                              VerticalScrollBarVisibility="Auto"
                              HorizontalScrollBarVisibility="Auto"
@@ -126,12 +126,12 @@
                              AcceptsTab="False"
                              MinWidth="180" MinHeight="80"
                              MaxHeight="260" MaxWidth="440"
-                             />
-
-                        <!--<local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+                             />-->
+               
+                        <local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     </Grid>
-                    <!--<local:BorderSized Background="PaleVioletRed" MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-3,-3"/>-->
+                    <local:BorderSized Background="PaleVioletRed" MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-3,-3"/>
 
 
                 </Grid>

@@ -116,8 +116,8 @@ namespace Urho3DMaterialEditor.Views {
             e.Handled = true;
         }
 
-        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
-            if (sender is TextBox tx) tx.Text = tx.Text.Replace("iChannel0", "sDiffMap").Replace("iChannel1", "sSpecMap").Replace("iChannel2", "sNormalMap");
-        }
+        //private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+        //    if (sender is TextBox tx) tx.Text = tx.Text.Replace("iChannel0", "sDiffMap").Replace("iChannel1", "sSpecMap").Replace("iChannel2", "sNormalMap");
+        //}
     }
 }
