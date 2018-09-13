@@ -61,7 +61,14 @@ namespace Urho3DMaterialEditor
 
         private void ShowError(Exception exception)
         {
-            MessageBox.Show(exception.Message, "Urho Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+            var lines = exception.Message.Split('\n');
+            if (lines.Length > -1) {
+                if (lines.Length > 1) Status.Text = lines[1];
+                else Status.Text = lines[0];
+            }
+            Status.ToolTip= exception.Message;
+          //  _viewModel.GLSLSource = exception.Message;         //You can omit this exception
+            //MessageBox.Show(exception.Message, "Urho Exception", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e) {
@@ -72,6 +79,10 @@ namespace Urho3DMaterialEditor
         private void rowMn_SizeChanged(object sender, SizeChangedEventArgs e) {
             _viewModel.screenWidth = rowMn.ActualWidth-50;
             _viewModel.screenHeght = rowMn.ActualHeight-50;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e) {
+            if(Status.ToolTip!=null)Clipboard.SetText(Status.ToolTip.ToString()); ;
         }
     }
 }

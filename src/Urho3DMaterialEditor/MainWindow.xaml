@@ -103,7 +103,7 @@
             <Button MinWidth="24" MinHeight="24" Margin="2" Command="{Binding ScriptViewModel.UndoCommand}">&#x21BA;</Button>
             <Button MinWidth="24" MinHeight="24" Margin="2" Command="{Binding ScriptViewModel.RedoCommand}">&#x21BB;</Button>
             <ToggleButton MinWidth="24" MinHeight="24" Margin="2" Content="txt" IsChecked="False" Click="ToggleButton_Click"/>
-            <ToggleButton x:Name="enable" MaxHeight="24" BorderThickness="0" Background="Transparent"  IsChecked="True" MaxWidth="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,4,4,4">
+            <!--<ToggleButton x:Name="enable" MaxHeight="24" BorderThickness="0" Background="Transparent"  IsChecked="True" MaxWidth="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,4,4,4">
                 <ToggleButton.Style>
                     <Style TargetType="ToggleButton">
                         <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -121,22 +121,7 @@
                     </Setter>
                     </Style>
                 </ToggleButton.Style>
-                            <!--<Ellipse x:Name="ell"  MinWidth="24" MinHeight="25" >
-                    <Ellipse.Style>
-                        <Style TargetType="Ellipse">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsChecked, ElementName=enable}" Value="true">
-                                    <Setter Property="Fill" Value="#FF1D8C3E" />
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding IsChecked, ElementName=enable}" Value="false">
-                                    <Setter Property="Fill" Value="#FFD93636" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Ellipse.Style>
-                </Ellipse>-->
-
-            </ToggleButton>
+            </ToggleButton>-->
         </StackPanel>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -239,7 +224,13 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="3">
-            <TextBlock x:Name="Status" />
+            <TextBlock x:Name="Status" >
+                <TextBlock.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Copy" Click="MenuItem_Click"></MenuItem>
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
+            </TextBlock>
         </Grid>
     </Grid>
 </Window>
