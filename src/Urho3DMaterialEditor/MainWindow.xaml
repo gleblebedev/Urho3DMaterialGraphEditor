@@ -103,6 +103,40 @@
             <Button MinWidth="24" MinHeight="24" Margin="2" Command="{Binding ScriptViewModel.UndoCommand}">&#x21BA;</Button>
             <Button MinWidth="24" MinHeight="24" Margin="2" Command="{Binding ScriptViewModel.RedoCommand}">&#x21BB;</Button>
             <ToggleButton MinWidth="24" MinHeight="24" Margin="2" Content="txt" IsChecked="False" Click="ToggleButton_Click"/>
+            <ToggleButton x:Name="enable" MaxHeight="24" BorderThickness="0" Background="Transparent"  IsChecked="True" MaxWidth="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,4,4,4">
+                <ToggleButton.Style>
+                    <Style TargetType="ToggleButton">
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ToggleButton">
+                                <Image Name="image" Source=".\Icons\Play.png"/>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Setter TargetName="image" Property="Source" Value=".\Icons\Pause.png"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    </Style>
+                </ToggleButton.Style>
+                            <!--<Ellipse x:Name="ell"  MinWidth="24" MinHeight="25" >
+                    <Ellipse.Style>
+                        <Style TargetType="Ellipse">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=enable}" Value="true">
+                                    <Setter Property="Fill" Value="#FF1D8C3E" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=enable}" Value="false">
+                                    <Setter Property="Fill" Value="#FFD93636" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Ellipse.Style>
+                </Ellipse>-->
+
+            </ToggleButton>
         </StackPanel>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -174,7 +208,7 @@
                 </views:ScriptView>
                 <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                 <Grid Grid.Row="2" >
-                    <views1:CEditor Text="{Binding GLSLSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <!--<views1:CEditor Text="{Binding GLSLSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
 
                     <!--<TextBox Text="{Binding GLSLSource}" Background="Black" Foreground="Wheat" FontSize="13" TextWrapping="NoWrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto"/>-->
                 </Grid>
@@ -190,10 +224,10 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Distance = "  VerticalAlignment="Center"/>
                     <TextBox BorderThickness="0" IsReadOnly="True"  VerticalAlignment="Center">
-                    <TextBox.Text>
-                        <Binding Path="CameraDistance" StringFormat="0.000" />
-                    </TextBox.Text>
-                </TextBox>
+                        <TextBox.Text>
+                            <Binding Path="CameraDistance" StringFormat="0.000" />
+                        </TextBox.Text>
+                    </TextBox>
                     <Button Content="Create LOD" IsEnabled="False" Command="{Binding CreateLodCommand}" VerticalAlignment="Center"/>
                 </StackPanel>
                 <wpf:UrhoSurface  Grid.Row="1" x:Name="_urhoSurfaceCtrl" />

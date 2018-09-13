@@ -7,7 +7,6 @@ using System.Windows.Input;
 using Toe.Scripting.WPF.ViewModels;
 using Toe.Scripting.WPF.Views;
 
-using FastColoredTextBoxNS;
 using System.Windows.Forms.Integration;
 
 namespace Urho3DMaterialEditor.Views {

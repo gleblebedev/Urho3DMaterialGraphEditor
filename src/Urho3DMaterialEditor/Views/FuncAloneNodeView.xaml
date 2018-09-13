@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:Urho3DMaterialEditor.Views"
 
              xmlns:converters="clr-namespace:Toe.Scripting.WPF.Converters;assembly=Toe.Scripting.WPF"
+             xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
@@ -65,31 +66,7 @@
                             </LinearGradientBrush>
                         </Grid.Background>
 
-                        <ToggleButton Name="enable" MinHeight="18" MinWidth="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,4,4,4">
-                            <ToggleButton.Style>
-                                <Style TargetType="{x:Type ToggleButton}">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ToggleButton">
-                                                <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                                                         Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center"                  
-                                              VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsChecked" Value="True">
-                                            <Setter Property="Background" Value="Green" />
-                                        </Trigger>
-                                        <Trigger Property="IsChecked" Value="False">
-                                            <Setter Property="Background" Value="IndianRed" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </ToggleButton.Style>
-                        </ToggleButton>
+                       
 
                         <Grid Visibility="{Binding CanRename, Converter={StaticResource nameTextBoxVisibility}}">
                             <TextBox FontWeight="Bold" HorizontalAlignment="Center" Padding="4" Foreground="White"
@@ -111,9 +88,10 @@
                 </Border>
 
                 <Grid Grid.Row="1" >
+                    <local:BorderSized Background="Gray"  MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-3,-3"/>
 
 
-                    <Grid Name="grigForTXT" Grid.Row="1"  Margin="3,3,3,3"  MinWidth="360" MinHeight="360" Background="White"
+                    <Grid Name="grigForTXT" Grid.Row="1"  Margin="3,3,3,3"  MinWidth="300" MinHeight="240"  MaxWidth="360" MaxHeight="360" Background="White"
                                
                           >
 
@@ -128,10 +106,34 @@
                              MaxHeight="260" MaxWidth="440"
                              />-->
                
-                        <local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <!--<local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+
+
+                        <!--<avalonedit:TextEditor Grid.Row="1">
+                            <avalonedit:TextEditor.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Command="Cut" Header="Cut" />
+                                    <MenuItem Command="Copy" Header="Copy" />
+                                    <MenuItem Command="Paste" Header="Paste" />
+                                    <MenuItem Command="Delete" Header="Delete" />
+                                    <MenuItem Command="Undo" Header="Undo" />
+                                    <MenuItem Command="Redo" Header="Redo" />
+                                </ContextMenu>
+                            </avalonedit:TextEditor.ContextMenu>
+                        </avalonedit:TextEditor>-->
+
+
+                        <local:MvvmTextEditor x:Name="codeEdit"    
+                             FontFamily="Consolas"
+                             FontSize="10pt"
+                             ShowLineNumbers="True"            
+                             SyntaxHighlighting="C++" >
+                            <local:MvvmTextEditor.DocumentText>
+                                <Binding Path ="EditableValue" Mode="TwoWay"   UpdateSourceTrigger="PropertyChanged"/>
+                            </local:MvvmTextEditor.DocumentText>
+                        </local:MvvmTextEditor>
 
                     </Grid>
-                    <local:BorderSized Background="PaleVioletRed" MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-3,-3"/>
 
 
                 </Grid>

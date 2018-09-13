@@ -44,3 +44,4 @@ namespace Urho3DMaterialEditor.ViewModels
 
     }
 }
+

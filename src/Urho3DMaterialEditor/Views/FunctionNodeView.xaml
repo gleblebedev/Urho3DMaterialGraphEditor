@@ -37,6 +37,8 @@
         <Border MinWidth="100" MinHeight="100" BorderThickness="2" CornerRadius="8,8,8,8" BorderBrush="Black">
 
             <Grid>
+
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
@@ -66,31 +68,7 @@
                                 <GradientStop Color="#3D000000" Offset="0.983"/>
                             </LinearGradientBrush>
                         </Grid.Background>
-                        <ToggleButton Name="enable" MinHeight="18" MinWidth="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,4,4,4">
-                            <ToggleButton.Style>
-                                <Style TargetType="{x:Type ToggleButton}">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ToggleButton">
-                                                <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                                                         Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center"                  
-                                              VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsChecked" Value="True">
-                                            <Setter Property="Background" Value="Green" />
-                                        </Trigger>
-                                        <Trigger Property="IsChecked" Value="False">
-                                            <Setter Property="Background" Value="IndianRed" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </ToggleButton.Style>
-                        </ToggleButton>
+                      
                         <Grid Visibility="{Binding CanRename, Converter={StaticResource nameTextBoxVisibility}}">
                             <TextBox FontWeight="Bold" HorizontalAlignment="Center" Padding="4" Foreground="White"
                                      Background="Transparent" BorderBrush="Transparent" MinWidth="32"
@@ -115,6 +93,7 @@
 
 
                 <Grid Grid.Row="1">
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
@@ -168,6 +147,7 @@
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Column="1">
+                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="20" />
                             <RowDefinition Height="*" />
@@ -184,6 +164,7 @@
                                 <TextBox Text="{Binding FuncHeader, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Background="Black" Foreground="White" />
                             </Grid>
                             <Grid Grid.Column="1">
+                                
                                 <StackPanel Orientation="Horizontal">
                                     <Menu  Grid.Column="2" HorizontalAlignment="Right" >
                                         <MenuItem Header="..." Click="MenuItem_Click_1">
@@ -228,7 +209,9 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Grid.Row="1" MinWidth="200" MinHeight="260" Margin="0,0,3,3" Background="White">
+                        <Grid Grid.Row="1"  MinWidth="300" MinHeight="240"  MaxWidth="360" MaxHeight="360"  Margin="0,0,3,3" Background="White">
+                            <local:BorderSized Background="Gray"  MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-5,-5"/>
+
                             <!--<TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}"  TextChanged="TextBox_TextChanged"
                              Background="Black" Foreground="White"
                              VerticalScrollBarVisibility="Auto"
@@ -240,28 +223,26 @@
                              MaxHeight="260" MaxWidth="440"
                              />-->
 
-                            <local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <!--<local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
 
+
+                            <local:MvvmTextEditor x:Name="codeEdit"    
+                             FontFamily="Consolas"
+                             FontSize="10pt"
+                             ShowLineNumbers="True"            
+                             SyntaxHighlighting="C++" >
+                                <local:MvvmTextEditor.DocumentText>
+                                    <Binding Path ="EditableValue" Mode="TwoWay"   UpdateSourceTrigger="PropertyChanged">
+
+                                    </Binding>
+                                </local:MvvmTextEditor.DocumentText>
+                            </local:MvvmTextEditor>
                         </Grid>
-                        <!--<StackPanel  Grid.Row="2" Orientation="Vertical" MinWidth="100">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="40"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="40"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                --><!--<TextBox Text="return" IsReadOnly="True" Background="Black" Foreground="White"/>
-                                <TextBox Name="funcFoot" Text="" Grid.Column="1" Background="Black" Foreground="Yellow" LostFocus="funcFoot_LostFocus"/>--><!--
-
-                              
-                            </Grid>
-                        </StackPanel>-->
-
                     </Grid>
+
                 </Grid>
 
-<!--______________-->
+                <!--______________-->
 
 
                 <Grid Grid.RowSpan="2" Grid.ColumnSpan="3" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red" MinWidth="20" 
