@@ -28,9 +28,9 @@ namespace Urho3DMaterialEditor.Views {
                 if (value != null) {
                     if (value.Contains("iChannel")) value = value.Replace("iChannel0", "sDiffMap").Replace("iChannel1", "sSpecMap").Replace("iChannel2", "sNormalMap");
 
-                    var od = base.SelectionStart;
-                    base.Document.Text = value;
-                    base.SelectionStart = od>600?600:od;
+                    //var od = base.SelectionStart;
+                   if( base.Document.Text != value) base.Document.Text = value;
+                    //base.SelectionStart = od>600?600:od;
                 }
                 
     
