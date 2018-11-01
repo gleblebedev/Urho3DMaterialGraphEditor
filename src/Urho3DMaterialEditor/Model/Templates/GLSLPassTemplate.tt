@@ -10,7 +10,7 @@ foreach (var define in Graph.Defines)
     WriteLine("#if !defined("+define+")");
     WriteLine("#define "+define);
     WriteLine("#endif");
-}
+} 
 
 foreach (var undefine in Graph.Undefines)
 {
@@ -51,7 +51,7 @@ foreach (var uniform in Graph.VertexShaderAttributes)
 foreach (var uniform in VertexShaderUniformsAndFunctions.Uniforms)
 {
 	uniform.Extra.Define.WriteLineIfDef(this,"uniform "+GLSLCodeGen.GetType(uniform.Type)+" "+uniform.Name+GLSLCodeGen.GetArraySize(uniform.Type)+";");
-}
+}// "uniform highp "
 foreach (var varyingGroup in Graph.VertexShaderVaryings.ToLookup(_=>_.Extra.Define.GetExpression()))
 {
     foreach (var varying in varyingGroup)
@@ -116,7 +116,7 @@ foreach (var uniform in PixelShaderUniformsAndFunctions.Uniforms)
 	{
 		uniform.Extra.Define.WriteLineIfDef(this, "uniform "+GLSLCodeGen.GetType(uniform.Type)+" "+uniform.Name+";");
 	}
-//	WriteEndIf(uniform);
+//	WriteEndIf(uniform);  //uniform highp 
 }
 foreach (var uniform in Graph.Samplers)
 {

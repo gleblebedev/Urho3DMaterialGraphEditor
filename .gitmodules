@@ -1,3 +1,3 @@
 [submodule "src/submodules/Toe.Scripting.Core"]
 	path = src/submodules/Toe.Scripting.Core
-	url = git@github.com:gleblebedev/Toe.Scripting.Core.git
+url=https://github.com/gleblebedev/Toe.Scripting.Core.git

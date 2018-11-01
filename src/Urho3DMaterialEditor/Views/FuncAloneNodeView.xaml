@@ -8,6 +8,7 @@
 
              xmlns:converters="clr-namespace:Toe.Scripting.WPF.Converters;assembly=Toe.Scripting.WPF"
              xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:local1="clr-namespace:gridresize"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
@@ -20,12 +21,12 @@
         <converters:CategoryToBackgroundConverter x:Key="categoryToBackgroundConverter" Unknown="#515151"
                                                   Parameter="#420F4F" Event="#721B1A" Value="#3D4F3A"
                                                   Converter="#155457" />
-
+       
     </UserControl.Resources>
     <!--<UserControl.ContextMenu>
         <ContextMenu ItemsSource="{Binding MenuItems, Converter={StaticResource menuItemViewModelToMenuItemConverter}}" />
     </UserControl.ContextMenu>-->
-
+    <local1:gridResize>
     <Border IsHitTestVisible="True"
             Visibility="{Binding IsHidden, Converter={StaticResource hiddenItemConverter}}"
             MouseLeftButtonDown="StartDragging"  
@@ -88,12 +89,12 @@
                 </Border>
 
                 <Grid Grid.Row="1" >
-                    <local:BorderSized Background="Gray"  MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-3,-3"/>
+                    <!--<local:BorderSized Background="Gray"  MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-3,-3"/>-->
 
-
-                    <Grid Name="grigForTXT" Grid.Row="1"  Margin="3,3,3,3"  MinWidth="300" MinHeight="240"  MaxWidth="360" MaxHeight="360" Background="White"
+                        <Grid Grid.Name="grigForTXT" Grid.Row="1"  Margin="3,3,3,3"  Background="White"
                                
                           >
+                        
 
                         <!--<TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}"  TextChanged="TextBox_TextChanged"
                              Background="Black" Foreground="White"
@@ -123,9 +124,9 @@
                         </avalonedit:TextEditor>-->
 
 
-                        <local:MvvmTextEditor x:Name="codeEdit"       >
-                            <local:MvvmTextEditor.ContextMenu>
-                                <ContextMenu>
+                            <local:MvvmTextEditor >
+                            <local:MvvmTextEditor.ContextMenu >
+                                    <ContextMenu ContextMenu.Name="codeEdit">
                                     <MenuItem  Header="Undo" Click="MenuItem_Click"/>
                                     <MenuItem  Header="Redo" Click="MenuItem_Click"/>
                                     <Separator></Separator>
@@ -143,9 +144,9 @@
 
                     </Grid>
 
-
+   
                 </Grid>
-
+             
                 <!--______________-->
 
 
@@ -159,6 +160,7 @@
 
             </Grid>
         </Border>
-
-    </Border>
+           
+        </Border>
+    </local1:gridResize>
 </UserControl>

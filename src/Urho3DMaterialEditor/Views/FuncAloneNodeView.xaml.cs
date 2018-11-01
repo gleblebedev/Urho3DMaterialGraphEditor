@@ -116,7 +116,11 @@ namespace Urho3DMaterialEditor.Views {
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e) {
-            codeEdit.ClickMenu((e.Source as MenuItem).Header.ToString());
+          var t= (ContextMenu)FindName("codeEdit");
+            if (t == null) return;
+
+            var t2 = t.PlacementTarget as MvvmTextEditor;
+            t2?.ClickMenu((e.Source as MenuItem).Header.ToString());
         }
 
     }

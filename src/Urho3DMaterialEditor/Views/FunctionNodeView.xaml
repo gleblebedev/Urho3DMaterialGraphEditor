@@ -8,6 +8,7 @@
              
              xmlns:converters="clr-namespace:Toe.Scripting.WPF.Converters;assembly=Toe.Scripting.WPF"
              xmlns:local="clr-namespace:Urho3DMaterialEditor.Views"
+             xmlns:local11="clr-namespace:gridresize"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
@@ -26,7 +27,9 @@
         <ContextMenu ItemsSource="{Binding MenuItems, Converter={StaticResource menuItemViewModelToMenuItemConverter}}" />
     </UserControl.ContextMenu>
 
-    <Border IsHitTestVisible="True"
+   
+
+        <Border IsHitTestVisible="True"
             Visibility="{Binding IsHidden, Converter={StaticResource hiddenItemConverter}}"
             MouseLeftButtonDown="StartDragging"
             MouseRightButtonDown="SelectIfNotSelected"
@@ -35,8 +38,7 @@
             Background="#5B627693">
 
         <Border MinWidth="100" MinHeight="100" BorderThickness="2" CornerRadius="8,8,8,8" BorderBrush="Black">
-
-            <Grid>
+                <Grid>
 
 
                 <Grid.ColumnDefinitions>
@@ -109,7 +111,7 @@
                             <Menu Margin="4,4,4,6">
                                 <MenuItem Header="Menu" >
                                     <MenuItem Header="Clear" Click="MenuItem_Click_2"/>
-                                    <MenuItem Name="menuVars"  Header="Add pin" Click="MenuItem_Click_3"/>
+                                    <MenuItem MenuItem.Name="menuVars"  Header="Add pin" Click="MenuItem_Click_3"/>
 
                                     <!--<MenuItem Header="Script">
                                         <MenuItem Header="Clear"></MenuItem>
@@ -208,44 +210,37 @@
                                 </StackPanel>
                             </Grid>
                         </Grid>
+                       <!--MinWidth="600" MinHeight="500"  MaxWidth="600" MaxHeight="500"-->
+                            <local11:gridResize Grid.Row="1"   Background="White">
+                                <!--<local:BorderSized Background="Gray"  MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-5,-5"/>-->
 
-                        <Grid Grid.Row="1"  MinWidth="300" MinHeight="240"  MaxWidth="360" MaxHeight="360"  Margin="0,0,3,3" Background="White">
-                            <local:BorderSized Background="Gray"  MinHeight="34" MinWidth="34" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Margin="0,0,-5,-5"/>
+       
+                                <!--<local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+ 
 
-                            <!--<TextBox Text="{Binding EditableValue, UpdateSourceTrigger=PropertyChanged}"  TextChanged="TextBox_TextChanged"
-                             Background="Black" Foreground="White"
-                             VerticalScrollBarVisibility="Auto"
-                             HorizontalScrollBarVisibility="Auto"
-                             TextWrapping="NoWrap" 
-                             AcceptsReturn="True"
-                             AcceptsTab="False"
-                             MinWidth="180" MinHeight="80"
-                             MaxHeight="260" MaxWidth="440"
-                             />-->
+<!--<local11:gridResize>-->
+                                <local:MvvmTextEditor> 
+                                    <local:MvvmTextEditor.ContextMenu>
+                                        <ContextMenu ContextMenu.Name="codeEdit" >
+                                            <MenuItem  Header="Undo" Click="MenuItem_Click"/>
+                                            <MenuItem  Header="Redo" Click="MenuItem_Click"/>
+                                            <Separator></Separator>
+                                            <MenuItem  Header="Search..." Click="MenuItem_Click" />
+                                            <MenuItem  Header="Cut" Click="MenuItem_Click"/>
+                                            <MenuItem  Header="Copy" Click="MenuItem_Click"/>
+                                            <MenuItem  Header="Paste" Click="MenuItem_Click"/>
+                                            <MenuItem  Header="Delete" Click="MenuItem_Click"/>
+                                        </ContextMenu>
+                                    </local:MvvmTextEditor.ContextMenu>
+                                    
+                                    <local:MvvmTextEditor.DocumentText>
+                                        <Binding Path ="EditableValue" Mode="TwoWay"   UpdateSourceTrigger="PropertyChanged"> </Binding>
+                                    </local:MvvmTextEditor.DocumentText> 
+                                </local:MvvmTextEditor>
+<!--</local11:gridResize>-->
+                            </local11:gridResize>
+                       
 
-                            <!--<local:CEditor Text="{Binding EditableValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
-
-
-                            <local:MvvmTextEditor x:Name="codeEdit" >
-                                <local:MvvmTextEditor.ContextMenu>
-                                    <ContextMenu>
-                                        <MenuItem  Header="Undo" Click="MenuItem_Click"/>
-                                        <MenuItem  Header="Redo" Click="MenuItem_Click"/>
-                                        <Separator></Separator>
-                                        <MenuItem  Header="Search..." Click="MenuItem_Click" />
-                                        <MenuItem  Header="Cut" Click="MenuItem_Click"/>
-                                        <MenuItem  Header="Copy" Click="MenuItem_Click"/>
-                                        <MenuItem  Header="Paste" Click="MenuItem_Click"/>
-                                        <MenuItem  Header="Delete" Click="MenuItem_Click"/>
-                                    </ContextMenu>
-                                </local:MvvmTextEditor.ContextMenu>
-                                <local:MvvmTextEditor.DocumentText>
-                                    <Binding Path ="EditableValue" Mode="TwoWay"   UpdateSourceTrigger="PropertyChanged">
-
-                                    </Binding>
-                                </local:MvvmTextEditor.DocumentText>
-                            </local:MvvmTextEditor>
-                        </Grid>
                     </Grid>
 
                 </Grid>
@@ -261,7 +256,8 @@
 
 
 
-            </Grid>
+            </Grid> 
         </Border>
     </Border>
+       
 </UserControl>

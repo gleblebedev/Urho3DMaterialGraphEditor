@@ -26,10 +26,16 @@ namespace Urho3DMaterialEditor.Views {
 
         private void FillMenuPins() {
             foreach (var item in PinTypes.DataTypes) {
-                menuVars.Items.Add(new MenuItem() { Header = item });
+                menuVars2.Items.Add(new MenuItem() { Header = item });
             }
-            menuVars.Items.Add(new MenuItem() { Header = PinTypes.Sampler2D});
-            menuVars.Items.Add(new MenuItem() { Header = PinTypes.SamplerCube});
+            menuVars2.Items.Add(new MenuItem() { Header = PinTypes.Sampler2D});
+            menuVars2.Items.Add(new MenuItem() { Header = PinTypes.SamplerCube});
+        }
+
+        private MenuItem menuVars2 {
+            get {
+                return (MenuItem)FindName("menuVars");
+            }
         }
 
         private void MenuItem_Click_3(object sender, System.Windows.RoutedEventArgs e) {
@@ -143,7 +149,12 @@ namespace Urho3DMaterialEditor.Views {
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e) {
-            codeEdit.ClickMenu((e.Source as MenuItem).Header.ToString());
+            var t = (ContextMenu)FindName("codeEdit");
+            if (t == null) return;
+
+            var t2 = t.PlacementTarget as MvvmTextEditor;
+            t2?.ClickMenu((e.Source as MenuItem).Header.ToString());
+            // codeEdit.ClickMenu((e.Source as MenuItem).Header.ToString());
         }
     }
 }
