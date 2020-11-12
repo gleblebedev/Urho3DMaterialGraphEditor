@@ -484,6 +484,7 @@
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\visibility%28float,float,float%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\smithGGXSchlickVisibility%28float,float,float%29.json" />
     <EmbeddedResource Include="Data\GraphFunctions\Functions\texture2D\sampleTexture2D.json" />
+    <EmbeddedResource Include="Data\GraphFunctions\Functions\Lighting\scaleNormal.json" />
     <None Include="Data\MaterialGraphs\Butterflies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
