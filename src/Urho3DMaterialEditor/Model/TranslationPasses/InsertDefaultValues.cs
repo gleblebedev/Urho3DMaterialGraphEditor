@@ -80,6 +80,7 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
                     case NodeTypes.MultiplyVec3Float:
                     case NodeTypes.MultiplyVec4Float:
                     case NodeTypes.MultiplyVec2Vec2:
+                    case NodeTypes.MultiplyVec2Mat2:
                     case NodeTypes.MultiplyVec3Vec3:
                     case NodeTypes.MultiplyVec4Vec4:
                     case NodeTypes.MultiplyVec4Mat4:

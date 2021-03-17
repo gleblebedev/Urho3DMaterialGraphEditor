@@ -283,6 +283,14 @@ namespace Urho3DMaterialEditor.Model
                     new Pin("Z", PinTypes.Float),
                     new Pin("W", PinTypes.Float)
                 }, PinTypes.Vec4));
+            Add(FunctionNodeFactory.Function(NodeTypes.MakeMat2, "mat2(float,float,float,float)", "make/break",
+                new[]
+                {
+                    new Pin("m00", PinTypes.Float),
+                    new Pin("m01", PinTypes.Float),
+                    new Pin("m10", PinTypes.Float),
+                    new Pin("m11", PinTypes.Float)
+                }, PinTypes.Mat2));
             Add(FunctionNodeFactory.Function(NodeTypes.MakeVec4FromVec3AndFloat, "vec4(vec3,float)", "make/break",
                 new[]
                 {
@@ -752,6 +760,11 @@ namespace Urho3DMaterialEditor.Model
                 NodeTypes.SubCategories.Arithmetic, "multiply",
                 new[] {new Pin("x", PinTypes.Vec4), new Pin(PinIds.Y, PinTypes.Mat4)},
                 new[] {new Pin("", PinTypes.Vec4)}));
+
+            Add(FunctionNodeFactory.Function(NodeTypes.MultiplyVec2Mat2, NodeTypes.MultiplyVec2Mat2,
+                NodeTypes.SubCategories.Arithmetic, "multiply",
+                new[] { new Pin("x", PinTypes.Vec2), new Pin(PinIds.Y, PinTypes.Mat2) },
+                new[] { new Pin("", PinTypes.Vec2) }));
 
             Add(FunctionNodeFactory.Function(NodeTypes.MultiplyMat4Float, NodeTypes.MultiplyMat4Float,
                 NodeTypes.SubCategories.Arithmetic, "multiply",

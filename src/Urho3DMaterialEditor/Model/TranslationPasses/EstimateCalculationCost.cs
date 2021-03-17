@@ -70,6 +70,7 @@ namespace Urho3DMaterialEditor.Model.TranslationPasses
                 case NodeTypes.MakeVec2://makeVec2"; //
                 case NodeTypes.MakeVec3://makeVec3"; //
                 case NodeTypes.MakeVec4://makeVec4"; //
+                case NodeTypes.MakeMat2://makeMat2"; //
                 case NodeTypes.MakeVec4FromVec3://makeVec4fromVec3"; //
                 case NodeTypes.MakeVec4FromVec3AndFloat://makeVec4fromVec3Float"; //
                 case NodeTypes.MakeVec3FromVec2AndFloat://makeVec3fromVec2Float"; //

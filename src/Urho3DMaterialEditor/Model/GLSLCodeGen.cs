@@ -314,6 +314,7 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                 case NodeTypes.MultiplyVec3Float:
                 case NodeTypes.MultiplyVec4Float:
                 case NodeTypes.MultiplyVec2Vec2:
+                case NodeTypes.MultiplyVec2Mat2:
                 case NodeTypes.MultiplyVec3Vec3:
                 case NodeTypes.MultiplyVec4Vec4:
                 case NodeTypes.MultiplyVec4Mat4:
@@ -375,6 +376,7 @@ mat3 GetNormalMatrix(mat4 modelMatrix)
                 case NodeTypes.MakeVec2:
                 case NodeTypes.MakeVec3:
                 case NodeTypes.MakeVec4:
+                case NodeTypes.MakeMat2:
                 case NodeTypes.MakeMat3FromVec3Vec3Vec3:
                     return node.OutputPins[0].Type + "(" + string.Join(", ", args) + ")";
                 case NodeTypes.MakeMat3FromMat4:
